@@ -77,6 +77,26 @@
   animation: phase-marquee 20s linear infinite;
 }
 
+@keyframes mentor-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-mentor-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: mentor-marquee 32s linear infinite;
+}
+
+.animate-mentor-marquee:hover {
+  animation-play-state: paused;
+}
+
 @keyframes banner-drift-1 {
   0% { transform: translateY(-5px); }
   100% { transform: translateY(5px); }
@@ -125,14 +145,13 @@
 /* Deco hover tabs */
 .deco-edge-left {
   position: absolute;
-  left: -135px;
+  left: -30px;
   top: 40px;
-  width: 205px;
+  width: 190px;
   z-index: 10;
-  padding-left: 200px;
-  margin-left: -200px;
-  transition: left 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: left 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
   user-select: none;
+  opacity: 0.95;
 }
 
 .deco-edge-left:hover {
@@ -141,15 +160,14 @@
 
 .deco-edge-right {
   position: absolute;
-  right: -56px;
+  right: -25px;
   bottom: 0;
   translate: 0 50%;
-  width: 189px;
+  width: 190px;
   z-index: 25;
-  padding-right: 200px;
-  margin-right: -200px;
-  transition: right 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: right 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
   user-select: none;
+  opacity: 0.95;
 }
 
 .deco-edge-right:hover {
@@ -158,14 +176,13 @@
 
 .deco-edge-eval {
   position: absolute;
-  left: calc(50% - 874px);
-  top: 274px;
-  width: 219px;
+  left: -30px;
+  top: 60px;
+  width: 190px;
   z-index: 10;
-  padding-left: 200px;
-  margin-left: -200px;
-  transition: left 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: left 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
   user-select: none;
+  opacity: 0.95;
 }
 
 .deco-edge-eval:hover {
