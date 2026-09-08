@@ -30,7 +30,7 @@ export const GENERAL_CONTACT = {
   email: "admin@ecell-iitkgp.in",
   responseSla: "We usually respond within 24 hours.",
   organization: "E-Cell, IIT Kharagpur",
-  address: "Technology Students' Gymkhana, IIT Kharagpur, West Bengal 721302",
+  address: "RMSOEE, IIT Kharagpur, West Bengal 721302",
   socials: [
     { platform: "Website", url: "https://ecell-iitkgp.org" },
     { platform: "LinkedIn", url: "https://www.linkedin.com/company/ecellkgp" },

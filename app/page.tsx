@@ -27,7 +27,7 @@ export default function Home() {
         <Bulletin />
 
         {/* 4. The Case Section */}
-        <TheCase />
+        {/* <TheCase /> */}
 
         {/* 5. Past Mentors Infinite Horizontal Scroll Section (replaces Partners) */}
         <PastMentorsMarquee />

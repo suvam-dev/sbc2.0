@@ -90,10 +90,30 @@
   display: flex;
   width: max-content;
   will-change: transform;
-  animation: mentor-marquee 32s linear infinite;
+  animation: mentor-marquee 30s linear infinite;
 }
 
 .animate-mentor-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes mentor-marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-mentor-marquee-reverse {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: mentor-marquee-reverse 34s linear infinite;
+}
+
+.animate-mentor-marquee-reverse:hover {
   animation-play-state: paused;
 }
 

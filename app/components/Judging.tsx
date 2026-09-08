@@ -134,18 +134,51 @@ export default function Judging() {
 
         {/* Section 0.2: Content Pending Placeholder Block */}
         {/* <!-- CONTENT PENDING --> */}
-        {/* Elevated Process Card matching Mockup */}
-        <div ref={cardRef} className="max-w-[880px] bg-[#f7ecd0] rounded-2xl sm:rounded-3xl border border-[#321F1F]/10 p-6 sm:p-8 lg:p-9 shadow-[0_15px_40px_rgba(50,31,31,0.06)] relative z-10 lg:ml-10">
+        {/* Elevated Process Card with Rich Texture & High Contrast */}
+        <div
+          ref={cardRef}
+          className="max-w-[880px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EB] to-[#F5EEDF] rounded-2xl sm:rounded-3xl border border-[#321F1F]/20 p-6 sm:p-8 lg:p-9 shadow-[0_22px_50px_-10px_rgba(50,31,31,0.18),0_10px_20px_-5px_rgba(50,31,31,0.08),0_1px_3px_rgba(50,31,31,0.12)] relative z-10 lg:ml-10 overflow-hidden"
+        >
+          {/* Subtle Archival Stipple Paper Texture Overlay */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(#321F1F_0.75px,transparent_0.75px)] [background-size:16px_16px] opacity-[0.035]"
+            aria-hidden="true"
+          />
+
+          {/* Inner Certificate Double-Hairline Frame Accent */}
+          <div
+            className="pointer-events-none absolute inset-2 sm:inset-2.5 rounded-[14px] sm:rounded-[22px] border border-[#972933]/15"
+            aria-hidden="true"
+          />
+
+          {/* Corner Registration Crosshair Marks */}
+          <div className="pointer-events-none absolute top-3.5 left-3.5 w-2 h-2 border-t border-l border-[#972933]/40" aria-hidden="true" />
+          <div className="pointer-events-none absolute top-3.5 right-3.5 w-2 h-2 border-t border-r border-[#972933]/40" aria-hidden="true" />
+          <div className="pointer-events-none absolute bottom-3.5 left-3.5 w-2 h-2 border-b border-l border-[#972933]/40" aria-hidden="true" />
+          <div className="pointer-events-none absolute bottom-3.5 right-3.5 w-2 h-2 border-b border-r border-[#972933]/40" aria-hidden="true" />
+
+          {/* Archival Dispatch Header Strip */}
+          <div className="relative z-10 flex items-center justify-between gap-4 border-b border-[#321F1F]/12 pb-3.5 mb-5 text-[10px] font-mono uppercase tracking-[0.2em] text-[#321F1F]/60">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#972933]" />
+              <span className="font-semibold text-[#321F1F]/70">DISPATCH REF // SBC-9.0-EVAL</span>
+            </div>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#972933]/10 text-[#972933] font-bold text-[9.5px] tracking-widest border border-[#972933]/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#972933] animate-pulse" />
+              STATUS: JURY FINALIZATION
+            </span>
+          </div>
+
           {/* Card Top Row */}
-          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-5">
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4">
             <div className="max-w-[560px]">
               <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#972933] block mb-1">
                 Our Process
               </span>
-              <h3 className="font-serif text-2xl sm:text-[28px] font-bold text-[#111111] tracking-tight leading-snug">
+              <h3 className="font-serif text-2xl sm:text-[28px] font-black text-[#1a1010] tracking-tight leading-snug">
                 Evaluation Framework & Jury Panel
               </h3>
-              <p className="text-xs sm:text-[13.5px] text-[#321F1F]/70 mt-1.5 leading-relaxed">
+              <p className="text-xs sm:text-[13.5px] text-[#321F1F]/80 mt-1.5 leading-relaxed font-serif">
                 The formal evaluation criteria and jury panel for Startup Bootcamp 9.0 are being
                 finalized with E-Cell IIT Kharagpur&rsquo;s advisory board.
               </p>
@@ -153,31 +186,31 @@ export default function Judging() {
 
             {/* Right Stacked Tagline with Divider */}
             <div className="hidden sm:flex items-start gap-4 shrink-0 pt-1">
-              <span className="h-11 w-px bg-[#321F1F]/15" aria-hidden="true" />
-              <div className="text-[9.5px] font-mono uppercase tracking-[0.25em] text-[#321F1F]/50 leading-relaxed">
+              <span className="h-11 w-px bg-[#321F1F]/20" aria-hidden="true" />
+              <div className="text-[9.5px] font-mono uppercase tracking-[0.25em] text-[#321F1F]/60 leading-relaxed">
                 <div>REAL</div>
-                <div>PROBLEMS.</div>
+                <div className="font-bold text-[#972933]">PROBLEMS.</div>
                 <div>BOLDER</div>
-                <div>BUILDERS.</div>
+                <div className="font-bold text-[#972933]">BUILDERS.</div>
               </div>
             </div>
           </div>
 
-          {/* 2 Round Sub-Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 my-5 sm:my-6">
+          {/* 2 Round Sub-Cards with Warm Contrast */}
+          <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 my-5 sm:my-6">
             {/* Round 1 Card */}
-            <div className="bg-[#FAF7F2] rounded-xl sm:rounded-2xl p-4 sm:p-5 flex items-start gap-3.5 border border-[#321F1F]/5 hover:border-[#972933]/25 transition-colors">
-              <div className="w-10 h-10 rounded-full bg-[#EFE6E2] text-[#222222] font-serif font-bold text-base sm:text-lg flex items-center justify-center shrink-0 shadow-2xs">
+            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-xl sm:rounded-2xl p-4 sm:p-5 flex items-start gap-3.5 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
+              <div className="w-9 h-9 rounded-full bg-[#972933] text-white font-serif font-bold text-base flex items-center justify-center shrink-0 shadow-2xs">
                 1
               </div>
               <div className="space-y-1">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933] block">
                   Round 1
                 </span>
-                <h4 className="font-serif font-bold text-[15px] sm:text-base text-[#111111] leading-snug">
+                <h4 className="font-serif font-bold text-[15px] sm:text-base text-[#1a1010] leading-snug">
                   Initial Screening
                 </h4>
-                <p className="text-xs sm:text-[12.5px] text-[#321F1F]/75 leading-relaxed">
+                <p className="text-xs sm:text-[12.5px] text-[#321F1F]/80 leading-relaxed">
                   Clarity of problem statement, unique consumer or business insight, and initial
                   market validation.
                 </p>
@@ -185,18 +218,18 @@ export default function Judging() {
             </div>
 
             {/* Round 2 Card */}
-            <div className="bg-[#FAF7F2] rounded-xl sm:rounded-2xl p-4 sm:p-5 flex items-start gap-3.5 border border-[#321F1F]/5 hover:border-[#972933]/25 transition-colors">
-              <div className="w-10 h-10 rounded-full bg-[#EFE6E2] text-[#222222] font-serif font-bold text-base sm:text-lg flex items-center justify-center shrink-0 shadow-2xs">
+            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-xl sm:rounded-2xl p-4 sm:p-5 flex items-start gap-3.5 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
+              <div className="w-9 h-9 rounded-full bg-[#972933] text-white font-serif font-bold text-base flex items-center justify-center shrink-0 shadow-2xs">
                 2
               </div>
               <div className="space-y-1">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933] block">
                   Round 2
                 </span>
-                <h4 className="font-serif font-bold text-[15px] sm:text-base text-[#111111] leading-snug">
+                <h4 className="font-serif font-bold text-[15px] sm:text-base text-[#1a1010] leading-snug">
                   Mentorship & Pitch
                 </h4>
-                <p className="text-xs sm:text-[12.5px] text-[#321F1F]/75 leading-relaxed">
+                <p className="text-xs sm:text-[12.5px] text-[#321F1F]/80 leading-relaxed">
                   Refinement across business model, unit economics, go-to-market plan, and pitch
                   execution before investors.
                 </p>
@@ -205,20 +238,20 @@ export default function Judging() {
           </div>
 
           {/* Card Bottom Row: CTA Button + Divider + Motto */}
-          <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="relative z-10 pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <Link
               href="/#register"
-              className="inline-flex items-center justify-center gap-2.5 bg-[#4E0C16] hover:bg-[#3B0910] text-white text-xs sm:text-[13px] font-medium px-5 sm:px-6 py-3 rounded-lg shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-auto"
+              className="inline-flex items-center justify-center gap-2.5 bg-[#4E0C16] hover:bg-[#38080F] text-white text-xs sm:text-[13px] font-semibold px-6 py-3.5 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all w-full sm:w-auto uppercase tracking-wider"
             >
               <span>Submit your team&rsquo;s pitch deck</span>
               <span className="text-sm font-light">→</span>
             </Link>
 
             <div className="flex items-center gap-3.5 self-center sm:self-auto">
-              <span className="hidden sm:block h-7 w-px bg-[#321F1F]/15" aria-hidden="true" />
-              <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.2em] text-[#321F1F]/50 leading-relaxed text-center sm:text-left">
-                <div>IDEAS TODAY.</div>
-                <div>IMPACT TOMORROW.</div>
+              <span className="hidden sm:block h-8 w-px bg-[#321F1F]/20" aria-hidden="true" />
+              <div className="text-[9.5px] sm:text-[10px] font-mono uppercase tracking-[0.22em] text-[#321F1F]/60 leading-relaxed text-center sm:text-left">
+                <div className="font-bold text-[#972933]">IDEAS TODAY.</div>
+                <div className="text-[#321F1F]/50">IMPACT TOMORROW.</div>
               </div>
             </div>
           </div>

@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
-import Link from "next/link";
+import React, { useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { PAST_MENTORS_DATA, Mentor } from "@/data/mentors";
+import ApplyMentorModal from "./ApplyMentorModal";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,22 +18,116 @@ function LinkedinIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
   );
 }
 
+function MentorAvatar({ name, imageUrl }: { name: string; imageUrl?: string }) {
+  const [hasError, setHasError] = useState(false);
+
+  const initials = name
+    .replace(/^Dr\.\s+/, "")
+    .split(" ")
+    .map((n) => n[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("");
+
+  if (imageUrl && !hasError) {
+    return (
+      <img
+        src={imageUrl}
+        alt={name}
+        className="w-full h-full object-cover"
+        onError={() => setHasError(true)}
+      />
+    );
+  }
+
+  return (
+    <div className="w-full h-full flex items-center justify-center font-serif text-xl sm:text-2xl font-black text-[#972933]">
+      {initials}
+    </div>
+  );
+}
+
+function MentorCard({ mentor, "aria-hidden": ariaHidden }: { mentor: Mentor; "aria-hidden"?: boolean }) {
+  return (
+    <div
+      className="w-[250px] sm:w-[275px] xl:w-[290px] shrink-0 bg-[#f7ecd0]/95 backdrop-blur-xs rounded-xl border border-[#321F1F]/15 p-4 sm:p-4.5 flex flex-col justify-between shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 select-none"
+      aria-hidden={ariaHidden}
+    >
+      <div>
+        {/* Avatar & Batch Pill */}
+        <div className="flex items-center gap-3 mb-2.5">
+          <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-full overflow-hidden border-2 border-[#972933]/30 bg-[#f7ecd0] shrink-0 relative shadow-inner">
+            <MentorAvatar name={mentor.name} imageUrl={mentor.imageUrl} />
+          </div>
+          <div className="space-y-0.5 min-w-0">
+            <span className="inline-block px-2 py-0.5 bg-[#972933]/10 text-[#972933] font-semibold text-[10px] rounded-full truncate max-w-full">
+              {mentor.alumnusTag}
+            </span>
+            {mentor.organization && (
+              <span className="block text-[10.5px] text-[#321F1F]/60 truncate">
+                {mentor.organization}
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* Name */}
+        <h3 className="font-serif text-[15px] sm:text-base font-bold text-[#321F1F] leading-snug">
+          {mentor.name}
+        </h3>
+
+        {/* Role */}
+        <p className="text-[11px] sm:text-xs text-[#321F1F]/80 mt-1 leading-relaxed line-clamp-2">
+          {mentor.role}
+        </p>
+      </div>
+
+      {/* LinkedIn Link */}
+      {mentor.linkedinUrl && (
+        <div className="mt-2.5 pt-2 border-t border-[#321F1F]/10 flex items-center justify-between">
+          <a
+            href={mentor.linkedinUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#972933] hover:text-[#74001c] transition-colors"
+          >
+            <LinkedinIcon className="w-3 h-3" />
+            <span>View Profile</span>
+          </a>
+          <span className="text-[9.5px] text-[#321F1F]/40 font-mono">SBC Mentor</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 interface PastMentorsMarqueeProps {
   mentors?: Mentor[];
+  showApplyCta?: boolean;
+  applyMentorHref?: string;
   showRegisterCta?: boolean;
 }
 
 export default function PastMentorsMarquee({
   mentors = PAST_MENTORS_DATA,
-  showRegisterCta = true,
+  showApplyCta = true,
+  applyMentorHref,
+  showRegisterCta,
 }: PastMentorsMarqueeProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const containerRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const bgArtRef = useRef<HTMLImageElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
+  const shouldShowCta = showApplyCta ?? showRegisterCta ?? true;
+
+  // Split mentors into two balanced groups for two opposing marquees
+  const row1Mentors = mentors.filter((_, idx) => idx % 2 === 0);
+  const row2Mentors = mentors.filter((_, idx) => idx % 2 !== 0);
+
   useGSAP(() => {
-    let mm = gsap.matchMedia();
+    const mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
       // Parallax for Background Art
@@ -76,28 +170,52 @@ export default function PastMentorsMarquee({
     });
   }, { scope: containerRef });
 
+  const renderCtaButton = (extraClass = "") => {
+    const buttonContent = (
+      <>
+        <span>Register as a Mentor</span>
+        <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+      </>
+    );
+
+    const baseClass = `group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#972933] via-[#851822] to-[#600C16] hover:from-[#74001c] hover:via-[#600C16] hover:to-[#45050D] text-white text-xs sm:text-[13px] font-bold px-6 py-3.5 rounded-xl shadow-[0_8px_20px_-4px_rgba(151,41,51,0.45)] hover:shadow-[0_12px_28px_-4px_rgba(151,41,51,0.6)] hover:scale-[1.02] active:scale-98 transition-all duration-200 uppercase tracking-wider cursor-pointer border border-white/20 ${extraClass}`;
+
+    if (applyMentorHref) {
+      return (
+        <a
+          href={applyMentorHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={baseClass}
+        >
+          {buttonContent}
+        </a>
+      );
+    }
+    return (
+      <button
+        type="button"
+        onClick={() => setIsModalOpen(true)}
+        className={baseClass}
+      >
+        {buttonContent}
+      </button>
+    );
+  };
+
   return (
     <section
       id="partners"
       ref={containerRef}
-      className="relative bg-[#f7ecd0] py-14 sm:py-20 lg:py-24 overflow-hidden border-b border-[#321F1F]/15"
+      className="relative bg-[#f7ecd0] py-12 sm:py-16 lg:py-20 overflow-hidden border-b border-[#321F1F]/15"
     >
-      {/* Background Graphic Art: Mentor & Entrepreneur at IIT KGP */}
-      <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[45%] pointer-events-none select-none z-0" aria-hidden="true">
-        <img
-          ref={bgArtRef}
-          src="/images/mentors-bg-art.jpg"
-          alt="Vintage illustration of a mentor and entrepreneur at IIT Kharagpur"
-          className="w-full h-full object-cover object-right-top drop-shadow-sm pointer-events-none -mt-10 h-[120%]"
-        />
-        {/* Soft edge blend overlay to seamlessly fade into background */}
-        <div className="absolute inset-y-0 left-0 w-24 sm:w-40 bg-gradient-to-r from-[#f7ecd0] via-[#f7ecd0]/90 to-transparent" />
-        <div className="absolute inset-y-0 right-0 w-12 sm:w-24 bg-gradient-to-l from-[#f7ecd0] via-transparent to-transparent" />
-      </div>
+      {/* Decorative Stamp Border Patterns */}
+      <div className="pointer-events-none absolute top-0 left-0 right-0 h-2 bg-[radial-gradient(#972933_1px,transparent_1px)] [background-size:12px_12px] opacity-40 z-20" />
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-2 bg-[radial-gradient(#972933_1px,transparent_1px)] [background-size:12px_12px] opacity-40 z-20" />
 
       {/* Left Vertical Editorial Accent */}
       <div
-        className="hidden lg:flex flex-col items-start gap-1 absolute left-6 sm:left-10 lg:left-12 top-48 sm:top-56 text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.25em] text-[#321F1F]/45 select-none z-10 pointer-events-none"
+        className="hidden 2xl:flex flex-col items-start gap-1 absolute left-4 2xl:left-8 top-16 text-[9px] font-mono uppercase tracking-[0.25em] text-[#321F1F]/40 select-none z-20 pointer-events-none"
         aria-hidden="true"
       >
         <span>INDUSTRY</span>
@@ -107,186 +225,148 @@ export default function PastMentorsMarquee({
         <span className="w-5 h-[1.5px] bg-[#972933]/40 mt-1" />
       </div>
 
-      {/* Giant Decorative Watermark */}
-      <div
-        className="pointer-events-none absolute -bottom-6 sm:-bottom-10 left-4 sm:left-10 text-[80px] sm:text-[130px] lg:text-[160px] font-serif font-light text-[#972933]/[0.05] select-none leading-none z-0 tracking-tighter"
-        aria-hidden="true"
-      >
-        MENTORS
-      </div>
-
-      <div className="relative z-10 max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12">
-        <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pl-0 lg:pl-10">
-          <div className="max-w-[640px]">
-            <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#972933] block mb-1.5">
-              1-On-1 Guidance
-            </span>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-[60px] font-black text-[#111111] tracking-tight leading-none mb-3">
-              Past Mentors
-            </h2>
-            <p className="text-sm sm:text-base lg:text-[17px] text-[#321F1F]/75 font-serif leading-relaxed">
-              Selected startups are paired with prominent founders, IIT Kharagpur alumni, and
-              top-tier venture capitalists for 1-on-1 mentorship.
+      {/* Main Split Layout: Left Half (Marquees) & Right Half (Illustration) */}
+      <div className="w-full flex flex-col lg:flex-row items-stretch relative">
+        {/* LEFT HALF: Header + 2 Opposing Marquees (occupies 50% on lg) */}
+        <div className="w-full lg:w-1/2 flex flex-col justify-between relative z-10 py-1">
+          {/* Section Header */}
+          <div
+            ref={headerRef}
+            className="px-4 sm:px-8 lg:pl-12 lg:pr-6 xl:pl-16 mb-4 sm:mb-6"
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#972933]" />
+              <span className="text-[11px] font-mono tracking-widest uppercase text-[#972933] font-bold">
+                MENTORS
+              </span>
+            </div>
+            <div className="flex items-baseline gap-3">
+              <span className="font-serif italic text-2xl sm:text-3xl text-[#972933]/80 font-bold">
+                04
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#321F1F]">
+                Past Mentors
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm lg:text-[14px] text-[#321F1F]/80 font-serif leading-relaxed mt-2.5 max-w-[520px]">
+              Distinguished founders, operators, and venture investors from IIT Kharagpur and top industry ecosystems who guided previous bootcamp cohorts from napkin sketch to seed round.
             </p>
           </div>
+
+          {/* Dual Infinite Horizontal Scroll Marquees in Opposite Directions */}
+          <div className="space-y-3 sm:space-y-3.5 my-auto">
+            {/* ROW 1: Scrolls Leftwards */}
+            <div className="relative w-full overflow-hidden py-1 cursor-grab active:cursor-grabbing">
+              {/* Left edge fade overlay */}
+              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-14 bg-gradient-to-r from-[#f7ecd0] to-transparent z-10" />
+              {/* Right blend overlay */}
+              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-14 sm:w-24 lg:w-32 bg-gradient-to-l from-[#f7ecd0] via-[#f7ecd0]/90 to-transparent z-10" />
+
+              {/* Marquee Track 1 (Leftwards) */}
+              <div className="animate-mentor-marquee flex items-stretch gap-4 sm:gap-5 px-4">
+                {row1Mentors.map((mentor, idx) => (
+                  <MentorCard key={`r1-m1-${mentor.id}-${idx}`} mentor={mentor} />
+                ))}
+                {row1Mentors.map((mentor, idx) => (
+                  <MentorCard key={`r1-m2-${mentor.id}-${idx}`} mentor={mentor} aria-hidden={true} />
+                ))}
+              </div>
+            </div>
+
+            {/* ROW 2: Scrolls Rightwards in Opposite Direction */}
+            <div className="relative w-full overflow-hidden py-1 cursor-grab active:cursor-grabbing">
+              {/* Left edge fade overlay */}
+              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-14 bg-gradient-to-r from-[#f7ecd0] to-transparent z-10" />
+              {/* Right blend overlay */}
+              <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-14 sm:w-24 lg:w-32 bg-gradient-to-l from-[#f7ecd0] via-[#f7ecd0]/90 to-transparent z-10" />
+
+              {/* Marquee Track 2 (Rightwards / Opposite Direction) */}
+              <div className="animate-mentor-marquee-reverse flex items-stretch gap-4 sm:gap-5 px-4">
+                {row2Mentors.map((mentor, idx) => (
+                  <MentorCard key={`r2-m1-${mentor.id}-${idx}`} mentor={mentor} />
+                ))}
+                {row2Mentors.map((mentor, idx) => (
+                  <MentorCard key={`r2-m2-${mentor.id}-${idx}`} mentor={mentor} aria-hidden={true} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile CTA (visible only on mobile/tablet screens < lg) */}
+          {shouldShowCta && (
+            <div className="lg:hidden px-4 mt-6 flex justify-center">
+              <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF6EE] to-[#F5ECE0] border border-[#972933]/25 rounded-2xl p-4 shadow-md max-w-[340px] w-full text-center">
+                <div className="flex items-center justify-center gap-2 mb-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#972933] animate-pulse" />
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933]">
+                    CALL FOR MENTORS
+                  </span>
+                </div>
+                <h4 className="font-serif font-bold text-sm text-[#1a1010] mb-1">
+                  Guide Startup Bootcamp 9.0
+                </h4>
+                <p className="text-[11.5px] text-[#321F1F]/70 font-serif leading-snug mb-3">
+                  Mentor early-stage ventures from colleges across India.
+                </p>
+                {renderCtaButton("w-full")}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* RIGHT HALF: Illustration taking other half with multi-edge seamless blend */}
+        <div className="hidden lg:flex lg:w-1/2 relative min-h-[520px] xl:min-h-[560px] flex-col justify-end items-end p-8 xl:p-12 overflow-hidden select-none">
+          {/* Background Graphic Art with Parallax & Multiply Blend */}
+          <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+            <img
+              ref={bgArtRef}
+              src="/images/past-mentors-bg.jpg"
+              alt="Vintage illustration of a business mentor guiding startup founders"
+              className="w-full h-[120%] -top-[10%] absolute inset-x-0 object-cover object-center mix-blend-multiply filter contrast-[1.04]"
+            />
+            {/* Seamless Soft Edge Blend Overlays */}
+            {/* 1. Left Edge Blend - seamlessly fades into the center meeting the marquee */}
+            <div className="absolute inset-y-0 left-0 w-32 xl:w-48 bg-gradient-to-r from-[#f7ecd0] via-[#f7ecd0]/80 to-transparent z-1" />
+            {/* 2. Top Edge Blend */}
+            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#f7ecd0] via-[#f7ecd0]/60 to-transparent z-1" />
+            {/* 3. Bottom Edge Blend */}
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#f7ecd0] via-[#f7ecd0]/75 to-transparent z-1" />
+            {/* 4. Right Edge Blend */}
+            <div className="absolute inset-y-0 right-0 w-16 xl:w-24 bg-gradient-to-l from-[#f7ecd0] to-transparent z-1" />
+          </div>
+
+          {/* Register as a Mentor High-Contrast Highlight Callout Card */}
+          {shouldShowCta && (
+            <div
+              ref={ctaRef}
+              className="relative z-10 bg-gradient-to-b from-[#FFFDF9]/95 via-[#FAF6EE]/95 to-[#F5ECE0]/95 backdrop-blur-md border-2 border-[#972933]/30 rounded-2xl p-4 sm:p-5 shadow-[0_22px_45px_-8px_rgba(50,31,31,0.25),0_6px_16px_rgba(151,41,51,0.15)] ring-4 ring-[#972933]/10 max-w-[340px] w-full"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#972933] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#972933]" />
+                </span>
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933]">
+                  CALL FOR MENTORS • SBC 9.0
+                </span>
+              </div>
+              <h4 className="font-serif font-bold text-base text-[#1a1010] leading-snug mb-1">
+                Guide the Next Wave of Founders
+              </h4>
+              <p className="text-xs text-[#321F1F]/75 font-serif leading-relaxed mb-3.5">
+                Share your operational experience and mentor ambitious early-stage startups from across India.
+              </p>
+              {renderCtaButton("w-full shadow-md")}
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Infinite Horizontal Scroll Marquee Container */}
-      <div className="relative w-full overflow-hidden py-4 cursor-grab active:cursor-grabbing">
-        {/* Subtle edge fade gradient overlays */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-[#f7ecd0] to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-[#f7ecd0] to-transparent z-10" />
-
-        {/* Marquee Track (Double set for seamless infinite loop) */}
-        <div className="animate-mentor-marquee flex items-stretch gap-6 sm:gap-8 px-4">
-          {/* Set 1 */}
-          {mentors.map((mentor, idx) => (
-            <div
-              key={`m1-${mentor.id}-${idx}`}
-              className="w-[290px] sm:w-[340px] shrink-0 bg-[#f7ecd0]/95 backdrop-blur-xs rounded-xl border border-[#321F1F]/15 p-6 sm:p-7 flex flex-col justify-between shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 select-none"
-            >
-              <div>
-                {/* Avatar & Batch Pill */}
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-[#972933]/30 bg-[#f7ecd0] shrink-0 relative shadow-inner">
-                    {mentor.imageUrl ? (
-                      <img
-                        src={mentor.imageUrl}
-                        alt={mentor.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center font-serif text-xl sm:text-2xl font-black text-[#972933]">
-                        {mentor.name
-                          .replace(/^Dr\.\s+/, "")
-                          .split(" ")
-                          .map((n) => n[0])
-                          .slice(0, 2)
-                          .join("")}
-                      </div>
-                    )}
-                  </div>
-                  <div className="space-y-1 min-w-0">
-                    <span className="inline-block px-2.5 py-0.5 bg-[#972933]/10 text-[#972933] font-semibold text-[11px] rounded-full truncate max-w-full">
-                      {mentor.alumnusTag}
-                    </span>
-                    {mentor.organization && (
-                      <span className="block text-[11px] text-[#321F1F]/60 truncate">
-                        {mentor.organization}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Name */}
-                <h3 className="font-serif text-lg sm:text-xl font-bold text-[#321F1F] leading-snug">
-                  {mentor.name}
-                </h3>
-
-                {/* Role */}
-                <p className="text-xs sm:text-sm text-[#321F1F]/80 mt-2 leading-relaxed line-clamp-3">
-                  {mentor.role}
-                </p>
-              </div>
-
-              {/* LinkedIn Link */}
-              {mentor.linkedinUrl && (
-                <div className="mt-5 pt-3 border-t border-[#321F1F]/10 flex items-center justify-between">
-                  <a
-                    href={mentor.linkedinUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#972933] hover:text-[#74001c] transition-colors"
-                  >
-                    <LinkedinIcon className="w-3.5 h-3.5" />
-                    <span>View Profile</span>
-                  </a>
-                  <span className="text-[10px] text-[#321F1F]/40 font-mono">SBC Mentor</span>
-                </div>
-              )}
-            </div>
-          ))}
-
-          {/* Set 2 (Identical for seamless looping) */}
-          {mentors.map((mentor, idx) => (
-            <div
-              key={`m2-${mentor.id}-${idx}`}
-              className="w-[290px] sm:w-[340px] shrink-0 bg-[#f7ecd0]/95 backdrop-blur-xs rounded-xl border border-[#321F1F]/15 p-6 sm:p-7 flex flex-col justify-between shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 select-none"
-              aria-hidden="true"
-            >
-              <div>
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-[#972933]/30 bg-[#f7ecd0] shrink-0 relative shadow-inner">
-                    {mentor.imageUrl ? (
-                      <img
-                        src={mentor.imageUrl}
-                        alt={mentor.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center font-serif text-xl sm:text-2xl font-black text-[#972933]">
-                        {mentor.name
-                          .replace(/^Dr\.\s+/, "")
-                          .split(" ")
-                          .map((n) => n[0])
-                          .slice(0, 2)
-                          .join("")}
-                      </div>
-                    )}
-                  </div>
-                  <div className="space-y-1 min-w-0">
-                    <span className="inline-block px-2.5 py-0.5 bg-[#972933]/10 text-[#972933] font-semibold text-[11px] rounded-full truncate max-w-full">
-                      {mentor.alumnusTag}
-                    </span>
-                    {mentor.organization && (
-                      <span className="block text-[11px] text-[#321F1F]/60 truncate">
-                        {mentor.organization}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                <h3 className="font-serif text-lg sm:text-xl font-bold text-[#321F1F] leading-snug">
-                  {mentor.name}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-[#321F1F]/80 mt-2 leading-relaxed line-clamp-3">
-                  {mentor.role}
-                </p>
-              </div>
-
-              {mentor.linkedinUrl && (
-                <div className="mt-5 pt-3 border-t border-[#321F1F]/10 flex items-center justify-between">
-                  <a
-                    href={mentor.linkedinUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#972933] hover:text-[#74001c] transition-colors"
-                  >
-                    <LinkedinIcon className="w-3.5 h-3.5" />
-                    <span>View Profile</span>
-                  </a>
-                  <span className="text-[10px] text-[#321F1F]/40 font-mono">SBC Mentor</span>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Continue Registration CTA Button */}
-      {showRegisterCta && (
-        <div ref={ctaRef} className="relative z-10 max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-14 flex justify-end">
-          <Link
-            href="/#register"
-            className="inline-flex items-center justify-center gap-2.5 bg-[#4E0C16] hover:bg-[#3B0910] text-white text-xs sm:text-[13px] font-medium px-5 sm:px-6 py-3 rounded-lg shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-auto uppercase tracking-wider"
-          >
-            <span>Continue registration</span>
-            <span className="text-sm font-light">→</span>
-          </Link>
-        </div>
-      )}
+      {/* Interactive Mentor Application Modal */}
+      <ApplyMentorModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }

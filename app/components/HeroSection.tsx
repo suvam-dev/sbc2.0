@@ -61,7 +61,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section ref={containerRef} className="relative overflow-hidden bg-[#f7ecd0] pt-6 pb-12 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20">
+    <section ref={containerRef} className="relative overflow-hidden bg-[#f7ecd0] pt-10 pb-12 sm:pt-10 sm:pb-16 lg:pt-20 lg:pb-10 mt-10">
       {/* Left Side Retro Poster Collage Banner - Prominently Visible */}
       <div
         ref={leftCollageRef}
@@ -123,7 +123,7 @@ export default function HeroSection() {
         </div>
 
         {/* Primary Mission Statement */}
-        <div className="max-w-[760px] mx-auto text-base sm:text-lg lg:text-xl font-serif leading-relaxed text-[#321F1F] mb-6 sm:mb-8 hero-anim-item">
+        <div className="max-w-[900px] mx-auto text-base sm:text-lg lg:text-2xl font-serif leading-relaxed text-[#321F1F] mb-6 sm:mb-8 hero-anim-item">
           <p>
             Startup Boot Camp (SBC) is the <strong>Entrepreneurship Cell, IIT Kharagpur&rsquo;s</strong> mentorship
             programme for early-stage student ventures, now in its ninth edition. Selected startups
@@ -137,7 +137,7 @@ export default function HeroSection() {
         <div className="mt-6 mb-6 hero-anim-item">
           <a
             href="#register"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 sm:px-8 sm:py-4 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded-sm transition-colors duration-200 shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-95"
+            className="inline-flex items-center justify-center gap-2 px-7 py-0.5 sm:px-8 sm:py-4 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded-sm transition-colors duration-200 shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-95"
           >
             <span>Register Your Team</span>
             <ArrowUpRight className="w-4 h-4" />

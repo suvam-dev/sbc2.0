@@ -109,40 +109,80 @@ export default function TheCase() {
           </p>
         </div>
 
-        {/* Section 0.2: Content Pending Placeholder Block */}
-        <div ref={cardRef} className="max-w-[880px] bg-[#f7ecd0] rounded-2xl sm:rounded-3xl border border-[#321F1F]/10 p-6 sm:p-8 lg:p-9 shadow-[0_15px_40px_rgba(50,31,31,0.06)] relative z-10 lg:ml-10">
-          <div className="flex items-center gap-3 text-[#972933] mb-4 pb-4 border-b border-[#321F1F]/10">
-            <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
-            <h3 className="font-serif font-bold text-xl sm:text-2xl text-[#111111] tracking-tight">
-              Problem Statements & Case Guide Announcement
-            </h3>
+        {/* Content Card with Rich Editorial Texture & High Contrast */}
+        <div
+          ref={cardRef}
+          className="max-w-[880px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EB] to-[#F5EEDF] rounded-2xl sm:rounded-3xl border border-[#321F1F]/20 p-6 sm:p-8 lg:p-9 shadow-[0_22px_50px_-10px_rgba(50,31,31,0.18),0_10px_20px_-5px_rgba(50,31,31,0.08),0_1px_3px_rgba(50,31,31,0.12)] relative z-10 lg:ml-10 overflow-hidden"
+        >
+          {/* Subtle Archival Stipple Paper Texture Overlay */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(#321F1F_0.75px,transparent_0.75px)] [background-size:16px_16px] opacity-[0.035]"
+            aria-hidden="true"
+          />
+
+          {/* Inner Certificate Double-Hairline Frame Accent */}
+          <div
+            className="pointer-events-none absolute inset-2 sm:inset-2.5 rounded-[14px] sm:rounded-[22px] border border-[#972933]/15"
+            aria-hidden="true"
+          />
+
+          {/* Corner Registration Crosshair Marks */}
+          <div className="pointer-events-none absolute top-3.5 left-3.5 w-2 h-2 border-t border-l border-[#972933]/40" aria-hidden="true" />
+          <div className="pointer-events-none absolute top-3.5 right-3.5 w-2 h-2 border-t border-r border-[#972933]/40" aria-hidden="true" />
+          <div className="pointer-events-none absolute bottom-3.5 left-3.5 w-2 h-2 border-b border-l border-[#972933]/40" aria-hidden="true" />
+          <div className="pointer-events-none absolute bottom-3.5 right-3.5 w-2 h-2 border-b border-r border-[#972933]/40" aria-hidden="true" />
+
+          {/* Archival Dispatch Header Strip */}
+          <div className="relative z-10 flex items-center justify-between gap-4 border-b border-[#321F1F]/12 pb-3.5 mb-5 text-[10px] font-mono uppercase tracking-[0.2em] text-[#321F1F]/60">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#972933]" />
+              <span className="font-semibold text-[#321F1F]/70">DISPATCH REF // SBC-9.0-CASE</span>
+            </div>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#972933]/10 text-[#972933] font-bold text-[9.5px] tracking-widest border border-[#972933]/20">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#972933] animate-pulse" />
+              STATUS: CASE FORMULATION
+            </span>
           </div>
 
-          <p className="text-sm sm:text-[15px] leading-relaxed text-[#321F1F]/80 mb-6">
-            Detailed case problems, tracks (Product Strategy & Technical Builder), and industry problem statements for Startup Bootcamp 9.0 are currently being finalized with partner companies and mentors.
+          <div className="relative z-10 flex items-center gap-3.5 text-[#972933] mb-3">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#972933]/10 border border-[#972933]/25 flex items-center justify-center text-[#972933] shrink-0 shadow-2xs">
+              <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
+            </div>
+            <div>
+              <h3 className="font-serif font-black text-xl sm:text-2xl text-[#1a1010] tracking-tight leading-snug">
+                Problem Statements & Case Guide Announcement
+              </h3>
+              <span className="text-[11px] font-mono text-[#972933] font-bold tracking-wider uppercase">
+                (Announcement Scheduled • Phase I Track)
+              </span>
+            </div>
+          </div>
+
+          <p className="relative z-10 text-sm sm:text-[15px] leading-relaxed text-[#321F1F]/85 mb-5 font-serif">
+            Detailed case problems, tracks (Product Strategy & Technical Builder), and industry problem statements for <strong className="font-semibold text-[#1a1010]">Startup Bootcamp 9.0</strong> are currently being finalized with partner companies and mentors.
           </p>
 
-          <div className="p-5 rounded-xl bg-[#FAF7F2] border border-[#321F1F]/5 text-xs sm:text-[13px] text-[#321F1F]/75 space-y-2 mb-8">
-            <p className="font-bold text-[#111111] font-serif text-sm">What to expect:</p>
+          <div className="relative z-10 p-5 rounded-xl bg-[#F4EBD6]/70 backdrop-blur-xs border border-[#321F1F]/15 text-xs sm:text-[13px] text-[#321F1F]/80 space-y-2.5 mb-7 shadow-inner">
+            <p className="font-bold text-[#1a1010] font-serif text-sm">What to expect:</p>
             <p>&bull; 20+ verified problem statements crowdsourced from real industry and consumer pain points.</p>
             <p>&bull; Dedicated tracks for no-code product strategists and hands-on technical builders.</p>
             <p>&bull; Direct access to API rails and sandboxes from partner companies.</p>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
             <Link
               href="/#register"
-              className="inline-flex items-center justify-center gap-2.5 bg-[#4E0C16] hover:bg-[#3B0910] text-white text-xs sm:text-[13px] font-medium px-5 sm:px-6 py-3 rounded-lg shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-auto uppercase tracking-wider"
+              className="inline-flex items-center justify-center gap-2.5 bg-[#4E0C16] hover:bg-[#38080F] text-white text-xs sm:text-[13px] font-semibold px-6 py-3.5 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all w-full sm:w-auto uppercase tracking-wider"
             >
               <span>Register Ahead of Case Release</span>
               <span className="text-sm font-light">→</span>
             </Link>
 
             <div className="flex items-center gap-3.5 self-center sm:self-auto">
-              <span className="hidden sm:block h-7 w-px bg-[#321F1F]/15" aria-hidden="true" />
-              <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.2em] text-[#321F1F]/50 leading-relaxed text-center sm:text-left">
-                <div>REAL PROBLEMS.</div>
-                <div>BOLDER BUILDERS.</div>
+              <span className="hidden sm:block h-8 w-px bg-[#321F1F]/20" aria-hidden="true" />
+              <div className="text-[9.5px] sm:text-[10px] font-mono uppercase tracking-[0.22em] text-[#321F1F]/60 leading-relaxed text-center sm:text-left">
+                <div className="font-bold text-[#972933]">REAL PROBLEMS.</div>
+                <div className="text-[#321F1F]/50">BOLDER BUILDERS.</div>
               </div>
             </div>
           </div>
