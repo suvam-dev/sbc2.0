@@ -50,17 +50,17 @@ function MentorAvatar({ name, imageUrl }: { name: string; imageUrl?: string }) {
 function MentorCard({ mentor, "aria-hidden": ariaHidden }: { mentor: Mentor; "aria-hidden"?: boolean }) {
   return (
     <div
-      className="w-[250px] sm:w-[275px] xl:w-[290px] shrink-0 bg-[#f7ecd0]/95 backdrop-blur-xs rounded-xl border border-[#321F1F]/15 p-4 sm:p-4.5 flex flex-col justify-between shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 select-none"
+      className="w-[250px] sm:w-[275px] xl:w-[290px] shrink-0 bg-[#f7ecd0]/95 backdrop-blur-xs rounded-none border-2 border-[#321F1F]/20 p-4 sm:p-4.5 flex flex-col justify-between shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 select-none"
       aria-hidden={ariaHidden}
     >
       <div>
         {/* Avatar & Batch Pill */}
         <div className="flex items-center gap-3 mb-2.5">
-          <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-full overflow-hidden border-2 border-[#972933]/30 bg-[#f7ecd0] shrink-0 relative shadow-inner">
+          <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-full overflow-hidden border-2 border-[#972933]/40 bg-[#f7ecd0] shrink-0 relative shadow-inner">
             <MentorAvatar name={mentor.name} imageUrl={mentor.imageUrl} />
           </div>
           <div className="space-y-0.5 min-w-0">
-            <span className="inline-block px-2 py-0.5 bg-[#972933]/10 text-[#972933] font-semibold text-[10px] rounded-full truncate max-w-full">
+            <span className="inline-block px-2 py-0.5 bg-[#972933]/10 text-[#972933] font-semibold text-[10px] rounded-none border border-[#972933]/20 truncate max-w-full">
               {mentor.alumnusTag}
             </span>
             {mentor.organization && (
@@ -178,7 +178,7 @@ export default function PastMentorsMarquee({
       </>
     );
 
-    const baseClass = `group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#972933] via-[#851822] to-[#600C16] hover:from-[#74001c] hover:via-[#600C16] hover:to-[#45050D] text-white text-xs sm:text-[13px] font-bold px-6 py-3.5 rounded-xl shadow-[0_8px_20px_-4px_rgba(151,41,51,0.45)] hover:shadow-[0_12px_28px_-4px_rgba(151,41,51,0.6)] hover:scale-[1.02] active:scale-98 transition-all duration-200 uppercase tracking-wider cursor-pointer border border-white/20 ${extraClass}`;
+    const baseClass = `group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#972933] via-[#851822] to-[#600C16] hover:from-[#74001c] hover:via-[#600C16] hover:to-[#45050D] text-white text-xs sm:text-[13px] font-bold px-6 py-3.5 rounded-none shadow-[0_8px_20px_-4px_rgba(151,41,51,0.45)] hover:shadow-[0_12px_28px_-4px_rgba(151,41,51,0.6)] hover:scale-[1.02] active:scale-98 transition-all duration-200 uppercase tracking-wider cursor-pointer border border-white/20 ${extraClass}`;
 
     if (applyMentorHref) {
       return (
@@ -244,7 +244,7 @@ export default function PastMentorsMarquee({
               <span className="font-serif italic text-2xl sm:text-3xl text-[#972933]/80 font-bold">
                 04
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#321F1F]">
+              <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-[46px] tracking-wide text-[#321F1F] uppercase">
                 Past Mentors
               </h2>
             </div>
@@ -295,9 +295,9 @@ export default function PastMentorsMarquee({
           {/* Mobile CTA (visible only on mobile/tablet screens < lg) */}
           {shouldShowCta && (
             <div className="lg:hidden px-4 mt-6 flex justify-center">
-              <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF6EE] to-[#F5ECE0] border border-[#972933]/25 rounded-2xl p-4 shadow-md max-w-[340px] w-full text-center">
+              <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF6EE] to-[#F5ECE0] border-2 border-[#972933]/30 rounded-none p-4 shadow-md max-w-[340px] w-full text-center">
                 <div className="flex items-center justify-center gap-2 mb-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#972933] animate-pulse" />
+                  <span className="w-2 h-2 rounded-none bg-[#972933] animate-pulse" />
                   <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933]">
                     CALL FOR MENTORS
                   </span>
@@ -339,7 +339,7 @@ export default function PastMentorsMarquee({
           {shouldShowCta && (
             <div
               ref={ctaRef}
-              className="relative z-10 bg-gradient-to-b from-[#FFFDF9]/95 via-[#FAF6EE]/95 to-[#F5ECE0]/95 backdrop-blur-md border-2 border-[#972933]/30 rounded-2xl p-4 sm:p-5 shadow-[0_22px_45px_-8px_rgba(50,31,31,0.25),0_6px_16px_rgba(151,41,51,0.15)] ring-4 ring-[#972933]/10 max-w-[340px] w-full"
+              className="relative z-10 bg-gradient-to-b from-[#FFFDF9]/95 via-[#FAF6EE]/95 to-[#F5ECE0]/95 backdrop-blur-md border-2 border-[#972933]/30 rounded-none p-4 sm:p-5 shadow-[0_22px_45px_-8px_rgba(50,31,31,0.25),0_6px_16px_rgba(151,41,51,0.15)] ring-4 ring-[#972933]/10 max-w-[340px] w-full"
             >
               <div className="flex items-center gap-2 mb-2">
                 <span className="relative flex h-2.5 w-2.5">

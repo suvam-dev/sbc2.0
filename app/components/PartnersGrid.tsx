@@ -90,7 +90,7 @@ export default function PartnersGrid({
 
       <div className="relative z-10 max-w-[1260px] mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={headerRef} className="flex flex-col sm:flex-row sm:items-baseline justify-between mb-8 sm:mb-12">
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[52px] font-bold text-[#321F1F]/90 tracking-tight">
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-[48px] text-[#321F1F]/90 tracking-wide uppercase">
             {title}
           </h2>
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#321F1F]/70 mt-2 sm:mt-0">
@@ -103,32 +103,24 @@ export default function PartnersGrid({
           {partners.map((partner) => (
             <div key={partner.id} className="partner-col pt-6 sm:pt-0 space-y-3 flex flex-col justify-between">
               <div>
-                <span className="block text-xs font-semibold uppercase tracking-wider text-[#321F1F]/70">
-                  {partner.category}
+                <span className="text-[11px] font-mono text-[#972933] font-bold block mb-1">
+                  // {partner.category}
                 </span>
-                <div className="h-12 flex items-center mt-2">
-                  <img
-                    src={partner.logoUrl}
-                    alt={partner.name}
-                    className="max-h-8 sm:max-h-9 w-auto object-contain"
-                  />
-                </div>
-                <p className="text-sm sm:text-base leading-relaxed text-[#321F1F]/80 pt-2">
+                <h3 className="font-serif font-bold text-xl sm:text-2xl text-[#321F1F]">
+                  {partner.name}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#321F1F]/80 mt-1 leading-relaxed">
                   {partner.description}
                 </p>
               </div>
 
-              {partner.websiteUrl && (
-                <div className="pt-3">
-                  <a
-                    href={partner.websiteUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-xs font-semibold text-[#972933] hover:underline inline-flex items-center gap-1"
-                  >
-                    <span>Visit {partner.name}</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </a>
+              {partner.logoUrl && (
+                <div className="pt-4 flex items-center h-12">
+                  <img
+                    src={partner.logoUrl}
+                    alt={partner.name}
+                    className="max-h-8 max-w-[120px] object-contain opacity-75 hover:opacity-100 transition-opacity"
+                  />
                 </div>
               )}
             </div>
@@ -140,7 +132,7 @@ export default function PartnersGrid({
           <div ref={ctaRef} className="mt-12 sm:mt-16 flex justify-end">
             <Link
               href="/#register"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#972933] hover:bg-[#74001c] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-xs shadow-sm transition active:scale-98"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#972933] hover:bg-[#74001c] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-none shadow-sm transition active:scale-98"
             >
               <span>Continue registration</span>
               <ArrowRight className="w-4 h-4" />

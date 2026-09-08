@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, Fraunces } from "next/font/google";
+import { Archivo, Fraunces, Graduate, Alfa_Slab_One } from "next/font/google";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -13,6 +13,20 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
   weight: ["600", "700", "800", "900"],
+  display: "swap",
+});
+
+const graduate = Graduate({
+  weight: "400",
+  variable: "--font-graduate",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const alfaSlabOne = Alfa_Slab_One({
+  weight: "400",
+  variable: "--font-alfa",
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -38,7 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${archivo.variable} ${fraunces.variable} scroll-smooth`}
+      className={`${archivo.variable} ${fraunces.variable} ${graduate.variable} ${alfaSlabOne.variable} scroll-smooth`}
     >
       <body className="min-h-screen bg-[#f7ecd0] text-[#321F1F] antialiased selection:bg-[#972933] selection:text-white">
         {children}

@@ -310,7 +310,7 @@ export default function RegisterWizard() {
       <div className="max-w-[780px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Form Header matching PDF Page 4 */}
         <div className="text-center mb-8 sm:mb-10 space-y-2">
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-[44px] font-bold text-[#972933] tracking-tight">
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-[42px] text-[#972933] tracking-wide uppercase">
             Startup Bootcamp 9.0
           </h2>
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#321F1F]/70">
@@ -323,16 +323,16 @@ export default function RegisterWizard() {
         </div>
 
         {/* Wizard Container */}
-        <div className="bg-[#fff8e8] border border-[#321F1F]/15 rounded-xl p-6 sm:p-10 shadow-sm relative">
+        <div className="bg-[#fff8e8] border-2 border-[#321F1F]/20 rounded-none p-4 sm:p-8 md:p-10 shadow-sm relative">
           {/* 4-Step Progress Indicator */}
           {!submissionSuccess && (
             <div className="mb-8">
-              <div className="grid grid-cols-4 gap-2 text-center">
+              <div className="grid grid-cols-4 gap-1.5 sm:gap-2 text-center">
                 {[
-                  { num: 1, label: "Registration" },
-                  { num: 2, label: "About Startup" },
-                  { num: 3, label: "Team Details" },
-                  { num: 4, label: "Review & Submit" },
+                  { num: 1, label: "Registration", short: "Register" },
+                  { num: 2, label: "About Startup", short: "Startup" },
+                  { num: 3, label: "Team Details", short: "Team" },
+                  { num: 4, label: "Review & Submit", short: "Review" },
                 ].map((s) => {
                   const isCurrent = step === s.num;
                   const isDone = step > s.num;
@@ -341,7 +341,7 @@ export default function RegisterWizard() {
                       <div
                         className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold transition-all ${
                           isCurrent
-                            ? "bg-[#972933] text-white ring-4 ring-[#972933]/15 shadow-xs"
+                            ? "bg-[#972933] text-white ring-2 ring-[#972933]/25 shadow-xs"
                             : isDone
                             ? "bg-[#838b61] text-white"
                             : "bg-[#321F1F]/10 text-[#321F1F]/50"
@@ -358,13 +358,14 @@ export default function RegisterWizard() {
                             : "text-[#321F1F]/40"
                         }`}
                       >
-                        {s.label}
+                        <span className="sm:hidden">{s.short}</span>
+                        <span className="hidden sm:inline">{s.label}</span>
                       </span>
                     </div>
                   );
                 })}
               </div>
-              <div className="w-full h-1 bg-[#321F1F]/10 rounded-full mt-4 overflow-hidden">
+              <div className="w-full h-1.5 bg-[#321F1F]/10 rounded-none mt-4 overflow-hidden">
                 <div
                   className="h-full bg-[#972933] transition-all duration-300"
                   style={{ width: `${((step - 1) / 3) * 100}%` }}
@@ -386,7 +387,7 @@ export default function RegisterWizard() {
                 Thank you for registering for Startup Bootcamp 9.0. Your team application has been
                 recorded.
               </p>
-              <div className="bg-[#f7ecd0] p-4 rounded-lg border border-[#321F1F]/10 max-w-[400px] mx-auto space-y-1">
+              <div className="bg-[#f7ecd0] p-4 rounded-none border border-[#321F1F]/10 max-w-[400px] mx-auto space-y-1">
                 <span className="text-xs uppercase tracking-wider text-[#321F1F]/60 font-semibold block">
                   Your Registration Reference ID
                 </span>
@@ -420,7 +421,7 @@ export default function RegisterWizard() {
                       teamMembers: [],
                     });
                   }}
-                  className="px-5 py-2.5 bg-[#972933] text-white text-xs sm:text-sm font-semibold rounded hover:bg-[#74001c] transition"
+                  className="px-5 py-2.5 bg-[#972933] text-white text-xs sm:text-sm font-semibold rounded-none hover:bg-[#74001c] transition"
                 >
                   Register Another Team
                 </button>
@@ -467,7 +468,7 @@ export default function RegisterWizard() {
                           });
                         }
                       }}
-                      className={`w-full px-4 py-3 bg-[#f7ecd0] rounded-md border text-sm text-[#321F1F] placeholder:text-[#321F1F]/40 focus:outline-none focus:ring-2 focus:ring-[#972933] transition ${
+                      className={`w-full px-4 py-3 bg-[#f7ecd0] rounded-none border text-base sm:text-sm text-[#321F1F] placeholder:text-[#321F1F]/40 focus:outline-none focus:ring-2 focus:ring-[#972933] transition ${
                         formErrors.collegeEmail
                           ? "border-[#972933] bg-[#972933]/5"
                           : "border-[#321F1F]/20"
@@ -485,7 +486,7 @@ export default function RegisterWizard() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="w-full max-w-[480px] py-3.5 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded transition flex items-center justify-center gap-2 shadow-sm"
+                      className="w-full max-w-[480px] py-3.5 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded-none transition flex items-center justify-center gap-2 shadow-sm"
                     >
                       <span>Continue</span>
                       <ChevronRight className="w-4 h-4" />
@@ -524,7 +525,7 @@ export default function RegisterWizard() {
                       onChange={(e) =>
                         setFormData((prev) => ({ ...prev, startupName: e.target.value }))
                       }
-                      className={`w-full px-4 py-2.5 bg-[#f7ecd0] rounded-md border text-sm text-[#321F1F] focus:outline-none focus:ring-2 focus:ring-[#972933] ${
+                      className={`w-full px-4 py-2.5 bg-[#f7ecd0] rounded-none border text-base sm:text-sm text-[#321F1F] focus:outline-none focus:ring-2 focus:ring-[#972933] ${
                         formErrors.startupName
                           ? "border-[#972933] bg-[#972933]/5"
                           : "border-[#321F1F]/20"
@@ -552,7 +553,7 @@ export default function RegisterWizard() {
                       onChange={(e) =>
                         setFormData((prev) => ({ ...prev, sector: e.target.value }))
                       }
-                      className={`w-full px-4 py-2.5 bg-[#f7ecd0] rounded-md border text-sm text-[#321F1F] focus:outline-none focus:ring-2 focus:ring-[#972933] ${
+                      className={`w-full px-4 py-2.5 bg-[#f7ecd0] rounded-none border text-base sm:text-sm text-[#321F1F] focus:outline-none focus:ring-2 focus:ring-[#972933] ${
                         formErrors.sector
                           ? "border-[#972933] bg-[#972933]/5"
                           : "border-[#321F1F]/20"
@@ -581,7 +582,7 @@ export default function RegisterWizard() {
                     >
                       Pitch Deck (Optional / Highly Recommended)
                     </label>
-                    <div className="border-2 border-dashed border-[#321F1F]/20 hover:border-[#972933] transition-colors rounded-lg p-5 text-center bg-[#f7ecd0] cursor-pointer relative">
+                    <div className="border-2 border-dashed border-[#321F1F]/20 hover:border-[#972933] transition-colors rounded-none p-5 text-center bg-[#f7ecd0] cursor-pointer relative">
                       <input
                         id="pitch-deck"
                         type="file"
@@ -621,7 +622,7 @@ export default function RegisterWizard() {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="px-5 py-2.5 border border-[#321F1F]/20 text-[#321F1F] font-semibold text-xs sm:text-sm rounded hover:bg-[#321F1F]/5 transition flex items-center gap-1.5"
+                      className="px-5 py-2.5 border border-[#321F1F]/20 text-[#321F1F] font-semibold text-xs sm:text-sm rounded-none hover:bg-[#321F1F]/5 transition flex items-center gap-1.5"
                     >
                       <ChevronLeft className="w-4 h-4" />
                       <span>Back</span>
@@ -629,7 +630,7 @@ export default function RegisterWizard() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="px-6 py-2.5 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm rounded transition flex items-center gap-1.5"
+                      className="px-6 py-2.5 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm rounded-none transition flex items-center gap-1.5"
                     >
                       <span>Continue</span>
                       <ChevronRight className="w-4 h-4" />
@@ -669,7 +670,7 @@ export default function RegisterWizard() {
                               founderFullName: e.target.value,
                             }))
                           }
-                          className="w-full px-3 py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
+                          className="w-full px-3 py-2.5 sm:py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
                         />
                         {formErrors.founderFullName && (
                           <p className="text-[11px] text-[#972933]">{formErrors.founderFullName}</p>
@@ -690,7 +691,7 @@ export default function RegisterWizard() {
                               founderEmail: e.target.value,
                             }))
                           }
-                          className="w-full px-3 py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
+                          className="w-full px-3 py-2.5 sm:py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
                         />
                         {formErrors.founderEmail && (
                           <p className="text-[11px] text-[#972933]">{formErrors.founderEmail}</p>
@@ -712,7 +713,7 @@ export default function RegisterWizard() {
                               founderWhatsapp: e.target.value,
                             }))
                           }
-                          className="w-full px-3 py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
+                          className="w-full px-3 py-2.5 sm:py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
                         />
                         {formErrors.founderWhatsapp && (
                           <p className="text-[11px] text-[#972933]">
@@ -736,7 +737,7 @@ export default function RegisterWizard() {
                               founderDepartment: e.target.value,
                             }))
                           }
-                          className="w-full px-3 py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
+                          className="w-full px-3 py-2.5 sm:py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
                         />
                       </div>
 
@@ -755,7 +756,7 @@ export default function RegisterWizard() {
                               founderRollNumber: e.target.value,
                             }))
                           }
-                          className="w-full px-3 py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
+                          className="w-full px-3 py-2.5 sm:py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
                         />
                       </div>
 
@@ -772,7 +773,7 @@ export default function RegisterWizard() {
                               founderYearOfStudy: e.target.value,
                             }))
                           }
-                          className="w-full px-3 py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
+                          className="w-full px-3 py-2.5 sm:py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
                         >
                           <option value="">Select Year</option>
                           {YEARS_OF_STUDY.map((y) => (
@@ -799,7 +800,7 @@ export default function RegisterWizard() {
                             founderLinkedinUrl: e.target.value,
                           }))
                         }
-                        className="w-full px-3 py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
+                        className="w-full px-3 py-2.5 sm:py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
                       />
                     </div>
                   </div>
@@ -858,7 +859,7 @@ export default function RegisterWizard() {
                               onChange={(e) =>
                                 handleMemberChange(idx, "name", e.target.value)
                               }
-                              className="w-full px-2.5 py-1.5 bg-[#f9efd9]/50 rounded border border-[#321F1F]/20 text-xs text-[#321F1F]"
+                              className="w-full px-2.5 py-2 sm:py-1.5 bg-[#f9efd9]/50 rounded border border-[#321F1F]/20 text-base sm:text-xs text-[#321F1F]"
                             />
                             {formErrors[`member_${idx}_name`] && (
                               <p className="text-[10px] text-[#972933]">
@@ -877,7 +878,7 @@ export default function RegisterWizard() {
                               onChange={(e) =>
                                 handleMemberChange(idx, "email", e.target.value)
                               }
-                              className="w-full px-2.5 py-1.5 bg-[#f9efd9]/50 rounded border border-[#321F1F]/20 text-xs text-[#321F1F]"
+                              className="w-full px-2.5 py-2 sm:py-1.5 bg-[#f9efd9]/50 rounded border border-[#321F1F]/20 text-base sm:text-xs text-[#321F1F]"
                             />
                             {formErrors[`member_${idx}_email`] && (
                               <p className="text-[10px] text-[#972933]">
@@ -896,7 +897,7 @@ export default function RegisterWizard() {
                               onChange={(e) =>
                                 handleMemberChange(idx, "institute", e.target.value)
                               }
-                              className="w-full px-2.5 py-1.5 bg-[#f9efd9]/50 rounded border border-[#321F1F]/20 text-xs text-[#321F1F]"
+                              className="w-full px-2.5 py-2 sm:py-1.5 bg-[#f9efd9]/50 rounded border border-[#321F1F]/20 text-base sm:text-xs text-[#321F1F]"
                             />
                           </div>
 
@@ -911,7 +912,7 @@ export default function RegisterWizard() {
                               onChange={(e) =>
                                 handleMemberChange(idx, "role", e.target.value)
                               }
-                              className="w-full px-2.5 py-1.5 bg-[#f9efd9]/50 rounded border border-[#321F1F]/20 text-xs text-[#321F1F]"
+                              className="w-full px-2.5 py-2 sm:py-1.5 bg-[#f9efd9]/50 rounded border border-[#321F1F]/20 text-base sm:text-xs text-[#321F1F]"
                             />
                           </div>
                         </div>
@@ -919,11 +920,11 @@ export default function RegisterWizard() {
                     ))}
                   </div>
 
-                  <div className="pt-6 flex items-center justify-between gap-4">
+                  <div className="pt-6 flex items-center justify-between gap-3 sm:gap-4">
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="px-5 py-2.5 border border-[#321F1F]/20 text-[#321F1F] font-semibold text-xs sm:text-sm rounded hover:bg-[#321F1F]/5 transition flex items-center gap-1.5"
+                      className="px-4 sm:px-5 py-2.5 min-h-[44px] border border-[#321F1F]/20 text-[#321F1F] font-semibold text-xs sm:text-sm rounded hover:bg-[#321F1F]/5 transition flex items-center gap-1.5"
                     >
                       <ChevronLeft className="w-4 h-4" />
                       <span>Back</span>
@@ -931,7 +932,7 @@ export default function RegisterWizard() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="px-6 py-2.5 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm rounded transition flex items-center gap-1.5"
+                      className="px-5 sm:px-6 py-2.5 min-h-[44px] bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm rounded transition flex items-center gap-1.5"
                     >
                       <span>Continue to Review</span>
                       <ChevronRight className="w-4 h-4" />
@@ -1032,12 +1033,12 @@ export default function RegisterWizard() {
                     </div>
                   )}
 
-                  <div className="pt-4 flex items-center justify-between gap-4">
+                  <div className="pt-4 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
                     <button
                       type="button"
                       disabled={isSubmitting}
                       onClick={handleBack}
-                      className="px-5 py-2.5 border border-[#321F1F]/20 text-[#321F1F] font-semibold text-xs sm:text-sm rounded hover:bg-[#321F1F]/5 transition flex items-center gap-1.5 disabled:opacity-50"
+                      className="px-5 py-3 sm:py-2.5 min-h-[44px] border border-[#321F1F]/20 text-[#321F1F] font-semibold text-xs sm:text-sm rounded hover:bg-[#321F1F]/5 transition flex items-center justify-center gap-1.5 disabled:opacity-50"
                     >
                       <ChevronLeft className="w-4 h-4" />
                       <span>Back</span>
@@ -1047,7 +1048,7 @@ export default function RegisterWizard() {
                       type="button"
                       disabled={isSubmitting}
                       onClick={handleSubmit}
-                      className="px-8 py-3.5 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded transition flex items-center gap-2 shadow-md disabled:opacity-50 active:scale-98"
+                      className="px-8 py-3.5 min-h-[48px] bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded transition flex items-center justify-center gap-2 shadow-md disabled:opacity-50 active:scale-98"
                     >
                       {isSubmitting ? (
                         <>

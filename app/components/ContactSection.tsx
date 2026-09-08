@@ -44,7 +44,7 @@ export default function ContactSection() {
             <span className="h-px w-8 bg-[#972933]/40" />
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#972933] tracking-tight">
+          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#972933] tracking-wide uppercase">
             Contact Us
           </h2>
 
@@ -59,7 +59,7 @@ export default function ContactSection() {
           {CONTACT_LEADS.map((person) => (
             <div
               key={person.email}
-              className="bg-[#f7ecd0]/90 backdrop-blur-xs rounded-xl border border-[#321F1F]/15 p-6 sm:p-8 flex flex-col items-center text-center shadow-xs hover:shadow-md transition-shadow"
+              className="bg-[#f7ecd0]/90 backdrop-blur-xs rounded-none border-2 border-[#321F1F]/20 p-6 sm:p-8 flex flex-col items-center text-center shadow-xs hover:shadow-md transition-shadow"
             >
               {/* Profile Photo */}
               <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-[#972933]/40 mb-4 bg-[#f7ecd0] relative shrink-0">
@@ -118,8 +118,8 @@ export default function ContactSection() {
         {/* Lower Info Blocks */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8">
           {/* General Inquiries */}
-          <div className="bg-[#f7ecd0]/80 rounded-xl border border-[#321F1F]/15 p-6 flex items-start gap-4">
-            <div className="p-3 rounded-lg bg-[#972933]/10 text-[#972933] shrink-0 mt-0.5">
+          <div className="bg-[#f7ecd0]/80 rounded-none border border-[#321F1F]/15 p-6 flex items-start gap-4">
+            <div className="p-3 rounded-full bg-[#972933]/10 text-[#972933] shrink-0 mt-0.5">
               <Mail className="w-5 h-5" />
             </div>
             <div className="space-y-1">
@@ -139,8 +139,8 @@ export default function ContactSection() {
           </div>
 
           {/* Office Address */}
-          <div className="bg-[#f7ecd0]/80 rounded-xl border border-[#321F1F]/15 p-6 flex items-start gap-4">
-            <div className="p-3 rounded-lg bg-[#972933]/10 text-[#972933] shrink-0 mt-0.5">
+          <div className="bg-[#f7ecd0]/80 rounded-none border border-[#321F1F]/15 p-6 flex items-start gap-4">
+            <div className="p-3 rounded-full bg-[#972933]/10 text-[#972933] shrink-0 mt-0.5">
               <MapPin className="w-5 h-5" />
             </div>
             <div className="space-y-1">

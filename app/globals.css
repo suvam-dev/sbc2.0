@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --font-display: var(--font-alfa), var(--font-graduate), serif;
+}
+
 @layer base {
   :root {
     --ken-oxblood: #972933;
@@ -42,6 +46,13 @@
 
   h1, h2, h3, .font-serif-heading {
     font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  }
+
+  .font-display,
+  .font-section-heading {
+    font-family: var(--font-alfa), var(--font-graduate), serif;
+    font-weight: 900;
+    letter-spacing: 0.025em;
   }
 }
 

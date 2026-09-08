@@ -47,35 +47,78 @@ const INCENTIVES = [
 export default function IncentivesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+  const watermarkRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
   const card0 = useRef<HTMLDivElement>(null);
   const card1 = useRef<HTMLDivElement>(null);
   const card2 = useRef<HTMLDivElement>(null);
   const cardRefs = [card0, card1, card2];
 
   useGSAP(() => {
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 1024px)", () => {
-      // Header fade up
+    // Header entrance animation
+    if (headerRef.current) {
       gsap.from(headerRef.current, {
-        scrollTrigger: { trigger: headerRef.current, start: "top 88%" },
-        y: 36,
+        scrollTrigger: { 
+          trigger: headerRef.current, 
+          start: "top 88%",
+          toggleActions: "play none none none"
+        },
+        y: 40,
         opacity: 0,
-        duration: 0.75,
+        duration: 0.8,
         ease: "power3.out",
       });
+    }
 
-      // Each card individually — safe, no stagger race condition
-      cardRefs.forEach((ref, i) => {
+    // Watermark dynamic parallax scroll & subtle tilt
+    if (watermarkRef.current) {
+      gsap.to(watermarkRef.current, {
+        y: 130,
+        rotate: 3,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1.2,
+        },
+      });
+    }
+
+    // Left vertical editorial line drawing down on scroll
+    if (lineRef.current) {
+      gsap.fromTo(
+        lineRef.current,
+        { scaleY: 0, transformOrigin: "top" },
+        {
+          scaleY: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 70%",
+            end: "bottom 85%",
+            scrub: 0.8,
+          },
+        }
+      );
+    }
+
+    // Staggered card entrance with slide-up + fade
+    cardRefs.forEach((ref, i) => {
+      if (ref.current) {
         gsap.from(ref.current, {
-          scrollTrigger: { trigger: ref.current, start: "top 90%" },
-          y: 40,
+          scrollTrigger: { 
+            trigger: ref.current, 
+            start: "top 90%",
+            toggleActions: "play none none none"
+          },
+          y: 45,
           opacity: 0,
-          duration: 0.65,
+          duration: 0.7,
           delay: i * 0.12,
           ease: "power3.out",
         });
-      });
+      }
     });
   }, { scope: sectionRef });
 
@@ -86,79 +129,105 @@ export default function IncentivesSection() {
       aria-label="Our Incentives"
       className="relative bg-[#f7ecd0] py-16 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b border-[#321F1F]/15 overflow-hidden"
     >
-      {/* Giant background watermark */}
+      {/* Giant background watermark with dynamic scroll parallax */}
       <div
-        className="pointer-events-none select-none absolute -right-8 top-0 bottom-0 flex items-center z-0"
+        ref={watermarkRef}
+        className="pointer-events-none select-none absolute -right-8 top-0 bottom-0 flex items-center z-0 will-change-transform opacity-80"
         aria-hidden="true"
       >
-        <span className="text-[220px] sm:text-[300px] lg:text-[380px] font-serif font-black text-[#972933]/[0.035] leading-none tracking-tighter">
+        <span className="text-[240px] sm:text-[320px] lg:text-[420px] font-serif font-black text-[#972933]/[0.045] leading-none tracking-tighter drop-shadow-sm select-none">
           ₹
         </span>
       </div>
 
-      {/* Left vertical rule accent */}
-      <div className="hidden lg:block absolute left-12 top-16 bottom-16 w-px bg-[#972933]/20 z-0 pointer-events-none" aria-hidden="true" />
+      {/* Left vertical rule accent drawing down smoothly */}
+      <div 
+        ref={lineRef}
+        className="hidden lg:block absolute left-12 top-16 bottom-16 w-[1.5px] bg-gradient-to-b from-[#972933]/40 via-[#972933]/25 to-transparent z-0 pointer-events-none" 
+        aria-hidden="true" 
+      />
 
       <div className="relative z-10 max-w-[1100px] mx-auto">
 
         {/* Header */}
-        <div ref={headerRef} className="mb-14 sm:mb-16 lg:mb-20 lg:pl-12">
-          <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.28em] text-[#972933] block mb-2">
-            Startup Bootcamp 9.0
-          </span>
-          <h2 className="font-serif text-5xl sm:text-6xl lg:text-[72px] font-black text-[#111111] tracking-tight leading-none mb-4">
+        <div ref={headerRef} className="mb-10 sm:mb-16 lg:mb-20 lg:pl-12">
+          <div className="inline-flex items-center gap-2 mb-2">
+            <span className="w-2 h-2 rounded-full bg-[#972933] animate-pulse" />
+            <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.28em] text-[#972933]">
+              Startup Bootcamp 9.0
+            </span>
+          </div>
+          <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-[64px] text-[#111111] tracking-wide leading-[1.05] sm:leading-none mb-3 sm:mb-4 uppercase">
             Our Incentives
           </h2>
-          <p className="max-w-[560px] text-base sm:text-lg text-[#321F1F]/70 leading-relaxed font-serif">
+          <p className="max-w-[560px] text-sm sm:text-lg text-[#321F1F]/75 leading-relaxed font-serif">
             More than a competition — a launchpad for ideas that solve real problems and create real impact.
           </p>
           {!incentivesCopyVerified && (
-            <span className="inline-block mt-4 text-[10px] font-mono uppercase px-2.5 py-1 rounded bg-[#321F1F]/5 text-[#321F1F]/50 border border-[#321F1F]/10 tracking-wider">
+            <span className="inline-flex items-center gap-1.5 mt-3 sm:mt-4 text-[10px] font-mono uppercase px-2.5 py-1 rounded-none bg-[#321F1F]/5 text-[#321F1F]/60 border border-[#321F1F]/10 tracking-wider hover:bg-[#321F1F]/10 transition-colors">
+              <span className="w-1.5 h-1.5 bg-[#a26028]" />
               Figures subject to final confirmation
             </span>
           )}
         </div>
 
-        {/* Cards — editorial horizontal layout */}
-        <div className="space-y-5 lg:pl-12">
+        {/* Cards — editorial horizontal layout with rich hover & shine */}
+        <div className="space-y-4 sm:space-y-5 lg:pl-12">
           {INCENTIVES.map((item, i) => (
             <div
               key={item.id}
               ref={cardRefs[i]}
-              className="group relative bg-[#f7ecd0] border border-[#321F1F]/12 rounded-2xl p-6 sm:p-8 hover:border-[#972933]/30 hover:shadow-[0_8px_32px_rgba(151,41,51,0.07)] transition-all duration-300"
+              className="group relative bg-gradient-to-br from-[#FFFDF9] via-[#FAF5EB] to-[#F5EEDF] border-2 border-[#111111]/80 rounded-none p-5 sm:p-8 hover:border-[#972933] hover:shadow-[0_16px_40px_rgba(151,41,51,0.12)] hover:-translate-y-1 transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.04)] overflow-hidden cursor-default"
             >
-              {/* Top strip accent */}
-              <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#972933]/20 to-transparent" />
+              {/* Animated light sweep / foil shimmer on hover */}
+              <div 
+                className="pointer-events-none absolute -inset-y-10 -inset-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out z-20" 
+                aria-hidden="true"
+              />
 
-              <div className="flex items-start gap-6 sm:gap-8">
-                {/* Number + icon stack */}
-                <div className="shrink-0 flex flex-col items-center gap-3 pt-1">
-                  <div className="w-10 h-10 rounded-xl bg-[#f2e4c8] border border-[#a26028]/20 flex items-center justify-center group-hover:bg-[#ead9b5] transition-colors">
-                    {item.icon}
+              {/* Inner hairline border */}
+              <div className="absolute inset-[3px] border border-[#111111]/15 rounded-none pointer-events-none group-hover:border-[#972933]/30 transition-colors duration-300" />
+              
+              {/* Top strip accent that illuminates on hover */}
+              <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#972933]/25 to-transparent group-hover:via-[#972933]/70 transition-all duration-300" />
+
+              <div className="relative z-10 flex items-start gap-4 sm:gap-8">
+                {/* Number + icon stack with animated micro-bounce on hover */}
+                <div className="shrink-0 flex flex-col items-center gap-2 sm:gap-3 pt-0.5 sm:pt-1">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-none bg-[#F2E8D5] border border-[#a26028]/25 flex items-center justify-center group-hover:bg-[#EAE0C8] group-hover:border-[#972933]/50 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 shadow-inner">
+                    <div className="group-hover:scale-110 transition-transform duration-300">
+                      {item.icon}
+                    </div>
                   </div>
-                  <span className="font-mono text-[10px] font-bold text-[#321F1F]/30 tracking-wider">
+                  <span className="font-mono text-[10px] font-bold text-[#321F1F]/40 tracking-wider group-hover:text-[#972933] transition-colors">
                     {item.label}
                   </span>
                 </div>
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-4 mb-2">
+                  <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
                     <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#972933]">
                       {item.eyebrow}
                     </span>
+                    {item.id === "cash-prizes" && (
+                      <span className="relative flex h-2 w-2 ml-1">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#972933] opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#972933]" />
+                      </span>
+                    )}
                   </div>
-                  <h3 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold text-[#111111] leading-snug mb-3">
+                  <h3 className="font-serif text-lg sm:text-2xl lg:text-[26px] font-bold text-[#111111] leading-snug mb-2 sm:mb-3 group-hover:text-[#972933] transition-colors duration-200">
                     {item.title}
                   </h3>
-                  <p className="text-sm sm:text-[15px] leading-relaxed text-[#321F1F]/75">
+                  <p className="text-xs sm:text-[15px] leading-relaxed text-[#321F1F]/80 group-hover:text-[#321F1F] transition-colors duration-200">
                     {item.description}
                   </p>
                 </div>
 
-                {/* Right decorative number */}
+                {/* Right decorative large number with reactive hover scale & color shift */}
                 <div
-                  className="hidden lg:block shrink-0 font-serif font-black text-[72px] leading-none text-[#321F1F]/[0.04] select-none self-center"
+                  className="hidden lg:block shrink-0 font-serif font-black text-[72px] leading-none text-[#321F1F]/[0.05] group-hover:text-[#972933]/15 group-hover:scale-110 group-hover:-translate-x-1 transition-all duration-500 select-none self-center"
                   aria-hidden="true"
                 >
                   {item.label}

@@ -61,7 +61,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <section ref={containerRef} className="relative overflow-hidden bg-[#f7ecd0] pt-10 pb-12 sm:pt-10 sm:pb-16 lg:pt-20 lg:pb-10 mt-10">
+    <section ref={containerRef} className="relative overflow-hidden bg-[#f7ecd0] pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-16">
       {/* Left Side Retro Poster Collage Banner - Prominently Visible */}
       <div
         ref={leftCollageRef}
@@ -90,7 +90,7 @@ export default function HeroSection() {
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         {/* Infinite Phase Dateline Marquee */}
-        <div className="w-full overflow-hidden mb-6 sm:mb-8 py-1 border-y border-[#321F1F]/10 hero-anim-item">
+        <div className="w-full overflow-hidden mb-6 sm:mb-8 py-1.5 border-y border-[#321F1F]/10 hero-anim-item">
           <div className="animate-phase-marquee flex items-center gap-6 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#321F1F]">
             {[0, 1, 2].map((setIdx) => (
               <div key={`set-${setIdx}`} className="flex items-center gap-4 sm:gap-6 shrink-0">
@@ -114,7 +114,7 @@ export default function HeroSection() {
           <img
             src="/images/hero-startup-bootcamp-title.png"
             alt="What is Startup Bootcamp?"
-            className="w-[320px] sm:w-[540px] lg:w-[680px] h-auto object-contain mx-auto drop-shadow-md hover:scale-[1.02] transition-transform duration-300"
+            className="w-[280px] sm:w-[520px] lg:w-[680px] max-w-[90vw] h-auto object-contain mx-auto drop-shadow-md hover:scale-[1.02] transition-transform duration-300"
           />
           <h1 className="sr-only">What is Startup Bootcamp?</h1>
           <p className="mt-3 text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#321F1F]/75 font-serif">
@@ -123,7 +123,7 @@ export default function HeroSection() {
         </div>
 
         {/* Primary Mission Statement */}
-        <div className="max-w-[900px] mx-auto text-base sm:text-lg lg:text-2xl font-serif leading-relaxed text-[#321F1F] mb-6 sm:mb-8 hero-anim-item">
+        <div className="max-w-[900px] mx-auto text-sm sm:text-lg lg:text-xl font-serif leading-relaxed text-[#321F1F] mb-6 sm:mb-8 hero-anim-item px-2 sm:px-0">
           <p>
             Startup Boot Camp (SBC) is the <strong>Entrepreneurship Cell, IIT Kharagpur&rsquo;s</strong> mentorship
             programme for early-stage student ventures, now in its ninth edition. Selected startups
@@ -134,10 +134,10 @@ export default function HeroSection() {
         </div>
 
         {/* Register CTA Button */}
-        <div className="mt-6 mb-6 hero-anim-item">
+        <div className="mt-4 mb-6 hero-anim-item">
           <a
             href="#register"
-            className="inline-flex items-center justify-center gap-2 px-7 py-0.5 sm:px-8 sm:py-4 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded-sm transition-colors duration-200 shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-95"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 min-h-[48px] bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded-none transition-all duration-200 shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-95"
           >
             <span>Register Your Team</span>
             <ArrowUpRight className="w-4 h-4" />

@@ -23,7 +23,7 @@ export default function UpdatesFeed({ updates = UPDATES_DATA }: UpdatesFeedProps
               className="w-2.5 h-2.5 rounded-full bg-[#a3b74e] shrink-0 animate-pulse shadow-xs"
               aria-hidden="true"
             />
-            <span>New updates</span>
+            <span className="font-display tracking-wide uppercase">New updates</span>
           </div>
 
           <div className="space-y-4">
@@ -62,7 +62,7 @@ export default function UpdatesFeed({ updates = UPDATES_DATA }: UpdatesFeedProps
               className="w-2.5 h-2.5 rounded-full bg-[#50427b] shrink-0 shadow-xs"
               aria-hidden="true"
             />
-            <span>Upcoming</span>
+            <span className="font-display tracking-wide uppercase">Upcoming</span>
           </div>
 
           <div className="space-y-4">
