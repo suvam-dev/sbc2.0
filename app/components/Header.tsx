@@ -143,7 +143,8 @@ export default function Header() {
             </div>
             <div className="flex flex-col justify-center min-w-0">
               <span className="font-bold tracking-tight text-[#111111] font-serif leading-tight text-[12px] sm:text-[14px] truncate">
-                STARTUP BOOTCAMP 9.0
+                <span className="sm:hidden">SBC 9.0</span>
+                <span className="hidden sm:inline">STARTUP BOOTCAMP 9.0</span>
               </span>
               <span className="text-[#321F1F]/60 tracking-tight font-medium text-[9px] sm:text-[11px] mt-[1px]">
                 E-Cell, IIT Kharagpur

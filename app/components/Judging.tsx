@@ -214,7 +214,7 @@ export default function Judging() {
               </div>
               <div className="space-y-1">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933] block">
-                  Round 1 • From 31 Aug
+                  Round 1
                 </span>
                 <h4 className="font-serif font-bold text-sm sm:text-base text-[#1a1010] leading-snug">
                   Mentorship 1
@@ -232,7 +232,7 @@ export default function Judging() {
               </div>
               <div className="space-y-1">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933] block">
-                  Round 2 • Mid Sep
+                  Round 2
                 </span>
                 <h4 className="font-serif font-bold text-sm sm:text-base text-[#1a1010] leading-snug">
                   Mentorship 2

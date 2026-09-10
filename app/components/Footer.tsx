@@ -39,8 +39,8 @@ export default function Footer() {
         {/* Main 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 pb-12 border-b border-[#321F1F]/15">
           {/* Brand Column (2 cols on large screens) */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
+          <div className="lg:col-span-2 space-y-4 flex flex-col items-center text-center md:items-start md:text-left">
+            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 text-center md:text-left">
               <img
                 src="/images/sbc-logo.png"
                 alt="Startup Bootcamp 9.0"
@@ -56,13 +56,13 @@ export default function Footer() {
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-[#321F1F]/80 leading-relaxed font-serif max-w-sm">
+            <p className="text-xs sm:text-sm text-[#321F1F]/80 leading-relaxed font-serif max-w-sm mx-auto md:mx-0">
               The premier pan-India pre-accelerator initiative by Entrepreneurship Cell, IIT Kharagpur. Nurturing student innovation from prototype to pitch with world-class mentorship.
             </p>
 
             {/* Social Icons */}
-            <div className="pt-2">
-              <div className="flex items-center gap-2.5">
+            <div className="pt-2 flex justify-center md:justify-start w-full">
+              <div className="flex items-center justify-center md:justify-start gap-2.5">
                 <a
                   href={GENERAL_CONTACT.socials[0].url}
                   target="_blank"
@@ -104,11 +104,11 @@ export default function Footer() {
           </div>
 
           {/* Quick Links Column */}
-          <div className="space-y-3">
+          <div className="space-y-3 flex flex-col items-center text-center md:items-start md:text-left">
             <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#972933]">
               Quick Links
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-[#321F1F]/80">
+            <ul className="space-y-2 text-xs sm:text-sm text-[#321F1F]/80 flex flex-col items-center md:items-start">
               <li>
                 <Link href="/" className="hover:text-[#972933] transition-colors inline-block py-0.5">
                   Home
@@ -143,15 +143,15 @@ export default function Footer() {
           </div>
 
           {/* Program & Participation Column */}
-          <div className="space-y-3">
+          <div className="space-y-3 flex flex-col items-center text-center md:items-start md:text-left">
             <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#972933]">
               Participation
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-[#321F1F]/80">
+            <ul className="space-y-2 text-xs sm:text-sm text-[#321F1F]/80 flex flex-col items-center md:items-start">
               <li>
                 <Link
                   href="/register"
-                  className="font-medium text-[#972933] hover:underline inline-flex items-center gap-1 py-0.5"
+                  className="font-medium text-[#972933] hover:underline inline-flex items-center justify-center md:justify-start gap-1 py-0.5"
                 >
                   <span>Register Venture</span>
                   <ArrowUpRight className="w-3 h-3" />
@@ -177,7 +177,7 @@ export default function Footer() {
                   href="https://www.ecell-iitkgp.in/"
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-[#972933] transition-colors inline-flex items-center gap-1 py-0.5"
+                  className="hover:text-[#972933] transition-colors inline-flex items-center justify-center md:justify-start gap-1 py-0.5"
                 >
                   <span>E-Cell Website</span>
                   <ArrowUpRight className="w-3 h-3" />
@@ -187,18 +187,18 @@ export default function Footer() {
           </div>
 
           {/* Legal & Secretariat Column */}
-          <div className="space-y-3">
+          <div className="space-y-3 flex flex-col items-center text-center md:items-start md:text-left">
             <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-[#972933]">
               Secretariat & Policy
             </h4>
-            <div className="text-xs sm:text-sm text-[#321F1F]/80 space-y-2">
+            <div className="text-xs sm:text-sm text-[#321F1F]/80 space-y-2 flex flex-col items-center md:items-start max-w-xs">
               <p className="font-medium text-[#321F1F]">
                 Entrepreneurship Cell
               </p>
-              <p className="text-xs text-[#321F1F]/70 leading-relaxed font-serif">
+              <p className="text-xs text-[#321F1F]/70 leading-relaxed font-serif text-center md:text-left">
                 Rajendra Mishra School of Engineering Entrepreneurship (RMSOEE), IIT Kharagpur, WB 721302
               </p>
-              <div className="pt-2 space-y-1.5 border-t border-[#321F1F]/10">
+              <div className="pt-2 space-y-1.5 border-t border-[#321F1F]/10 w-full flex flex-col items-center md:items-start">
                 <div>
                   <Link href="/privacy" className="hover:text-[#972933] transition-colors block py-0.5">
                     Privacy Policy
