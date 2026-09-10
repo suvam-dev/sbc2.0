@@ -34,8 +34,7 @@ export const PAST_MENTORS_DATA: Mentor[] = [
     role: "Managing Director, ESAB India | Executive Industry Leader & Speaker",
     organization: "ESAB India",
     alumnusTag: "Industry Mentor",
-    // File to drop in public/images/: mentor-rohit-gambhir.png
-    imageUrl: "",
+    imageUrl: "/images/mentor-rohit-gambhir.png",
     linkedinUrl: "https://www.linkedin.com/in/rohitgambhir/?originalSubdomain=in",
   },
   {
@@ -44,8 +43,7 @@ export const PAST_MENTORS_DATA: Mentor[] = [
     role: "Strategy, Product & Technology Advisor | IIT Kharagpur Alumnus",
     organization: "Ecosystem Advisor",
     alumnusTag: "Batch: IIT Kharagpur Alumnus",
-    // File to drop in public/images/: mentor-vivek-kumar.png
-    imageUrl: "",
+    imageUrl: "/images/mentor-vivek-kumar.png",
     linkedinUrl: "https://www.linkedin.com/in/vivekiitkgp/?originalSubdomain=in",
   },
   {
@@ -54,8 +52,7 @@ export const PAST_MENTORS_DATA: Mentor[] = [
     role: "Senior Business & Technology Strategist | Growth Mentor",
     organization: "Strategic Advisor",
     alumnusTag: "SBC Mentor",
-    // File to drop in public/images/: mentor-uttam-kumar.png
-    imageUrl: "",
+    imageUrl: "/images/mentor-uttam-kumar.png",
     linkedinUrl: "https://www.linkedin.com/in/uttam-kumar-50984262/?originalSubdomain=in",
   },
   {
@@ -103,8 +100,7 @@ export const PAST_MENTORS_DATA: Mentor[] = [
     role: "Executive Leader & Scale-Up Mentor | Venture Advisor",
     organization: "Ecosystem Mentor",
     alumnusTag: "SBC Mentor",
-    // File to drop in public/images/: mentor-sudeep-sharma.png
-    imageUrl: "",
+    imageUrl: "/images/mentor-sudeep-sharma.png",
     linkedinUrl: "https://www.linkedin.com/in/sudeep-sharma-466a41174/?originalSubdomain=in",
   },
 ];
