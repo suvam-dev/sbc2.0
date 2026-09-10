@@ -35,34 +35,34 @@ export default function ContactSection() {
       aria-label="Contact Us"
       className="bg-[#f9efd9] py-14 sm:py-20 lg:py-24 border-b border-[#321F1F]/15"
     >
-      <div className="max-w-[1040px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1040px] mx-auto px-3.5 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-10 sm:mb-14 space-y-3">
+        <div className="text-center mb-8 sm:mb-14 space-y-3">
           <div className="flex items-center justify-center gap-2 text-[#972933]">
             <span className="h-px w-8 bg-[#972933]/40" />
             <span className="text-base sm:text-lg select-none">&lowast;</span>
             <span className="h-px w-8 bg-[#972933]/40" />
           </div>
 
-          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#972933] tracking-wide uppercase">
+          <h2 className="font-display font-black text-2xl min-[380px]:text-3xl sm:text-4xl lg:text-5xl text-[#972933] tracking-wide uppercase">
             Contact Us
           </h2>
 
-          <p className="max-w-[620px] mx-auto text-sm sm:text-base lg:text-lg text-[#321F1F]/80 leading-relaxed font-serif italic">
+          <p className="max-w-[620px] mx-auto text-xs sm:text-base lg:text-lg text-[#321F1F]/80 leading-relaxed font-serif italic">
             Have questions or need more information about Startup Bootcamp 9.0? Reach out to our
             team &mdash; we&rsquo;d love to hear from you!
           </p>
         </div>
 
         {/* 2 Lead Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mb-6 sm:mb-8">
           {CONTACT_LEADS.map((person) => (
             <div
               key={person.email}
-              className="bg-[#f7ecd0]/90 backdrop-blur-xs rounded-none border-2 border-[#321F1F]/20 p-6 sm:p-8 flex flex-col items-center text-center shadow-xs hover:shadow-md transition-shadow"
+              className="bg-[#f7ecd0]/90 backdrop-blur-xs rounded-none border-2 border-[#321F1F]/20 p-4 sm:p-8 flex flex-col items-center text-center shadow-xs hover:shadow-md transition-shadow"
             >
               {/* Profile Photo */}
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-[#972933]/40 mb-4 bg-[#f7ecd0] relative shrink-0">
+              <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-[#972933]/40 mb-3 sm:mb-4 bg-[#f7ecd0] relative shrink-0">
                 <img
                   src={person.photoUrl}
                   alt={person.name}
@@ -71,17 +71,17 @@ export default function ContactSection() {
               </div>
 
               {/* Name */}
-              <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#321F1F]">
+              <h3 className="font-serif text-lg sm:text-2xl font-bold text-[#321F1F]">
                 {person.name}
               </h3>
 
               {/* Contact Info List */}
-              <div className="mt-5 space-y-2.5 w-full text-left text-xs sm:text-sm text-[#321F1F]/80 pt-4 border-t border-[#321F1F]/10">
+              <div className="mt-4 sm:mt-5 space-y-1.5 sm:space-y-2.5 w-full text-left text-xs sm:text-sm text-[#321F1F]/80 pt-3.5 sm:pt-4 border-t border-[#321F1F]/10">
                 <a
                   href={`tel:${person.phone}`}
-                  className="flex items-center gap-3 hover:text-[#972933] transition-colors group"
+                  className="flex items-center gap-3 py-1 min-h-[44px] hover:text-[#972933] transition-colors group"
                 >
-                  <span className="p-1.5 rounded-full bg-[#972933]/10 text-[#972933] group-hover:bg-[#972933] group-hover:text-white transition-colors">
+                  <span className="p-1.5 rounded-full bg-[#972933]/10 text-[#972933] group-hover:bg-[#972933] group-hover:text-white transition-colors shrink-0">
                     <Phone className="w-3.5 h-3.5" />
                   </span>
                   <span className="font-medium">{person.phone}</span>
@@ -89,7 +89,7 @@ export default function ContactSection() {
 
                 <a
                   href={`mailto:${person.email}`}
-                  className="flex items-center gap-3 hover:text-[#972933] transition-colors group break-all"
+                  className="flex items-center gap-3 py-1 min-h-[44px] hover:text-[#972933] transition-colors group break-all"
                 >
                   <span className="p-1.5 rounded-full bg-[#972933]/10 text-[#972933] group-hover:bg-[#972933] group-hover:text-white transition-colors shrink-0">
                     <Mail className="w-3.5 h-3.5" />
@@ -101,7 +101,7 @@ export default function ContactSection() {
                   href={person.linkedinUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-3 hover:text-[#972933] transition-colors group"
+                  className="flex items-center gap-3 py-1 min-h-[44px] hover:text-[#972933] transition-colors group"
                 >
                   <span className="p-1.5 rounded-full bg-[#972933]/10 text-[#972933] group-hover:bg-[#972933] group-hover:text-white transition-colors shrink-0">
                     <LinkedinIcon className="w-3.5 h-3.5" />
@@ -116,34 +116,34 @@ export default function ContactSection() {
         </div>
 
         {/* Lower Info Blocks */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mb-6 sm:mb-8">
           {/* General Inquiries */}
-          <div className="bg-[#f7ecd0]/80 rounded-none border border-[#321F1F]/15 p-6 flex items-start gap-4">
-            <div className="p-3 rounded-full bg-[#972933]/10 text-[#972933] shrink-0 mt-0.5">
-              <Mail className="w-5 h-5" />
+          <div className="bg-[#f7ecd0]/80 rounded-none border border-[#321F1F]/15 p-4 sm:p-6 flex items-start gap-3.5 sm:gap-4">
+            <div className="p-2.5 sm:p-3 rounded-full bg-[#972933]/10 text-[#972933] shrink-0 mt-0.5">
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div className="space-y-1">
+            <div className="space-y-1 min-w-0">
               <h4 className="font-serif font-bold text-base sm:text-lg text-[#321F1F]">
                 General Inquiries
               </h4>
               <a
                 href={`mailto:${GENERAL_CONTACT.email}`}
-                className="text-sm font-semibold text-[#972933] hover:underline block"
+                className="text-xs sm:text-sm font-semibold text-[#972933] hover:underline block break-all"
               >
                 {GENERAL_CONTACT.email}
               </a>
-              <p className="text-xs text-[#321F1F]/70">
+              <p className="text-[11px] sm:text-xs text-[#321F1F]/70">
                 {GENERAL_CONTACT.responseSla}
               </p>
             </div>
           </div>
 
           {/* Office Address */}
-          <div className="bg-[#f7ecd0]/80 rounded-none border border-[#321F1F]/15 p-6 flex items-start gap-4">
-            <div className="p-3 rounded-full bg-[#972933]/10 text-[#972933] shrink-0 mt-0.5">
-              <MapPin className="w-5 h-5" />
+          <div className="bg-[#f7ecd0]/80 rounded-none border border-[#321F1F]/15 p-4 sm:p-6 flex items-start gap-3.5 sm:gap-4">
+            <div className="p-2.5 sm:p-3 rounded-full bg-[#972933]/10 text-[#972933] shrink-0 mt-0.5">
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div className="space-y-1">
+            <div className="space-y-1 min-w-0">
               <h4 className="font-serif font-bold text-base sm:text-lg text-[#321F1F]">
                 {GENERAL_CONTACT.organization}
               </h4>
@@ -155,7 +155,7 @@ export default function ContactSection() {
         </div>
 
         {/* Social Row */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 text-center">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4 text-center">
           <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#321F1F]/75">
             Follow us for updates:
           </span>
@@ -164,7 +164,7 @@ export default function ContactSection() {
               href={GENERAL_CONTACT.socials[0].url}
               target="_blank"
               rel="noreferrer"
-              className="p-2 rounded-full bg-[#f7ecd0] border border-[#321F1F]/15 text-[#321F1F] hover:text-[#972933] hover:border-[#972933] transition"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-[#f7ecd0] border border-[#321F1F]/15 text-[#321F1F] hover:text-[#972933] hover:border-[#972933] transition"
               aria-label="Website"
             >
               <Globe className="w-4 h-4" />
@@ -173,7 +173,7 @@ export default function ContactSection() {
               href={GENERAL_CONTACT.socials[1].url}
               target="_blank"
               rel="noreferrer"
-              className="p-2 rounded-full bg-[#f7ecd0] border border-[#321F1F]/15 text-[#321F1F] hover:text-[#972933] hover:border-[#972933] transition"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-[#f7ecd0] border border-[#321F1F]/15 text-[#321F1F] hover:text-[#972933] hover:border-[#972933] transition"
               aria-label="LinkedIn"
             >
               <LinkedinIcon className="w-4 h-4" />
@@ -182,7 +182,7 @@ export default function ContactSection() {
               href={GENERAL_CONTACT.socials[2].url}
               target="_blank"
               rel="noreferrer"
-              className="p-2 rounded-full bg-[#f7ecd0] border border-[#321F1F]/15 text-[#321F1F] hover:text-[#972933] hover:border-[#972933] transition"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-[#f7ecd0] border border-[#321F1F]/15 text-[#321F1F] hover:text-[#972933] hover:border-[#972933] transition"
               aria-label="Instagram"
             >
               <InstagramIcon className="w-4 h-4" />
@@ -191,7 +191,7 @@ export default function ContactSection() {
               href={GENERAL_CONTACT.socials[3].url}
               target="_blank"
               rel="noreferrer"
-              className="p-2 rounded-full bg-[#f7ecd0] border border-[#321F1F]/15 text-[#321F1F] hover:text-[#972933] hover:border-[#972933] transition"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-[#f7ecd0] border border-[#321F1F]/15 text-[#321F1F] hover:text-[#972933] hover:border-[#972933] transition"
               aria-label="Twitter"
             >
               <TwitterIcon className="w-4 h-4" />

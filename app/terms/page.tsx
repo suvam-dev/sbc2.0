@@ -5,11 +5,11 @@ export default function TermsPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#f7ecd0] text-[#321F1F]">
       <Header />
-      <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#321F1F] mb-6">
+      <main className="flex-1 max-w-4xl mx-auto px-3.5 sm:px-6 pt-28 sm:pt-36 pb-12 sm:pb-16 w-full">
+        <h1 className="text-2xl sm:text-4xl font-display font-black text-[#321F1F] mb-6 uppercase">
           Terms & Conditions
         </h1>
-        <div className="bg-[#f7ecd0] p-6 sm:p-8 rounded-lg shadow-sm border border-[#321F1F]/15 space-y-4 text-sm sm:text-base leading-relaxed text-[#321F1F]/80">
+        <div className="bg-[#fff8e8] p-5 sm:p-8 rounded-none shadow-sm border border-[#321F1F]/15 space-y-4 text-xs sm:text-base leading-relaxed text-[#321F1F]/80">
           <p>
             By participating in Startup Bootcamp 9.0 organized by E-Cell IIT Kharagpur, all teams and members agree to comply with program guidelines, event schedules, and mentorship codes of conduct.
           </p>

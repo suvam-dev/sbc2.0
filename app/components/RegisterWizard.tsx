@@ -307,27 +307,27 @@ export default function RegisterWizard() {
       aria-label="Register Your Team"
       className="bg-[#f7ecd0] py-14 sm:py-20 border-b border-[#321F1F]/15"
     >
-      <div className="max-w-[780px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[780px] mx-auto px-3.5 sm:px-6 lg:px-8">
         {/* Form Header matching PDF Page 4 */}
-        <div className="text-center mb-8 sm:mb-10 space-y-2">
-          <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-[42px] text-[#972933] tracking-wide uppercase">
+        <div className="text-center mb-6 sm:mb-10 space-y-2">
+          <h2 className="font-display font-black text-2xl min-[380px]:text-3xl sm:text-4xl lg:text-[42px] text-[#972933] tracking-wide uppercase">
             Startup Bootcamp 9.0
           </h2>
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#321F1F]/70">
             E-Cell IIT Kharagpur
           </p>
-          <p className="text-sm sm:text-base text-[#321F1F]/80 max-w-[560px] mx-auto pt-1 font-serif italic">
+          <p className="text-xs sm:text-base text-[#321F1F]/80 max-w-[560px] mx-auto pt-1 font-serif italic">
             Register your startup for two rounds of one-on-one mentorship and a live pitch before
             investors on campus.
           </p>
         </div>
 
         {/* Wizard Container */}
-        <div className="bg-[#fff8e8] border-2 border-[#321F1F]/20 rounded-none p-4 sm:p-8 md:p-10 shadow-sm relative">
+        <div className="bg-[#fff8e8] border-2 border-[#321F1F]/20 rounded-none p-3.5 sm:p-8 md:p-10 shadow-sm relative">
           {/* 4-Step Progress Indicator */}
           {!submissionSuccess && (
-            <div className="mb-8">
-              <div className="grid grid-cols-4 gap-1.5 sm:gap-2 text-center">
+            <div className="mb-6 sm:mb-8">
+              <div className="grid grid-cols-4 gap-1 sm:gap-2 text-center">
                 {[
                   { num: 1, label: "Registration", short: "Register" },
                   { num: 2, label: "About Startup", short: "Startup" },
@@ -339,7 +339,7 @@ export default function RegisterWizard() {
                   return (
                     <div key={s.num} className="flex flex-col items-center">
                       <div
-                        className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold transition-all ${
+                        className={`w-6 h-6 min-[380px]:w-7 min-[380px]:h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-[11px] min-[380px]:text-xs sm:text-sm font-bold transition-all ${
                           isCurrent
                             ? "bg-[#972933] text-white ring-2 ring-[#972933]/25 shadow-xs"
                             : isDone
@@ -347,10 +347,10 @@ export default function RegisterWizard() {
                             : "bg-[#321F1F]/10 text-[#321F1F]/50"
                         }`}
                       >
-                        {isDone ? <CheckCircle2 className="w-4 h-4" /> : s.num}
+                        {isDone ? <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : s.num}
                       </div>
                       <span
-                        className={`text-[10px] sm:text-xs mt-1.5 font-medium transition-colors line-clamp-1 ${
+                        className={`text-[9px] min-[380px]:text-[10px] sm:text-xs mt-1.5 font-medium transition-colors line-clamp-1 ${
                           isCurrent
                             ? "text-[#972933] font-bold"
                             : isDone
@@ -365,7 +365,7 @@ export default function RegisterWizard() {
                   );
                 })}
               </div>
-              <div className="w-full h-1.5 bg-[#321F1F]/10 rounded-none mt-4 overflow-hidden">
+              <div className="w-full h-1.5 bg-[#321F1F]/10 rounded-none mt-3 sm:mt-4 overflow-hidden">
                 <div
                   className="h-full bg-[#972933] transition-all duration-300"
                   style={{ width: `${((step - 1) / 3) * 100}%` }}
@@ -961,24 +961,24 @@ export default function RegisterWizard() {
                   </div>
 
                   {/* Summary Card */}
-                  <div className="bg-[#f7ecd0] rounded-lg border border-[#321F1F]/15 p-5 space-y-4 text-xs sm:text-sm">
+                  <div className="bg-[#f7ecd0] rounded-none border border-[#321F1F]/15 p-3.5 sm:p-5 space-y-4 text-xs sm:text-sm">
                     {/* Startup Summary */}
                     <div>
                       <h4 className="font-bold text-[#972933] text-xs uppercase tracking-wider mb-2">
                         Startup Overview
                       </h4>
-                      <div className="grid grid-cols-2 gap-2 text-[#321F1F]/85">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#321F1F]/85">
                         <div>
                           <span className="text-[#321F1F]/60 block text-[11px]">Name:</span>
-                          <span className="font-semibold">{formData.startupName}</span>
+                          <span className="font-semibold break-words">{formData.startupName}</span>
                         </div>
                         <div>
                           <span className="text-[#321F1F]/60 block text-[11px]">Sector:</span>
-                          <span className="font-semibold">{formData.sector}</span>
+                          <span className="font-semibold break-words">{formData.sector}</span>
                         </div>
-                        <div className="col-span-2">
+                        <div className="sm:col-span-2">
                           <span className="text-[#321F1F]/60 block text-[11px]">Pitch Deck:</span>
-                          <span className="font-semibold">
+                          <span className="font-semibold break-all">
                             {formData.pitchDeckFile ? formData.pitchDeckFile.name : "None attached"}
                           </span>
                         </div>
@@ -989,14 +989,14 @@ export default function RegisterWizard() {
                       <h4 className="font-bold text-[#972933] text-xs uppercase tracking-wider mb-2">
                         Founder Contact
                       </h4>
-                      <div className="grid grid-cols-2 gap-2 text-[#321F1F]/85">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#321F1F]/85">
                         <div>
                           <span className="text-[#321F1F]/60 block text-[11px]">Full Name:</span>
-                          <span className="font-semibold">{formData.founderFullName}</span>
+                          <span className="font-semibold break-words">{formData.founderFullName}</span>
                         </div>
                         <div>
                           <span className="text-[#321F1F]/60 block text-[11px]">Email:</span>
-                          <span className="font-semibold">{formData.founderEmail}</span>
+                          <span className="font-semibold break-all">{formData.founderEmail}</span>
                         </div>
                         <div>
                           <span className="text-[#321F1F]/60 block text-[11px]">WhatsApp:</span>

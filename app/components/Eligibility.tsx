@@ -107,12 +107,12 @@ export default function Eligibility() {
         ELIGIBILITY
       </div>
 
-      <div className="relative z-10 max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={headerRef} className="max-w-[580px] mb-8 sm:mb-12 pl-0 lg:pl-10">
+      <div className="relative z-10 max-w-[1220px] mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div ref={headerRef} className="max-w-[580px] mb-6 sm:mb-12 pl-0 lg:pl-10">
           <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#972933] block mb-1.5">
             Who Can Participate
           </span>
-          <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-[56px] text-[#111111] tracking-wide leading-none mb-4 uppercase">
+          <h2 className="font-display font-black text-3xl min-[380px]:text-4xl sm:text-5xl lg:text-[56px] text-[#111111] tracking-wide leading-none mb-3 sm:mb-4 uppercase">
             Eligibility
           </h2>
           <p className="text-sm sm:text-base lg:text-[17px] text-[#321F1F]/75 font-serif leading-relaxed">
@@ -123,7 +123,7 @@ export default function Eligibility() {
         {/* Content Card with Rich Archival Editorial Styling */}
         <div
           ref={cardRef}
-          className="max-w-[880px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EB] to-[#F5EEDF] rounded-none border-2 border-[#111111]/85 p-6 sm:p-8 lg:p-9 shadow-[0_22px_50px_-10px_rgba(50,31,31,0.18),0_10px_20px_-5px_rgba(50,31,31,0.08),0_1px_3px_rgba(50,31,31,0.12)] relative z-10 lg:ml-10 overflow-hidden"
+          className="max-w-[880px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EB] to-[#F5EEDF] rounded-none border-2 border-[#111111]/85 p-4 sm:p-7 lg:p-9 shadow-[0_22px_50px_-10px_rgba(50,31,31,0.18),0_10px_20px_-5px_rgba(50,31,31,0.08),0_1px_3px_rgba(50,31,31,0.12)] relative z-10 lg:ml-10 overflow-hidden"
         >
           {/* Subtle Archival Stipple Paper Texture Overlay */}
           <div
@@ -136,52 +136,52 @@ export default function Eligibility() {
 
           {/* Inner Double Hairline Archival Frame */}
           <div
-            className="pointer-events-none absolute inset-2 sm:inset-2.5 rounded-none border border-[#972933]/25"
+            className="pointer-events-none absolute inset-1.5 sm:inset-2.5 rounded-none border border-[#972933]/25"
             aria-hidden="true"
           />
 
           {/* Corner Archival Registration Crosshairs */}
-          <div className="pointer-events-none absolute top-3.5 left-3.5 w-2.5 h-2.5 border-t-2 border-l-2 border-[#972933]/60" />
-          <div className="pointer-events-none absolute top-3.5 right-3.5 w-2.5 h-2.5 border-t-2 border-r-2 border-[#972933]/60" />
-          <div className="pointer-events-none absolute bottom-3.5 left-3.5 w-2.5 h-2.5 border-b-2 border-l-2 border-[#972933]/60" />
-          <div className="pointer-events-none absolute bottom-3.5 right-3.5 w-2.5 h-2.5 border-b-2 border-r-2 border-[#972933]/60" />
+          <div className="pointer-events-none absolute top-2.5 left-2.5 sm:top-3.5 sm:left-3.5 w-2.5 h-2.5 border-t-2 border-l-2 border-[#972933]/60" />
+          <div className="pointer-events-none absolute top-2.5 right-2.5 sm:top-3.5 sm:right-3.5 w-2.5 h-2.5 border-t-2 border-r-2 border-[#972933]/60" />
+          <div className="pointer-events-none absolute bottom-2.5 left-2.5 sm:bottom-3.5 sm:left-3.5 w-2.5 h-2.5 border-b-2 border-l-2 border-[#972933]/60" />
+          <div className="pointer-events-none absolute bottom-2.5 right-2.5 sm:bottom-3.5 sm:right-3.5 w-2.5 h-2.5 border-b-2 border-r-2 border-[#972933]/60" />
 
           {/* Dispatch Header Strip */}
-          <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b-2 border-[#111111]/15 pb-4 mb-6">
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 sm:gap-3 border-b-2 border-[#111111]/15 pb-3 sm:pb-4 mb-4 sm:mb-6">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-none bg-[#972933]" />
-              <span className="text-[11px] font-mono tracking-widest uppercase text-[#321F1F]/70 font-semibold">
+              <span className="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-[#321F1F]/70 font-semibold">
                 Dispatch Ref // SBC-9.0-CRIT
               </span>
             </div>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-none bg-[#972933]/10 text-[#972933] font-bold text-[9.5px] tracking-widest border border-[#972933]/25">
+            <span className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-none bg-[#972933]/10 text-[#972933] font-bold text-[9px] sm:text-[9.5px] tracking-widest border border-[#972933]/25">
               <span className="w-1.5 h-1.5 rounded-none bg-[#972933] animate-pulse" />
               STATUS: UNDER REVIEW
             </span>
           </div>
 
           {/* Card Title with Seal Icon */}
-          <div className="relative z-10 flex items-center gap-3.5 mb-5">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-none bg-[#972933]/10 border border-[#972933]/25 flex items-center justify-center text-[#972933] shrink-0 shadow-2xs">
-              <Clock className="w-5 h-5 text-[#972933]" />
+          <div className="relative z-10 flex items-start sm:items-center gap-3 sm:gap-3.5 mb-4 sm:mb-5">
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-none bg-[#972933]/10 border border-[#972933]/25 flex items-center justify-center text-[#972933] shrink-0 shadow-2xs mt-0.5 sm:mt-0">
+              <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#972933]" />
             </div>
             <div>
-              <h3 className="font-display font-black text-xl sm:text-2xl text-[#111111] tracking-wide uppercase">
+              <h3 className="font-display font-black text-lg min-[380px]:text-xl sm:text-2xl text-[#111111] tracking-wide uppercase leading-tight">
                 Official Eligibility Criteria
               </h3>
-              <span className="text-[11px] font-mono text-[#972933] font-bold tracking-wider uppercase">
+              <span className="text-[10px] sm:text-[11px] font-mono text-[#972933] font-bold tracking-wider uppercase">
                 (Updating Soon • Guidelines in Committee)
               </span>
             </div>
           </div>
 
-          <p className="relative z-10 text-sm sm:text-[15px] leading-relaxed text-[#321F1F]/85 mb-5 font-serif">
+          <p className="relative z-10 text-xs sm:text-sm md:text-[15px] leading-relaxed text-[#321F1F]/85 mb-4 sm:mb-5 font-serif">
             Detailed eligibility guidelines for <strong className="font-semibold text-[#1a1010]">Startup Bootcamp 9.0</strong> are undergoing final review by the E-Cell IIT Kharagpur organizing committee. Preview verified parameters below:
           </p>
 
           {/* Inner Checklist Container with Rich Warm Parchment & High Contrast */}
-          <div className="relative z-10 p-5 rounded-none bg-[#F4EBD6]/70 backdrop-blur-xs border border-[#321F1F]/15 space-y-3.5 mb-7 shadow-inner">
-            <div className="flex items-start gap-3">
+          <div className="relative z-10 p-3.5 sm:p-5 rounded-none bg-[#F4EBD6]/70 backdrop-blur-xs border border-[#321F1F]/15 space-y-3 sm:space-y-3.5 mb-5 sm:mb-7 shadow-inner">
+            <div className="flex items-start gap-2.5 sm:gap-3">
               <div className="w-4 h-4 rounded-full bg-[#972933] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                 <CheckCircle2 className="w-3.5 h-3.5 text-white stroke-[2.5]" />
               </div>
@@ -190,7 +190,7 @@ export default function Eligibility() {
               </span>
             </div>
             <div className="h-px w-full bg-[#321F1F]/10" aria-hidden="true" />
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-2.5 sm:gap-3">
               <div className="w-4 h-4 rounded-full bg-[#972933] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                 <CheckCircle2 className="w-3.5 h-3.5 text-white stroke-[2.5]" />
               </div>
@@ -199,7 +199,7 @@ export default function Eligibility() {
               </span>
             </div>
             <div className="h-px w-full bg-[#321F1F]/10" aria-hidden="true" />
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-2.5 sm:gap-3">
               <div className="w-4 h-4 rounded-full bg-[#972933] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                 <CheckCircle2 className="w-3.5 h-3.5 text-white stroke-[2.5]" />
               </div>
@@ -210,10 +210,10 @@ export default function Eligibility() {
           </div>
 
           {/* Card Footer Actions */}
-          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4 pt-1">
             <Link
               href="/#register"
-              className="inline-flex items-center justify-center gap-2.5 bg-[#4E0C16] hover:bg-[#38080F] text-white text-xs sm:text-[13px] font-semibold px-6 py-3.5 rounded-none shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all w-full sm:w-auto uppercase tracking-wider"
+              className="inline-flex items-center justify-center gap-2.5 bg-[#4E0C16] hover:bg-[#38080F] text-white text-xs sm:text-[13px] font-semibold px-5 py-3.5 min-h-[44px] rounded-none shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all w-full sm:w-auto uppercase tracking-wider"
             >
               <span>Verify your team</span>
               <span className="text-sm font-light">→</span>

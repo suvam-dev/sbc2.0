@@ -127,7 +127,7 @@ export default function IncentivesSection() {
       id="incentives"
       ref={sectionRef}
       aria-label="Our Incentives"
-      className="relative bg-[#f7ecd0] py-16 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b border-[#321F1F]/15 overflow-hidden"
+      className="relative bg-[#f7ecd0] py-14 sm:py-20 lg:py-28 px-3.5 sm:px-6 lg:px-8 border-b border-[#321F1F]/15 overflow-hidden"
     >
       {/* Giant background watermark with dynamic scroll parallax */}
       <div
@@ -150,14 +150,14 @@ export default function IncentivesSection() {
       <div className="relative z-10 max-w-[1100px] mx-auto">
 
         {/* Header */}
-        <div ref={headerRef} className="mb-10 sm:mb-16 lg:mb-20 lg:pl-12">
+        <div ref={headerRef} className="mb-8 sm:mb-16 lg:mb-20 lg:pl-12">
           <div className="inline-flex items-center gap-2 mb-2">
             <span className="w-2 h-2 rounded-full bg-[#972933] animate-pulse" />
             <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.28em] text-[#972933]">
               Startup Bootcamp 9.0
             </span>
           </div>
-          <h2 className="font-display font-black text-3xl sm:text-5xl lg:text-[64px] text-[#111111] tracking-wide leading-[1.05] sm:leading-none mb-3 sm:mb-4 uppercase">
+          <h2 className="font-display font-black text-3xl min-[380px]:text-4xl sm:text-5xl lg:text-[64px] text-[#111111] tracking-wide leading-[1.05] sm:leading-none mb-3 sm:mb-4 uppercase">
             Our Incentives
           </h2>
           <p className="max-w-[560px] text-sm sm:text-lg text-[#321F1F]/75 leading-relaxed font-serif">
@@ -172,12 +172,12 @@ export default function IncentivesSection() {
         </div>
 
         {/* Cards — editorial horizontal layout with rich hover & shine */}
-        <div className="space-y-4 sm:space-y-5 lg:pl-12">
+        <div className="space-y-3.5 sm:space-y-5 lg:pl-12">
           {INCENTIVES.map((item, i) => (
             <div
               key={item.id}
               ref={cardRefs[i]}
-              className="group relative bg-gradient-to-br from-[#FFFDF9] via-[#FAF5EB] to-[#F5EEDF] border-2 border-[#111111]/80 rounded-none p-5 sm:p-8 hover:border-[#972933] hover:shadow-[0_16px_40px_rgba(151,41,51,0.12)] hover:-translate-y-1 transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.04)] overflow-hidden cursor-default"
+              className="group relative bg-gradient-to-br from-[#FFFDF9] via-[#FAF5EB] to-[#F5EEDF] border-2 border-[#111111]/80 rounded-none p-4 sm:p-7 lg:p-8 hover:border-[#972933] hover:shadow-[0_16px_40px_rgba(151,41,51,0.12)] hover:-translate-y-1 transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.04)] overflow-hidden cursor-default"
             >
               {/* Animated light sweep / foil shimmer on hover */}
               <div 
@@ -189,25 +189,25 @@ export default function IncentivesSection() {
               <div className="absolute inset-[3px] border border-[#111111]/15 rounded-none pointer-events-none group-hover:border-[#972933]/30 transition-colors duration-300" />
               
               {/* Top strip accent that illuminates on hover */}
-              <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#972933]/25 to-transparent group-hover:via-[#972933]/70 transition-all duration-300" />
+              <div className="absolute top-0 left-6 sm:left-8 right-6 sm:right-8 h-[2px] bg-gradient-to-r from-transparent via-[#972933]/25 to-transparent group-hover:via-[#972933]/70 transition-all duration-300" />
 
-              <div className="relative z-10 flex items-start gap-4 sm:gap-8">
+              <div className="relative z-10 flex items-start gap-3.5 sm:gap-8">
                 {/* Number + icon stack with animated micro-bounce on hover */}
-                <div className="shrink-0 flex flex-col items-center gap-2 sm:gap-3 pt-0.5 sm:pt-1">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-none bg-[#F2E8D5] border border-[#a26028]/25 flex items-center justify-center group-hover:bg-[#EAE0C8] group-hover:border-[#972933]/50 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 shadow-inner">
+                <div className="shrink-0 flex flex-col items-center gap-1.5 sm:gap-3 pt-0.5 sm:pt-1">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-none bg-[#F2E8D5] border border-[#a26028]/25 flex items-center justify-center group-hover:bg-[#EAE0C8] group-hover:border-[#972933]/50 group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300 shadow-inner">
                     <div className="group-hover:scale-110 transition-transform duration-300">
                       {item.icon}
                     </div>
                   </div>
-                  <span className="font-mono text-[10px] font-bold text-[#321F1F]/40 tracking-wider group-hover:text-[#972933] transition-colors">
+                  <span className="font-mono text-[9px] sm:text-[10px] font-bold text-[#321F1F]/40 tracking-wider group-hover:text-[#972933] transition-colors">
                     {item.label}
                   </span>
                 </div>
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#972933]">
+                  <div className="flex items-center gap-2 mb-1 sm:mb-2">
+                    <span className="text-[9.5px] sm:text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#972933]">
                       {item.eyebrow}
                     </span>
                     {item.id === "cash-prizes" && (
@@ -217,7 +217,7 @@ export default function IncentivesSection() {
                       </span>
                     )}
                   </div>
-                  <h3 className="font-serif text-lg sm:text-2xl lg:text-[26px] font-bold text-[#111111] leading-snug mb-2 sm:mb-3 group-hover:text-[#972933] transition-colors duration-200">
+                  <h3 className="font-serif text-base min-[380px]:text-lg sm:text-2xl lg:text-[26px] font-bold text-[#111111] leading-snug mb-1.5 sm:mb-3 group-hover:text-[#972933] transition-colors duration-200">
                     {item.title}
                   </h3>
                   <p className="text-xs sm:text-[15px] leading-relaxed text-[#321F1F]/80 group-hover:text-[#321F1F] transition-colors duration-200">

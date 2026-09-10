@@ -61,11 +61,11 @@ export default function HeroSection() {
   ];
 
   return (
-    <section ref={containerRef} className="relative overflow-hidden bg-[#f7ecd0] pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-16">
+    <section ref={containerRef} className="relative overflow-hidden bg-[#f7ecd0] pt-24 pb-10 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-16">
       {/* Left Side Retro Poster Collage Banner - Prominently Visible */}
       <div
         ref={leftCollageRef}
-        className="pointer-events-none absolute -left-16 sm:-left-28 md:-left-40 lg:-left-48 -top-12 bottom-0 w-32 sm:w-52 md:w-64 lg:w-80 overflow-hidden opacity-40 mix-blend-multiply select-none z-0"
+        className="pointer-events-none absolute -left-16 sm:-left-28 md:-left-40 lg:-left-48 -top-12 bottom-0 w-28 sm:w-52 md:w-64 lg:w-80 overflow-hidden opacity-30 sm:opacity-40 mix-blend-multiply select-none z-0"
         aria-hidden="true"
       >
         <img
@@ -78,7 +78,7 @@ export default function HeroSection() {
       {/* Right Side Retro Poster Collage Banner - Prominently Visible */}
       <div
         ref={rightCollageRef}
-        className="pointer-events-none absolute -right-16 sm:-right-28 md:-right-40 lg:-right-48 -top-16 bottom-0 w-32 sm:w-52 md:w-64 lg:w-80 overflow-hidden opacity-40 mix-blend-multiply select-none z-0"
+        className="pointer-events-none absolute -right-16 sm:-right-28 md:-right-40 lg:-right-48 -top-16 bottom-0 w-28 sm:w-52 md:w-64 lg:w-80 overflow-hidden opacity-30 sm:opacity-40 mix-blend-multiply select-none z-0"
         aria-hidden="true"
       >
         <img
@@ -88,9 +88,9 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-3.5 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         {/* Infinite Phase Dateline Marquee */}
-        <div className="w-full overflow-hidden mb-6 sm:mb-8 py-1.5 border-y border-[#321F1F]/10 hero-anim-item">
+        <div className="w-full overflow-hidden mb-5 sm:mb-8 py-1.5 border-y border-[#321F1F]/10 hero-anim-item">
           <div className="animate-phase-marquee flex items-center gap-6 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#321F1F]">
             {[0, 1, 2].map((setIdx) => (
               <div key={`set-${setIdx}`} className="flex items-center gap-4 sm:gap-6 shrink-0">
@@ -114,7 +114,7 @@ export default function HeroSection() {
           <img
             src="/images/hero-startup-bootcamp-title.png"
             alt="What is Startup Bootcamp?"
-            className="w-[280px] sm:w-[520px] lg:w-[680px] max-w-[90vw] h-auto object-contain mx-auto drop-shadow-md hover:scale-[1.02] transition-transform duration-300"
+            className="w-[250px] min-[380px]:w-[290px] sm:w-[520px] lg:w-[680px] max-w-[92vw] h-auto object-contain mx-auto drop-shadow-md hover:scale-[1.02] transition-transform duration-300"
           />
           <h1 className="sr-only">What is Startup Bootcamp?</h1>
           <p className="mt-3 text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#321F1F]/75 font-serif">

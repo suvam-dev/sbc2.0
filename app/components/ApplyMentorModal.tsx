@@ -200,14 +200,14 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/60 backdrop-blur-xs transition-opacity duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 md:p-6 bg-black/60 backdrop-blur-xs transition-opacity duration-300 overflow-y-auto"
       onClick={handleClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="mentor-modal-title"
     >
       <div
-        className="relative w-full max-w-[940px] bg-[#fffcf5] text-[#321F1F] rounded-2xl border border-[#321F1F]/15 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col md:flex-row isolate"
+        className="relative w-full max-w-[940px] bg-[#fffcf5] text-[#321F1F] rounded-xl sm:rounded-2xl border border-[#321F1F]/15 shadow-2xl overflow-hidden max-h-[96vh] sm:max-h-[92vh] flex flex-col md:flex-row isolate my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* ========================================================= */}
@@ -291,13 +291,13 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
         {/* ========================================================= */}
         {/* RIGHT COLUMN: 3-Step Wizard Form                          */}
         {/* ========================================================= */}
-        <div className="flex-1 flex flex-col justify-between p-6 sm:p-8 lg:p-9 relative overflow-y-auto max-h-[92vh]">
+        <div className="flex-1 flex flex-col justify-between p-4 sm:p-7 lg:p-9 relative overflow-y-auto max-h-[96vh] sm:max-h-[92vh]">
           {/* Top Close Button */}
           <button
             type="button"
             onClick={handleClose}
             aria-label="Close application modal"
-            className="absolute top-5 right-5 p-1.5 text-[#321F1F]/50 hover:text-[#972933] hover:bg-[#321F1F]/5 rounded-full transition-colors z-20 cursor-pointer"
+            className="absolute top-3 right-3 sm:top-5 sm:right-5 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#321F1F]/50 hover:text-[#972933] hover:bg-[#321F1F]/5 rounded-full transition-colors z-20 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -331,15 +331,25 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
               <button
                 type="button"
                 onClick={handleClose}
-                className="px-6 py-2.5 bg-[#4E0C16] hover:bg-[#3B0910] text-white text-xs sm:text-[13px] font-semibold rounded-lg uppercase tracking-wider transition-colors shadow-sm cursor-pointer"
+                className="px-6 py-2.5 min-h-[44px] bg-[#4E0C16] hover:bg-[#3B0910] text-white text-xs sm:text-[13px] font-semibold rounded-lg uppercase tracking-wider transition-colors shadow-sm cursor-pointer"
               >
                 Close Window
               </button>
             </div>
           ) : (
             <div>
+              {/* Mobile-only Title */}
+              <div className="md:hidden mb-4 pr-10">
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#972933] font-bold block">
+                  STARTUP BOOTCAMP 9.0
+                </span>
+                <h2 className="font-serif text-xl font-black text-[#111111] leading-tight">
+                  Apply as a <span className="italic text-[#972933]">Mentor</span>
+                </h2>
+              </div>
+
               {/* Stepper Header Bar */}
-              <div className="mb-7 pr-8">
+              <div className="mb-5 sm:mb-7 pr-10 md:pr-8">
                 <div className="flex items-center justify-between max-w-sm">
                   {/* Step 1 */}
                   <div className="flex items-center gap-2">
@@ -751,7 +761,7 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
                             href={formData.linkedin}
                             target="_blank"
                             rel="noreferrer"
-                            className="font-medium text-xs text-[#972933] underline truncate block"
+                            className="font-medium text-xs text-[#972933] underline truncate block break-all"
                           >
                             {formData.linkedin}
                           </a>

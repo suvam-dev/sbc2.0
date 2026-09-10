@@ -124,14 +124,14 @@ export default function Judging() {
       </div>
 
       {/* Main Section Content Container */}
-      <div className="relative z-10 max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-[1220px] mx-auto px-3.5 sm:px-6 lg:px-8">
         {/* Headline Header */}
         <div ref={headerRef} className="max-w-[580px] mb-6 sm:mb-8 lg:mb-9 pl-0 lg:pl-10">
           <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#972933] block mb-1.5">
             Startup Bootcamp 9.0
           </span>
 
-          <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-[60px] text-[#111111] tracking-wide leading-none mb-3 uppercase">
+          <h2 className="font-display font-black text-3xl min-[380px]:text-4xl sm:text-5xl lg:text-[60px] text-[#111111] tracking-wide leading-none mb-3 uppercase">
             Judging
           </h2>
 
@@ -146,7 +146,7 @@ export default function Judging() {
         {/* Elevated Process Card with Rich Texture & High Contrast */}
         <div
           ref={cardRef}
-          className="max-w-[880px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EB] to-[#F5EEDF] rounded-none border-2 border-[#111111]/85 p-6 sm:p-8 lg:p-9 shadow-[0_22px_50px_-10px_rgba(50,31,31,0.18),0_10px_20px_-5px_rgba(50,31,31,0.08),0_1px_3px_rgba(50,31,31,0.12)] relative z-10 lg:ml-10 overflow-hidden"
+          className="max-w-[880px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5EB] to-[#F5EEDF] rounded-none border-2 border-[#111111]/85 p-4 sm:p-7 lg:p-9 shadow-[0_22px_50px_-10px_rgba(50,31,31,0.18),0_10px_20px_-5px_rgba(50,31,31,0.08),0_1px_3px_rgba(50,31,31,0.12)] relative z-10 lg:ml-10 overflow-hidden"
         >
           {/* Subtle Archival Stipple Paper Texture Overlay */}
           <div
@@ -156,35 +156,35 @@ export default function Judging() {
 
           {/* Inner Certificate Double-Hairline Frame Accent */}
           <div
-            className="pointer-events-none absolute inset-2 sm:inset-2.5 rounded-none border border-[#972933]/25"
+            className="pointer-events-none absolute inset-1.5 sm:inset-2.5 rounded-none border border-[#972933]/25"
             aria-hidden="true"
           />
 
           {/* Corner Registration Crosshair Marks */}
-          <div className="pointer-events-none absolute top-3.5 left-3.5 w-2.5 h-2.5 border-t-2 border-l-2 border-[#972933]/60" aria-hidden="true" />
-          <div className="pointer-events-none absolute top-3.5 right-3.5 w-2.5 h-2.5 border-t-2 border-r-2 border-[#972933]/60" aria-hidden="true" />
-          <div className="pointer-events-none absolute bottom-3.5 left-3.5 w-2.5 h-2.5 border-b-2 border-l-2 border-[#972933]/60" aria-hidden="true" />
-          <div className="pointer-events-none absolute bottom-3.5 right-3.5 w-2.5 h-2.5 border-b-2 border-r-2 border-[#972933]/60" aria-hidden="true" />
+          <div className="pointer-events-none absolute top-2.5 left-2.5 sm:top-3.5 sm:left-3.5 w-2.5 h-2.5 border-t-2 border-l-2 border-[#972933]/60" aria-hidden="true" />
+          <div className="pointer-events-none absolute top-2.5 right-2.5 sm:top-3.5 sm:right-3.5 w-2.5 h-2.5 border-t-2 border-r-2 border-[#972933]/60" aria-hidden="true" />
+          <div className="pointer-events-none absolute bottom-2.5 left-2.5 sm:bottom-3.5 sm:left-3.5 w-2.5 h-2.5 border-b-2 border-l-2 border-[#972933]/60" aria-hidden="true" />
+          <div className="pointer-events-none absolute bottom-2.5 right-2.5 sm:bottom-3.5 sm:right-3.5 w-2.5 h-2.5 border-b-2 border-r-2 border-[#972933]/60" aria-hidden="true" />
 
           {/* Archival Dispatch Header Strip */}
-          <div className="relative z-10 flex items-center justify-between gap-4 border-b border-[#321F1F]/12 pb-3.5 mb-5 text-[10px] font-mono uppercase tracking-[0.2em] text-[#321F1F]/60">
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 sm:gap-4 border-b border-[#321F1F]/12 pb-3 mb-4 text-[10px] font-mono uppercase tracking-[0.2em] text-[#321F1F]/60">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-[#972933]" />
               <span className="font-semibold text-[#321F1F]/70">DISPATCH REF // SBC-9.0-EVAL</span>
             </div>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-none bg-[#972933]/10 text-[#972933] font-bold text-[9.5px] tracking-widest border border-[#972933]/25">
+            <span className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-none bg-[#972933]/10 text-[#972933] font-bold text-[9px] sm:text-[9.5px] tracking-widest border border-[#972933]/25">
               <span className="w-1.5 h-1.5 bg-[#972933] animate-pulse" />
               STATUS: JURY FINALIZATION
             </span>
           </div>
 
           {/* Card Top Row */}
-          <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4">
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-3 sm:pb-4">
             <div className="max-w-[560px]">
               <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#972933] block mb-1">
                 Our Process
               </span>
-              <h3 className="font-display font-black text-xl sm:text-2xl text-[#1a1010] tracking-wide uppercase">
+              <h3 className="font-display font-black text-lg min-[380px]:text-xl sm:text-2xl text-[#1a1010] tracking-wide uppercase">
                 Evaluation Framework & Jury Panel
               </h3>
               <p className="text-xs sm:text-[13.5px] text-[#321F1F]/80 mt-1.5 leading-relaxed font-serif">
@@ -206,9 +206,9 @@ export default function Judging() {
           </div>
 
           {/* 2 Round Sub-Cards with Warm Contrast */}
-          <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 my-5 sm:my-6">
+          <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5 my-4 sm:my-6">
             {/* Round 1 Card */}
-            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-none p-4 sm:p-5 flex items-start gap-3.5 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
+            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-none p-3.5 sm:p-5 flex items-start gap-3 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
               <div className="w-8 h-8 rounded-none bg-[#972933] text-white font-serif font-bold text-sm flex items-center justify-center shrink-0 shadow-2xs">
                 1
               </div>
@@ -216,7 +216,7 @@ export default function Judging() {
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933] block">
                   Round 1
                 </span>
-                <h4 className="font-serif font-bold text-[15px] sm:text-base text-[#1a1010] leading-snug">
+                <h4 className="font-serif font-bold text-sm sm:text-base text-[#1a1010] leading-snug">
                   Initial Screening
                 </h4>
                 <p className="text-xs sm:text-[12.5px] text-[#321F1F]/80 leading-relaxed">
@@ -227,7 +227,7 @@ export default function Judging() {
             </div>
 
             {/* Round 2 Card */}
-            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-none p-4 sm:p-5 flex items-start gap-3.5 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
+            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-none p-3.5 sm:p-5 flex items-start gap-3 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
               <div className="w-8 h-8 rounded-none bg-[#972933] text-white font-serif font-bold text-sm flex items-center justify-center shrink-0 shadow-2xs">
                 2
               </div>
@@ -235,7 +235,7 @@ export default function Judging() {
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933] block">
                   Round 2
                 </span>
-                <h4 className="font-serif font-bold text-[15px] sm:text-base text-[#1a1010] leading-snug">
+                <h4 className="font-serif font-bold text-sm sm:text-base text-[#1a1010] leading-snug">
                   Mentorship & Pitch
                 </h4>
                 <p className="text-xs sm:text-[12.5px] text-[#321F1F]/80 leading-relaxed">
@@ -247,10 +247,10 @@ export default function Judging() {
           </div>
 
           {/* Card Bottom Row: CTA Button + Divider + Motto */}
-          <div className="relative z-10 pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="relative z-10 pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4">
             <Link
               href="/#register"
-              className="inline-flex items-center justify-center gap-2.5 bg-[#4E0C16] hover:bg-[#38080F] text-white text-xs sm:text-[13px] font-semibold px-6 py-3.5 rounded-none shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all w-full sm:w-auto uppercase tracking-wider"
+              className="inline-flex items-center justify-center gap-2.5 bg-[#4E0C16] hover:bg-[#38080F] text-white text-xs sm:text-[13px] font-semibold px-5 py-3.5 min-h-[44px] rounded-none shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all w-full sm:w-auto uppercase tracking-wider"
             >
               <span>Submit your team&rsquo;s pitch deck</span>
               <span className="text-sm font-light">→</span>
