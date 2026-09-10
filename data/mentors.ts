@@ -20,7 +20,7 @@ export const PAST_MENTORS_DATA: Mentor[] = [
   },
   {
     id: "archimedha",
-    name: "Archimedha Mohapatra",
+    name: "Archimedha",
     role: "Founder & CEO, StartSmart | Technology & Innovation Mentor",
     organization: "StartSmart",
     alumnusTag: "SBC Mentor",
