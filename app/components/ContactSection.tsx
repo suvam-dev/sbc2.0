@@ -115,35 +115,13 @@ export default function ContactSection() {
           ))}
         </div>
 
-        {/* Lower Info Blocks */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mb-6 sm:mb-8">
-          {/* General Inquiries */}
-          <div className="bg-[#f7ecd0]/80 rounded-none border border-[#321F1F]/15 p-4 sm:p-6 flex items-start gap-3.5 sm:gap-4">
-            <div className="p-2.5 sm:p-3 rounded-full bg-[#972933]/10 text-[#972933] shrink-0 mt-0.5">
-              <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
-            </div>
-            <div className="space-y-1 min-w-0">
-              <h4 className="font-serif font-bold text-base sm:text-lg text-[#321F1F]">
-                General Inquiries
-              </h4>
-              <a
-                href={`mailto:${GENERAL_CONTACT.email}`}
-                className="text-xs sm:text-sm font-semibold text-[#972933] hover:underline block break-all"
-              >
-                {GENERAL_CONTACT.email}
-              </a>
-              <p className="text-[11px] sm:text-xs text-[#321F1F]/70">
-                {GENERAL_CONTACT.responseSla}
-              </p>
-            </div>
-          </div>
-
-          {/* Office Address */}
-          <div className="bg-[#f7ecd0]/80 rounded-none border border-[#321F1F]/15 p-4 sm:p-6 flex items-start gap-3.5 sm:gap-4">
-            <div className="p-2.5 sm:p-3 rounded-full bg-[#972933]/10 text-[#972933] shrink-0 mt-0.5">
+        {/* Secretariat / Office Address */}
+        <div className="max-w-xl mx-auto mb-6 sm:mb-8">
+          <div className="bg-[#f7ecd0]/80 rounded-none border border-[#321F1F]/15 p-4 sm:p-5 flex items-center justify-center gap-3.5 sm:gap-4 text-center sm:text-left shadow-2xs">
+            <div className="p-2.5 sm:p-3 rounded-full bg-[#972933]/10 text-[#972933] shrink-0">
               <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div className="space-y-1 min-w-0">
+            <div className="space-y-0.5 min-w-0">
               <h4 className="font-serif font-bold text-base sm:text-lg text-[#321F1F]">
                 {GENERAL_CONTACT.organization}
               </h4>
