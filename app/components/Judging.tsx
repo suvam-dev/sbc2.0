@@ -205,42 +205,58 @@ export default function Judging() {
             </div>
           </div>
 
-          {/* 2 Round Sub-Cards with Warm Contrast */}
-          <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5 my-4 sm:my-6">
-            {/* Round 1 Card */}
-            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-none p-3.5 sm:p-5 flex items-start gap-3 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
+          {/* Mentorship & Evaluation Round Sub-Cards */}
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 my-4 sm:my-6">
+            {/* Mentorship Round 1 */}
+            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-none p-3.5 sm:p-4.5 flex items-start gap-3 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
               <div className="w-8 h-8 rounded-none bg-[#972933] text-white font-serif font-bold text-sm flex items-center justify-center shrink-0 shadow-2xs">
                 1
               </div>
               <div className="space-y-1">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933] block">
-                  Round 1
+                  Round 1 • From 31 Aug
                 </span>
                 <h4 className="font-serif font-bold text-sm sm:text-base text-[#1a1010] leading-snug">
-                  Initial Screening
+                  Mentorship 1
                 </h4>
-                <p className="text-xs sm:text-[12.5px] text-[#321F1F]/80 leading-relaxed">
-                  Clarity of problem statement, unique consumer or business insight, and initial
-                  market validation.
+                <p className="text-xs sm:text-[12px] text-[#321F1F]/80 leading-relaxed">
+                  One-on-one sessions with industry mentors on problem-solution fit, business model validation, and initial traction.
                 </p>
               </div>
             </div>
 
-            {/* Round 2 Card */}
-            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-none p-3.5 sm:p-5 flex items-start gap-3 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
+            {/* Mentorship Round 2 */}
+            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-none p-3.5 sm:p-4.5 flex items-start gap-3 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
               <div className="w-8 h-8 rounded-none bg-[#972933] text-white font-serif font-bold text-sm flex items-center justify-center shrink-0 shadow-2xs">
                 2
               </div>
               <div className="space-y-1">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933] block">
-                  Round 2
+                  Round 2 • Mid Sep
                 </span>
                 <h4 className="font-serif font-bold text-sm sm:text-base text-[#1a1010] leading-snug">
-                  Mentorship & Pitch
+                  Mentorship 2
                 </h4>
-                <p className="text-xs sm:text-[12.5px] text-[#321F1F]/80 leading-relaxed">
-                  Refinement across business model, unit economics, go-to-market plan, and pitch
-                  execution before investors.
+                <p className="text-xs sm:text-[12px] text-[#321F1F]/80 leading-relaxed">
+                  Deep-dive strategy on unit economics, go-to-market scale, financial modeling, and pitch deck refinement.
+                </p>
+              </div>
+            </div>
+
+            {/* Grand Finale Card */}
+            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-none p-3.5 sm:p-4.5 flex items-start gap-3 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
+              <div className="w-8 h-8 rounded-none bg-[#4E0C16] text-white font-serif font-bold text-sm flex items-center justify-center shrink-0 shadow-2xs">
+                ★
+              </div>
+              <div className="space-y-1">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933] block">
+                  Grand Finale
+                </span>
+                <h4 className="font-serif font-bold text-sm sm:text-base text-[#1a1010] leading-snug">
+                  Live VC Pitch
+                </h4>
+                <p className="text-xs sm:text-[12px] text-[#321F1F]/80 leading-relaxed">
+                  Top 10 shortlisted finalist startups pitch live on campus to marquee venture capitalists and angel networks.
                 </p>
               </div>
             </div>
