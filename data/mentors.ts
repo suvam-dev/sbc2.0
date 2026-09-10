@@ -24,8 +24,7 @@ export const PAST_MENTORS_DATA: Mentor[] = [
     role: "Founder & CEO, StartSmart | Technology & Innovation Mentor",
     organization: "StartSmart",
     alumnusTag: "SBC Mentor",
-    // File to drop in public/images/: mentor-archimedha.png
-    imageUrl: "",
+    imageUrl: "/images/mentor-archimedha.png",
     linkedinUrl: "https://www.linkedin.com/in/archimedha/",
   },
   {
