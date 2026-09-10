@@ -13,7 +13,7 @@ export const CONTACT_LEADS: ContactPerson[] = [
     role: "Core Team Member",
     phone: "9818278581",
     email: "gupta.yash01@ecell-iitkgp.in",
-    linkedinUrl: "https://www.linkedin.com/in/yash-gupta-ecell",
+    linkedinUrl: "https://www.linkedin.com/in/iamyash011/",
     photoUrl: "/images/contact-yash-gupta.png",
   },
   {
@@ -21,7 +21,7 @@ export const CONTACT_LEADS: ContactPerson[] = [
     role: "Core Team Member",
     phone: "8307768940",
     email: "aggarwal.sanya@ecell-iitkgp.in",
-    linkedinUrl: "https://www.linkedin.com/in/sanya-aggarwal-ecell",
+    linkedinUrl: "https://www.linkedin.com/in/sanya-aggarwal-b75111314/",
     photoUrl: "/images/contact-sanya-aggarwal.png",
   },
 ];
