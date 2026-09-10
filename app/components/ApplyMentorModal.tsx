@@ -214,15 +214,6 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
         {/* LEFT COLUMN: Editorial Poster & Value Proposition          */}
         {/* ========================================================= */}
         <div className="hidden md:flex flex-col justify-between w-[38%] bg-[#f7ecd0] p-6 lg:p-8 border-r border-[#321F1F]/15 relative overflow-hidden select-none shrink-0 isolate">
-          {/* Background Architectural Etching / IIT KGP Sketch */}
-          <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-48 opacity-25 mix-blend-multiply flex items-end justify-center overflow-hidden">
-            <img
-              src="/images/judging-iitkgp-building.png"
-              alt="IIT Kharagpur Architectural Heritage"
-              className="w-full object-contain filter saturate-50 contrast-125"
-            />
-          </div>
-
           {/* Top Brand Tag & Heading */}
           <div className="relative z-10">
             <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#972933] font-bold block mb-3">
