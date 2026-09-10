@@ -32,9 +32,9 @@ export const GENERAL_CONTACT = {
   organization: "E-Cell, IIT Kharagpur",
   address: "RMSOEE, IIT Kharagpur, West Bengal 721302",
   socials: [
-    { platform: "Website", url: "https://ecell-iitkgp.org" },
-    { platform: "LinkedIn", url: "https://www.linkedin.com/company/ecellkgp" },
-    { platform: "Instagram", url: "https://www.instagram.com/ecell_iitkgp" },
-    { platform: "Twitter", url: "https://twitter.com/ecell_iitkgp" },
+    { platform: "Website", url: "https://www.ecell-iitkgp.in/" },
+    { platform: "LinkedIn", url: "https://www.linkedin.com/company/ecellkgp/" },
+    { platform: "Instagram", url: "https://www.instagram.com/iitkgp_ecell/" },
+    { platform: "Twitter", url: "https://x.com/ecelliitkgp" },
   ],
 };
