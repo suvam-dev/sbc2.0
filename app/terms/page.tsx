@@ -17,9 +17,9 @@ export default function TermsPage() {
             All submitted pitch decks and venture ideas remain the intellectual property of the respective teams. Judges, mentors, and organizers evaluate submissions under strict professional discretion.
           </p>
           <p>
-            For inquiries regarding terms, contact{" "}
-            <a href="mailto:admin@ecell-iitkgp.in" className="text-[#972933] font-medium underline">
-              admin@ecell-iitkgp.in
+            For queries or disputes regarding these terms, please contact our organizers through the{" "}
+            <a href="/#contact" className="text-[#972933] font-medium underline">
+              Contact Desk
             </a>.
           </p>
         </div>

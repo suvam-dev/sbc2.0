@@ -321,7 +321,10 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
 
               <div className="bg-[#f7ecd0]/80 border border-[#321F1F]/15 rounded-xl p-4 w-full max-w-md text-left mb-6 text-xs text-[#321F1F]/80 space-y-1 font-serif">
                 <p>
-                  <strong>Direct Inquiries:</strong> admin@ecell-iitkgp.in
+                  <strong>Direct Inquiries:</strong> Contact our team via the{" "}
+                  <a href="/#contact" className="underline text-[#972933] font-medium" onClick={handleClose}>
+                    Contact Desk
+                  </a>
                 </p>
                 <p>
                   <strong>Mentorship Rounds:</strong> Phase II (from 31 Aug) & Phase III (Mid Sep)
@@ -552,12 +555,13 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
                     {/* Step 1 Footer */}
                     <div className="pt-4 flex items-center justify-between border-t border-[#321F1F]/10">
                       <span className="text-[11px] text-[#321F1F]/60">
-                        Prefer to email directly?{" "}
+                        Have questions? Visit our{" "}
                         <a
-                          href="mailto:admin@ecell-iitkgp.in"
+                          href="/#contact"
+                          onClick={onClose}
                           className="underline hover:text-[#972933] font-medium"
                         >
-                          admin@ecell-iitkgp.in
+                          Contact Desk
                         </a>
                       </span>
 

@@ -17,9 +17,9 @@ export default function PrivacyPage() {
             Any information submitted through the registration portal (including personal contact details, startup overview, and pitch deck materials) will be utilized solely for the evaluation, mentorship pairing, and administrative operations of Startup Bootcamp 9.0.
           </p>
           <p>
-            For questions regarding privacy practices, please contact{" "}
-            <a href="mailto:admin@ecell-iitkgp.in" className="text-[#972933] font-medium underline">
-              admin@ecell-iitkgp.in
+            For questions regarding privacy practices, please reach out through our{" "}
+            <a href="/#contact" className="text-[#972933] font-medium underline">
+              Contact Desk
             </a>.
           </p>
         </div>

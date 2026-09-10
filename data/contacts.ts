@@ -27,7 +27,7 @@ export const CONTACT_LEADS: ContactPerson[] = [
 ];
 
 export const GENERAL_CONTACT = {
-  email: "admin@ecell-iitkgp.in",
+  email: "gupta.yash01@ecell-iitkgp.in",
   responseSla: "We usually respond within 24 hours.",
   organization: "E-Cell, IIT Kharagpur",
   address: "RMSOEE, IIT Kharagpur, West Bengal 721302",
