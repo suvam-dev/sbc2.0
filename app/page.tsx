@@ -1,14 +1,13 @@
 "use client";
 
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
 import Bulletin from "./components/Bulletin";
-import TheCase from "./components/TheCase";
 import PastMentorsMarquee from "./components/PastMentorsMarquee";
 import Eligibility from "./components/Eligibility";
 import Judging from "./components/Judging";
-import Registration from "./components/Registration";
-import TheSurvey from "./components/TheSurvey";
+import RegisterWizard from "./components/RegisterWizard";
+import IncentivesSection from "./components/IncentivesSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 
@@ -16,39 +15,36 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-[#f7ecd0] text-[#321F1F]">
       {/* 1. Global Header Navigation */}
-      <Navbar />
+      <Header />
 
       {/* Main Content Area */}
       <main className="flex-1 w-full flex flex-col">
         {/* 2. Hero Section */}
-        <Hero />
+        <HeroSection />
 
         {/* 3. Bulletin / Updates Section */}
         <Bulletin />
 
-        {/* 4. The Case Section */}
-        {/* <TheCase /> */}
-
-        {/* 5. Past Mentors Infinite Horizontal Scroll Section (replaces Partners) */}
+        {/* 4. Past Mentors Infinite Horizontal Scroll Section */}
         <PastMentorsMarquee />
 
-        {/* 6. Eligibility Section */}
+        {/* 5. Eligibility Section */}
         <Eligibility />
 
-        {/* 7. Judging Section */}
+        {/* 6. Judging Section */}
         <Judging />
 
-        {/* 8. Register Your Team Form Section */}
-        <Registration />
+        {/* 7. Register Your Team Form Section */}
+        <RegisterWizard />
 
-        {/* 9. Our Incentives */}
-        <TheSurvey />
+        {/* 8. Our Incentives */}
+        <IncentivesSection />
 
-        {/* 10. Contact Us */}
+        {/* 9. Contact Us */}
         <ContactSection />
       </main>
 
-      {/* 11. Legal Footer */}
+      {/* 10. Legal Footer */}
       <Footer />
     </div>
   );
