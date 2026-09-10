@@ -61,11 +61,11 @@ export default function HeroSection() {
   ];
 
   return (
-    <section ref={containerRef} className="relative overflow-hidden bg-[#f7ecd0] pt-24 pb-10 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-16">
-      {/* Left Side Retro Poster Collage Banner - Prominently Visible */}
+    <section ref={containerRef} className="relative overflow-hidden bg-[#f7ecd0] pt-26 pb-10 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-16">
+      {/* Left Side Retro Poster Collage Banner - Prominently Visible with Edge Fades */}
       <div
         ref={leftCollageRef}
-        className="pointer-events-none absolute -left-16 sm:-left-28 md:-left-40 lg:-left-48 -top-12 bottom-0 w-28 sm:w-52 md:w-64 lg:w-80 overflow-hidden opacity-30 sm:opacity-40 mix-blend-multiply select-none z-0"
+        className="pointer-events-none absolute -left-20 sm:-left-28 md:-left-40 lg:-left-48 -top-12 bottom-0 w-24 sm:w-52 md:w-64 lg:w-80 overflow-hidden opacity-15 sm:opacity-35 md:opacity-40 mix-blend-multiply select-none z-0"
         aria-hidden="true"
       >
         <img
@@ -73,12 +73,16 @@ export default function HeroSection() {
           alt=""
           className="w-full h-full object-cover object-left"
         />
+        {/* Soft edge dissolves to guarantee perfect text legibility */}
+        <div className="absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#f7ecd0] via-[#f7ecd0]/85 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-16 sm:h-24 bg-gradient-to-b from-[#f7ecd0] to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-24 bg-gradient-to-t from-[#f7ecd0] to-transparent pointer-events-none" />
       </div>
 
-      {/* Right Side Retro Poster Collage Banner - Prominently Visible */}
+      {/* Right Side Retro Poster Collage Banner - Prominently Visible with Edge Fades */}
       <div
         ref={rightCollageRef}
-        className="pointer-events-none absolute -right-16 sm:-right-28 md:-right-40 lg:-right-48 -top-16 bottom-0 w-28 sm:w-52 md:w-64 lg:w-80 overflow-hidden opacity-30 sm:opacity-40 mix-blend-multiply select-none z-0"
+        className="pointer-events-none absolute -right-20 sm:-right-28 md:-right-40 lg:-right-48 -top-16 bottom-0 w-24 sm:w-52 md:w-64 lg:w-80 overflow-hidden opacity-15 sm:opacity-35 md:opacity-40 mix-blend-multiply select-none z-0"
         aria-hidden="true"
       >
         <img
@@ -86,9 +90,13 @@ export default function HeroSection() {
           alt=""
           className="w-full h-full object-cover object-right"
         />
+        {/* Soft edge dissolves to guarantee perfect text legibility */}
+        <div className="absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-[#f7ecd0] via-[#f7ecd0]/85 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-16 sm:h-24 bg-gradient-to-b from-[#f7ecd0] to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-16 sm:h-24 bg-gradient-to-t from-[#f7ecd0] to-transparent pointer-events-none" />
       </div>
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-3.5 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         {/* Infinite Phase Dateline Marquee */}
         <div className="w-full overflow-hidden mb-5 sm:mb-8 py-1.5 border-y border-[#321F1F]/10 hero-anim-item">
           <div className="animate-phase-marquee flex items-center gap-6 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#321F1F]">
@@ -114,16 +122,16 @@ export default function HeroSection() {
           <img
             src="/images/hero-startup-bootcamp-title.png"
             alt="What is Startup Bootcamp?"
-            className="w-[250px] min-[380px]:w-[290px] sm:w-[520px] lg:w-[680px] max-w-[92vw] h-auto object-contain mx-auto drop-shadow-md hover:scale-[1.02] transition-transform duration-300"
+            className="w-[260px] min-[380px]:w-[300px] sm:w-[520px] lg:w-[680px] max-w-[90vw] h-auto object-contain mx-auto drop-shadow-md hover:scale-[1.02] transition-transform duration-300"
           />
           <h1 className="sr-only">What is Startup Bootcamp?</h1>
-          <p className="mt-3 text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#321F1F]/75 font-serif">
+          <p className="mt-2.5 sm:mt-3 text-[11px] min-[380px]:text-xs sm:text-sm font-semibold uppercase tracking-wider sm:tracking-widest text-[#321F1F]/75 font-serif max-w-sm sm:max-w-none">
             Entrepreneurship Cell, IIT Kharagpur &bull; 9th Edition
           </p>
         </div>
 
         {/* Primary Mission Statement */}
-        <div className="max-w-[900px] mx-auto text-sm sm:text-lg lg:text-xl font-serif leading-relaxed text-[#321F1F] mb-6 sm:mb-8 hero-anim-item px-2 sm:px-0">
+        <div className="max-w-[820px] mx-auto text-[13.5px] min-[380px]:text-[14.5px] sm:text-lg lg:text-xl font-serif leading-relaxed text-[#321F1F] mb-6 sm:mb-8 hero-anim-item px-3.5 sm:px-6">
           <p>
             Startup Boot Camp (SBC) is the <strong>Entrepreneurship Cell, IIT Kharagpur&rsquo;s</strong> mentorship
             programme for early-stage student ventures, now in its ninth edition. Selected startups
