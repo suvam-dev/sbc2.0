@@ -11,6 +11,14 @@ import {
   FileText,
   AlertCircle,
   Sparkles,
+  Link2,
+  HelpCircle,
+  AlertTriangle,
+  ExternalLink,
+  Globe,
+  X,
+  Eye,
+  Check,
 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { motion, AnimatePresence } from "framer-motion";
@@ -68,6 +76,7 @@ export default function RegisterWizard() {
   const [submissionSuccess, setSubmissionSuccess] = useState<boolean>(false);
   const [registrationId, setRegistrationId] = useState<string>("");
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [showAccessGuideModal, setShowAccessGuideModal] = useState<boolean>(false);
 
   const [formData, setFormData] = useState<FormData>({
     collegeEmail: "",
@@ -104,6 +113,11 @@ export default function RegisterWizard() {
     }
     if (!formData.sector) {
       errors.sector = "Please select a sector for your venture.";
+    }
+    if (formData.pitchDeckUrl && formData.pitchDeckUrl.trim().length > 0) {
+      if (!/^https?:\/\//i.test(formData.pitchDeckUrl.trim())) {
+        errors.pitchDeckUrl = "Please provide a valid URL starting with https:// (e.g. Google Drive, DocSend, Pitch link).";
+      }
     }
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -233,35 +247,9 @@ export default function RegisterWizard() {
     setFormErrors({});
 
     try {
-      let uploadedDeckUrl = formData.pitchDeckUrl;
+      const pitchDeckLink = formData.pitchDeckUrl ? formData.pitchDeckUrl.trim() : null;
 
-      // 1. Upload file to Supabase Storage if present
-      if (formData.pitchDeckFile) {
-        try {
-          const fileExt = formData.pitchDeckFile.name.split(".").pop();
-          const fileName = `${Date.now()}_${Math.random().toString(36).substring(2, 8)}.${fileExt}`;
-          const filePath = `decks/${fileName}`;
-
-          const { data: uploadData, error: uploadError } = await supabase.storage
-            .from("pitch-decks")
-            .upload(filePath, formData.pitchDeckFile);
-
-          if (!uploadError && uploadData) {
-            const { data: publicUrlData } = supabase.storage
-              .from("pitch-decks")
-              .getPublicUrl(filePath);
-            uploadedDeckUrl = publicUrlData.publicUrl;
-          } else {
-            console.warn("Storage upload note (proceeding):", uploadError?.message);
-            uploadedDeckUrl = `https://storage.placeholder/${fileName}`;
-          }
-        } catch (storageErr) {
-          console.warn("Storage attempt notice:", storageErr);
-          uploadedDeckUrl = `https://storage.placeholder/${formData.pitchDeckFile.name}`;
-        }
-      }
-
-      // 2. Call server-side registration endpoint
+      // Call server-side registration endpoint
       const response = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -269,7 +257,7 @@ export default function RegisterWizard() {
           college_email: formData.collegeEmail,
           startup_name: formData.startupName,
           sector: formData.sector,
-          pitch_deck_url: uploadedDeckUrl || null,
+          pitch_deck_url: pitchDeckLink,
           founder_full_name: formData.founderFullName,
           founder_email: formData.founderEmail,
           founder_whatsapp: formData.founderWhatsapp,
@@ -574,48 +562,82 @@ export default function RegisterWizard() {
                     )}
                   </div>
 
-                  {/* Pitch Deck File */}
-                  <div className="space-y-1.5">
-                    <label
-                      htmlFor="pitch-deck"
-                      className="block text-xs sm:text-sm font-semibold text-[#321F1F]"
-                    >
-                      Pitch Deck (Optional / Highly Recommended)
-                    </label>
-                    <div className="border-2 border-dashed border-[#321F1F]/20 hover:border-[#972933] transition-colors rounded-none p-5 text-center bg-[#f7ecd0] cursor-pointer relative">
-                      <input
-                        id="pitch-deck"
-                        type="file"
-                        accept=".pdf,.pptx,.ppt"
-                        onChange={handleFileChange}
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                      />
-                      <div className="flex flex-col items-center justify-center gap-2">
-                        {formData.pitchDeckFile ? (
-                          <div className="flex items-center gap-2 text-[#972933] font-semibold text-sm">
-                            <FileText className="w-6 h-6" />
-                            <span>{formData.pitchDeckFile.name}</span>
-                            <span className="text-xs text-[#321F1F]/60">
-                              ({(formData.pitchDeckFile.size / 1024 / 1024).toFixed(2)} MB)
-                            </span>
-                          </div>
-                        ) : (
-                          <>
-                            <Upload className="w-7 h-7 text-[#321F1F]/50" />
-                            <span className="text-xs sm:text-sm font-medium text-[#321F1F]/80">
-                              Click or drag and drop your pitch deck (.pdf or .pptx)
-                            </span>
-                            <span className="text-[11px] text-[#321F1F]/50">Max size 25MB</span>
-                          </>
-                        )}
-                      </div>
+                  {/* Pitch Deck Link */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <label
+                        htmlFor="pitch-deck-url"
+                        className="block text-xs sm:text-sm font-semibold text-[#321F1F]"
+                      >
+                        Pitch Deck Link <span className="text-[#321F1F]/60 font-normal">(Optional / Highly Recommended)</span>
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => setShowAccessGuideModal(true)}
+                        className="text-xs text-[#972933] font-bold hover:underline inline-flex items-center gap-1 cursor-pointer"
+                      >
+                        <HelpCircle className="w-3.5 h-3.5" />
+                        <span>How to allow access?</span>
+                      </button>
                     </div>
-                    {formErrors.pitchDeckFile && (
+
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#321F1F]/40">
+                        <Link2 className="w-4 h-4" />
+                      </div>
+                      <input
+                        id="pitch-deck-url"
+                        type="url"
+                        placeholder="https://drive.google.com/... or DocSend, Pitch, Canva link"
+                        value={formData.pitchDeckUrl}
+                        onChange={(e) => {
+                          setFormData((prev) => ({ ...prev, pitchDeckUrl: e.target.value }));
+                          if (formErrors.pitchDeckUrl) {
+                            setFormErrors((prev) => {
+                              const next = { ...prev };
+                              delete next.pitchDeckUrl;
+                              return next;
+                            });
+                          }
+                        }}
+                        className={`w-full pl-10 pr-4 py-2.5 bg-[#f7ecd0] rounded-none border text-base sm:text-sm text-[#321F1F] placeholder:text-[#321F1F]/40 focus:outline-none focus:ring-2 focus:ring-[#972933] ${
+                          formErrors.pitchDeckUrl
+                            ? "border-[#972933] bg-[#972933]/5"
+                            : "border-[#321F1F]/20"
+                        }`}
+                      />
+                    </div>
+                    {formErrors.pitchDeckUrl && (
                       <p className="text-xs text-[#972933] flex items-center gap-1">
                         <AlertCircle className="w-3.5 h-3.5" />
-                        {formErrors.pitchDeckFile}
+                        {formErrors.pitchDeckUrl}
                       </p>
                     )}
+
+                    {/* Prominent Access Permission Callout */}
+                    <div className="p-3.5 bg-[#fdf5e6] border border-[#972933]/30 rounded-none flex items-start gap-3 text-xs text-[#321F1F]">
+                      <div className="w-6 h-6 rounded-full bg-[#972933]/10 text-[#972933] flex items-center justify-center shrink-0 mt-0.5 font-bold">
+                        <Globe className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="space-y-1.5 flex-1">
+                        <div className="flex flex-wrap items-center justify-between gap-1">
+                          <p className="font-bold text-[#972933] text-xs sm:text-[13px] tracking-wide">
+                            Access Notice: Set link to &ldquo;Anyone with the link can view&rdquo;
+                          </p>
+                        </div>
+                        <p className="text-[#321F1F]/80 text-[11px] sm:text-xs leading-relaxed">
+                          Please ensure your link does not require login or access request approval. If restricted to your organization/college domain or set to private, the jury & mentors will not be able to evaluate your venture.
+                        </p>
+                        <button
+                          type="button"
+                          onClick={() => setShowAccessGuideModal(true)}
+                          className="inline-flex items-center gap-1 text-[11px] font-bold text-[#972933] hover:text-[#74001c] underline cursor-pointer pt-0.5"
+                        >
+                          <span>Step-by-step guide to make your Google Drive / DocSend link public</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </button>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="pt-6 flex items-center justify-between gap-4">
@@ -977,10 +999,20 @@ export default function RegisterWizard() {
                           <span className="font-semibold break-words">{formData.sector}</span>
                         </div>
                         <div className="sm:col-span-2">
-                          <span className="text-[#321F1F]/60 block text-[11px]">Pitch Deck:</span>
-                          <span className="font-semibold break-all">
-                            {formData.pitchDeckFile ? formData.pitchDeckFile.name : "None attached"}
-                          </span>
+                          <span className="text-[#321F1F]/60 block text-[11px]">Pitch Deck Link:</span>
+                          {formData.pitchDeckUrl ? (
+                            <a
+                              href={formData.pitchDeckUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-semibold text-[#972933] hover:underline inline-flex items-center gap-1 break-all"
+                            >
+                              <span>{formData.pitchDeckUrl}</span>
+                              <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                            </a>
+                          ) : (
+                            <span className="font-semibold text-[#321F1F]/50 italic">None provided</span>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -1069,6 +1101,104 @@ export default function RegisterWizard() {
           )}
         </div>
       </div>
+
+      {/* ACCESS PERMISSION GUIDE MODAL POPUP */}
+      <AnimatePresence>
+        {showAccessGuideModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowAccessGuideModal(false)}
+              className="fixed inset-0 bg-[#1a1010]/70 backdrop-blur-sm"
+            />
+
+            {/* Modal Dialog */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="relative w-full max-w-lg bg-[#f7ecd0] border-2 border-[#972933] shadow-2xl p-5 sm:p-7 z-10 space-y-5 my-8"
+            >
+              {/* Modal Header */}
+              <div className="flex items-start justify-between border-b border-[#321F1F]/15 pb-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-full bg-[#972933] text-white flex items-center justify-center shrink-0">
+                    <Globe className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif font-bold text-base sm:text-lg text-[#321F1F]">
+                      Make Pitch Deck Accessible to Anyone
+                    </h3>
+                    <p className="text-[11px] text-[#321F1F]/60 uppercase tracking-wider font-mono">
+                      Evaluation Permission Checklist
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setShowAccessGuideModal(false)}
+                  className="p-1 text-[#321F1F]/60 hover:text-[#972933] transition cursor-pointer"
+                  aria-label="Close dialog"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Steps */}
+              <div className="space-y-3.5 text-xs sm:text-sm text-[#321F1F]/90">
+                <div className="bg-[#fff9ed] p-3.5 border border-[#321F1F]/15 space-y-2">
+                  <span className="font-bold text-[#972933] text-xs uppercase tracking-wide flex items-center gap-1.5">
+                    <span className="w-4 h-4 rounded-full bg-[#972933] text-white inline-flex items-center justify-center text-[10px]">1</span>
+                    For Google Drive / Google Slides:
+                  </span>
+                  <ol className="list-decimal list-inside space-y-1 pl-1 text-xs text-[#321F1F]/80">
+                    <li>Open your file in Google Drive &amp; click the blue <strong>Share</strong> button.</li>
+                    <li>Under <strong>General access</strong>, change from <strong>&ldquo;Restricted&rdquo;</strong> to <strong>&ldquo;Anyone with the link&rdquo;</strong>.</li>
+                    <li>Make sure role is set to <strong>&ldquo;Viewer&rdquo;</strong>.</li>
+                    <li>Click <strong>Copy link</strong> and paste into the box.</li>
+                  </ol>
+                </div>
+
+                <div className="bg-[#fff9ed] p-3.5 border border-[#321F1F]/15 space-y-2">
+                  <span className="font-bold text-[#972933] text-xs uppercase tracking-wide flex items-center gap-1.5">
+                    <span className="w-4 h-4 rounded-full bg-[#972933] text-white inline-flex items-center justify-center text-[10px]">2</span>
+                    For DocSend / Pitch / Canva / Notion:
+                  </span>
+                  <p className="text-xs text-[#321F1F]/80 pl-1">
+                    Turn on public link sharing and ensure email passcode or account verification requirement is disabled so reviewers can access without sign-in barriers.
+                  </p>
+                </div>
+
+                <div className="p-3 bg-[#972933]/10 border-l-4 border-[#972933] text-xs space-y-1">
+                  <p className="font-bold text-[#972933] flex items-center gap-1.5">
+                    <Eye className="w-3.5 h-3.5" />
+                    How to test your link in 5 seconds:
+                  </p>
+                  <p className="text-[#321F1F]/80 text-[11px] leading-relaxed">
+                    Copy your link, open a new <strong>Incognito / Private Window</strong> in your browser, and paste the URL. If the pitch deck opens immediately without asking for a Google sign-in, your link is 100% accessible!
+                  </p>
+                </div>
+              </div>
+
+              {/* Close Button */}
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => setShowAccessGuideModal(false)}
+                  className="w-full py-2.5 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+                >
+                  <Check className="w-4 h-4" />
+                  <span>Got it, my link is accessible</span>
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

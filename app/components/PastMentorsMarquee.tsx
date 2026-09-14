@@ -243,7 +243,7 @@ export default function PastMentorsMarquee({
             </div>
             <div className="flex items-baseline gap-3">
               <span className="font-serif italic text-2xl sm:text-3xl text-[#972933]/80 font-bold">
-                04
+                02
               </span>
               <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-[46px] tracking-wide text-[#321F1F] uppercase">
                 Past Mentors

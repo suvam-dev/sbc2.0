@@ -19,7 +19,7 @@ export const NAV_TABS: NavTab[] = [
   { label: "Eligibility", href: "/#eligibility", sectionId: "eligibility", aliases: ["eligibility"] },
   { label: "Judging", href: "/#judging", sectionId: "judging", aliases: ["judging", "evaluation-criteria"] },
   { label: "Incentives", href: "/#incentives", sectionId: "incentives", aliases: ["incentives", "survey"] },
-  { label: "FAQs", href: "/#faq", sectionId: "faq", aliases: ["faq", "faqs"] },
+  { label: "", href: "/#faq", sectionId: "faq", aliases: ["faq", ""] },
 ];
 
 export default function Header() {

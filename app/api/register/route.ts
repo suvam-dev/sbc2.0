@@ -69,7 +69,87 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Try inserting into Supabase
+    const registrationId = "SBC9-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+    const sheetDbUrl = process.env.SHEETDB_API_URL;
+
+    // Format team members as readable string and individual member slots
+    const formattedTeam = body.team_members && body.team_members.length > 0
+      ? body.team_members.map((m, i) => `[${i + 1}] ${m.name} (${m.email} / ${m.institute} / ${m.role})`).join("\n")
+      : "Solo Founder";
+
+    const m1 = body.team_members?.[0] || null;
+    const m2 = body.team_members?.[1] || null;
+    const m3 = body.team_members?.[2] || null;
+    const m4 = body.team_members?.[3] || null;
+
+    const timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+
+    const cleanPhone = body.founder_whatsapp.trim().replace(/^\+/, "");
+
+    // 1. Submit to SheetDB (Google Sheet / Excel database)
+    if (sheetDbUrl) {
+      try {
+        await fetch(sheetDbUrl, {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+        body: JSON.stringify({
+          data: [
+            {
+              timestamp: timestamp,
+              Timestamp: timestamp,
+              registration_id: registrationId,
+              "Registration ID": registrationId,
+              startup_name: body.startup_name.trim(),
+              "Startup Name": body.startup_name.trim(),
+              sector: body.sector.trim(),
+              Sector: body.sector.trim(),
+              pitch_deck_url: body.pitch_deck_url || "",
+              "Pitch Deck URL": body.pitch_deck_url || "",
+              founder_name: body.founder_full_name.trim(),
+              "Founder Name": body.founder_full_name.trim(),
+              founder_email: body.founder_email.trim().toLowerCase(),
+              "Founder Email": body.founder_email.trim().toLowerCase(),
+              founder_whatsapp: cleanPhone,
+              "Founder WhatsApp": cleanPhone,
+              department: body.founder_department?.trim() || "",
+              Department: body.founder_department?.trim() || "",
+              roll_number: body.founder_roll_number?.trim() || "",
+              "Roll Number": body.founder_roll_number?.trim() || "",
+              year_of_study: body.founder_year_of_study?.trim() || "",
+              "Year of Study": body.founder_year_of_study?.trim() || "",
+              founder_linkedin: body.founder_linkedin_url?.trim() || "",
+              "Founder LinkedIn": body.founder_linkedin_url?.trim() || "",
+              "Member 1 Name": m1?.name?.trim() || "",
+              "Member 1 Email": m1?.email?.trim() || "",
+              "Member 1 College": m1?.institute?.trim() || "",
+              "Member 1 Role": m1?.role?.trim() || "",
+              "Member 2 Name": m2?.name?.trim() || "",
+              "Member 2 Email": m2?.email?.trim() || "",
+              "Member 2 College": m2?.institute?.trim() || "",
+              "Member 2 Role": m2?.role?.trim() || "",
+              "Member 3 Name": m3?.name?.trim() || "",
+              "Member 3 Email": m3?.email?.trim() || "",
+              "Member 3 College": m3?.institute?.trim() || "",
+              "Member 3 Role": m3?.role?.trim() || "",
+              "Member 4 Name": m4?.name?.trim() || "",
+              "Member 4 Email": m4?.email?.trim() || "",
+              "Member 4 College": m4?.institute?.trim() || "",
+              "Member 4 Role": m4?.role?.trim() || "",
+              team_members: formattedTeam,
+              "Team Members": formattedTeam,
+            }
+          ]
+        }),
+      });
+    } catch (sheetErr) {
+      console.warn("SheetDB submission notice:", sheetErr);
+    }
+  }
+
+    // 2. Try inserting into Supabase if configured
     try {
       const { data: regData, error: regError } = await supabase
         .from("registrations")
@@ -88,53 +168,30 @@ export async function POST(req: NextRequest) {
         .select()
         .single();
 
-      if (regError) {
-        console.warn("Supabase insertion notice (using fallback ID if demo/unconfigured):", regError.message);
-        // If Supabase table isn't created or dummy credentials are used, return demo registration id
-        const mockRegistrationId = "demo-" + Math.random().toString(36).substring(2, 11);
-        return NextResponse.json({
-          success: true,
-          registration_id: mockRegistrationId,
-          isMock: true,
-          message: "Registration received successfully (local demo mode).",
-        });
-      }
+      if (!regError && regData) {
+        const dbRegistrationId = regData.id;
 
-      const registrationId = regData.id;
+        if (body.team_members && body.team_members.length > 0) {
+          const teamRows = body.team_members.map((m) => ({
+            registration_id: dbRegistrationId,
+            name: m.name.trim(),
+            email: m.email.trim().toLowerCase(),
+            institute: m.institute.trim(),
+            role: m.role.trim(),
+          }));
 
-      // Insert team members if any
-      if (body.team_members && body.team_members.length > 0) {
-        const teamRows = body.team_members.map((m) => ({
-          registration_id: registrationId,
-          name: m.name.trim(),
-          email: m.email.trim().toLowerCase(),
-          institute: m.institute.trim(),
-          role: m.role.trim(),
-        }));
-
-        const { error: teamError } = await supabase
-          .from("team_members")
-          .insert(teamRows);
-
-        if (teamError) {
-          console.warn("Supabase team_members insert notice:", teamError.message);
+          await supabase.from("team_members").insert(teamRows);
         }
       }
-
-      return NextResponse.json({
-        success: true,
-        registration_id: registrationId,
-        message: "Registration submitted successfully!",
-      });
     } catch (dbErr: any) {
-      console.warn("Database execution note:", dbErr?.message || dbErr);
-      return NextResponse.json({
-        success: true,
-        registration_id: "demo-" + Date.now(),
-        isMock: true,
-        message: "Registration submitted successfully (demo mode fallback).",
-      });
+      console.warn("Supabase database note:", dbErr?.message || dbErr);
     }
+
+    return NextResponse.json({
+      success: true,
+      registration_id: registrationId,
+      message: "Registration submitted successfully!",
+    });
   } catch (err: any) {
     return NextResponse.json(
       { success: false, message: err?.message || "Internal server error" },
