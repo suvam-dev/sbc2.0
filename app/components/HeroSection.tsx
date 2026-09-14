@@ -58,7 +58,7 @@ export default function HeroSection() {
     { label: "Registration", title: "Open For Student Teams", tag: "Apply Online" },
     { label: "Mentorship", title: "Two One-on-One Rounds", tag: "Alumni & Leaders" },
     { label: "Focus", title: "Strategy, Product & Scale", tag: "Idea to Prototype" },
-    { label: "Eligibility", title: "Pan-India Colleges", tag: "1-4 Members" },
+    { label: "Eligibility", title: "IIT Kharagpur Only", tag: "1-4 Members" },
   ];
 
   return (

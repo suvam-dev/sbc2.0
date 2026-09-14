@@ -156,7 +156,7 @@ export default function Eligibility() {
             </div>
             <span className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-none bg-[#972933]/10 text-[#972933] font-bold text-[9px] sm:text-[9.5px] tracking-widest border border-[#972933]/25">
               <span className="w-1.5 h-1.5 rounded-none bg-[#972933] animate-pulse" />
-              STATUS: UNDER REVIEW
+              ELIGIBILITY // IIT KGP ONLY
             </span>
           </div>
 
@@ -170,13 +170,13 @@ export default function Eligibility() {
                 Official Eligibility Criteria
               </h3>
               <span className="text-[10px] sm:text-[11px] font-mono text-[#972933] font-bold tracking-wider uppercase">
-                (Updating Soon • Guidelines in Committee)
+                Exclusively for IIT Kharagpur Startups &amp; Students
               </span>
             </div>
           </div>
 
           <p className="relative z-10 text-xs sm:text-sm md:text-[15px] leading-relaxed text-[#321F1F]/85 mb-4 sm:mb-5 font-serif">
-            Detailed eligibility guidelines for <strong className="font-semibold text-[#1a1010]">Startup Bootcamp 9.0</strong> are undergoing final review by the E-Cell IIT Kharagpur organizing committee. Preview verified parameters below:
+            Startup Bootcamp 9.0 is organized by <strong className="font-semibold text-[#1a1010]">E-Cell IIT Kharagpur</strong> exclusively for early-stage student ventures, researchers, and campus startups from IIT Kharagpur. Key eligibility parameters:
           </p>
 
           {/* Inner Checklist Container with Rich Warm Parchment & High Contrast */}
@@ -186,7 +186,7 @@ export default function Eligibility() {
                 <CheckCircle2 className="w-3.5 h-3.5 text-white stroke-[2.5]" />
               </div>
               <span className="text-xs sm:text-[13.5px] text-[#221616] font-medium leading-relaxed">
-                Open to student founders and early-stage ventures from colleges across India.
+                <strong>IIT Kharagpur Exclusive:</strong> Open exclusively to student founders, researchers, and early-stage ventures from IIT Kharagpur.
               </span>
             </div>
             <div className="h-px w-full bg-[#321F1F]/10" aria-hidden="true" />
@@ -195,7 +195,7 @@ export default function Eligibility() {
                 <CheckCircle2 className="w-3.5 h-3.5 text-white stroke-[2.5]" />
               </div>
               <span className="text-xs sm:text-[13.5px] text-[#221616] font-medium leading-relaxed">
-                Teams may consist of 1 to 4 members. Interdisciplinary teams are encouraged.
+                <strong>Team Composition:</strong> Teams may consist of 1 to 4 members. Interdisciplinary collaboration across IIT KGP departments is encouraged.
               </span>
             </div>
             <div className="h-px w-full bg-[#321F1F]/10" aria-hidden="true" />
@@ -204,7 +204,7 @@ export default function Eligibility() {
                 <CheckCircle2 className="w-3.5 h-3.5 text-white stroke-[2.5]" />
               </div>
               <span className="text-xs sm:text-[13.5px] text-[#221616] font-medium leading-relaxed">
-                Both idea-stage concepts and operational prototypes with traction are eligible.
+                <strong>Venture Stage:</strong> Both idea-stage concepts and operational prototypes with traction are eligible.
               </span>
             </div>
           </div>

@@ -424,8 +424,7 @@ export default function RegisterWizard() {
                 >
                   <div className="text-center space-y-2">
                     <p className="text-xs sm:text-sm text-[#321F1F]/75">
-                      Startup Bootcamp is open to full-time undergraduate and postgraduate students
-                      in India.
+                      Startup Bootcamp 9.0 is exclusively open to student ventures, researchers, and campus startups of IIT Kharagpur.
                     </p>
                   </div>
 
@@ -434,12 +433,12 @@ export default function RegisterWizard() {
                       htmlFor="college-email"
                       className="block text-xs sm:text-sm font-semibold text-[#321F1F]"
                     >
-                      Enter your College Email ID
+                      Enter your IIT Kharagpur Email ID
                     </label>
                     <input
                       id="college-email"
                       type="email"
-                      placeholder="e.g. rollnumber@iitkgp.ac.in or student@college.edu"
+                      placeholder="e.g. rollnumber@kgp.ac.in or student@iitkgp.ac.in"
                       value={formData.collegeEmail}
                       onChange={(e) => {
                         setFormData((prev) => ({ ...prev, collegeEmail: e.target.value }));

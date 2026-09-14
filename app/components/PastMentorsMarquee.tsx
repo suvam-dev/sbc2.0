@@ -307,7 +307,7 @@ export default function PastMentorsMarquee({
                   Guide Startup Bootcamp 9.0
                 </h4>
                 <p className="text-[11.5px] text-[#321F1F]/70 font-serif leading-snug mb-3">
-                  Mentor early-stage ventures from colleges across India.
+                  Mentor early-stage ventures from IIT Kharagpur.
                 </p>
                 {renderCtaButton("w-full")}
               </div>
@@ -355,7 +355,7 @@ export default function PastMentorsMarquee({
                 Guide the Next Wave of Founders
               </h4>
               <p className="text-xs text-[#321F1F]/75 font-serif leading-relaxed mb-3.5">
-                Share your operational experience and mentor ambitious early-stage startups from across India.
+                Share your operational experience and mentor ambitious early-stage startups from IIT Kharagpur.
               </p>
               {renderCtaButton("w-full shadow-md")}
             </div>
