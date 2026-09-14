@@ -39,9 +39,7 @@ export default function ContactSection() {
         {/* Header */}
         <div className="text-center mb-8 sm:mb-14 space-y-3">
           <div className="flex items-center justify-center gap-2 text-[#972933]">
-            <span className="h-px w-8 bg-[#972933]/40" />
-            <span className="text-base sm:text-lg select-none">&lowast;</span>
-            <span className="h-px w-8 bg-[#972933]/40" />
+            <span className="h-px w-12 bg-[#972933]/40" />
           </div>
 
           <h2 className="font-display font-black text-2xl min-[380px]:text-3xl sm:text-4xl lg:text-5xl text-[#972933] tracking-wide uppercase">
@@ -50,7 +48,7 @@ export default function ContactSection() {
 
           <p className="max-w-[620px] mx-auto text-xs sm:text-base lg:text-lg text-[#321F1F]/80 leading-relaxed font-serif italic">
             Have questions or need more information about Startup Bootcamp 9.0? Reach out to our
-            team &mdash; we&rsquo;d love to hear from you!
+            team, we would love to hear from you!
           </p>
         </div>
 

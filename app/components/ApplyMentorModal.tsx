@@ -17,7 +17,6 @@ import {
   TrendingUp,
   Check,
   FileText,
-  Sparkles,
 } from "lucide-react";
 
 interface ApplyMentorModalProps {
@@ -274,7 +273,7 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
               &ldquo;The best way to predict the future is to help build it.&rdquo;
             </p>
             <span className="text-[10px] text-[#972933] font-semibold mt-1 block font-mono">
-              — Peter Drucker
+              - Peter Drucker
             </span>
           </div>
         </div>

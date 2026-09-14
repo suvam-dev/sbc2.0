@@ -10,7 +10,6 @@ import {
   Upload,
   FileText,
   AlertCircle,
-  Sparkles,
   Link2,
   HelpCircle,
   AlertTriangle,
@@ -335,7 +334,7 @@ export default function RegisterWizard() {
                             : "bg-[#321F1F]/10 text-[#321F1F]/50"
                         }`}
                       >
-                        {isDone ? <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> : s.num}
+                        {s.num}
                       </div>
                       <span
                         className={`text-[9px] min-[380px]:text-[10px] sm:text-xs mt-1.5 font-medium transition-colors line-clamp-1 ${
@@ -383,10 +382,6 @@ export default function RegisterWizard() {
                   {registrationId}
                 </span>
               </div>
-              <p className="text-xs sm:text-sm text-[#321F1F]/70 pt-2">
-                A confirmation has been sent to <strong>{formData.founderEmail}</strong>. Our
-                mentorship coordination desk will reach out with track details and next steps.
-              </p>
               <div className="pt-6 flex justify-center gap-4">
                 <button
                   type="button"
@@ -439,7 +434,7 @@ export default function RegisterWizard() {
                       htmlFor="college-email"
                       className="block text-xs sm:text-sm font-semibold text-[#321F1F]"
                     >
-                      Enter your College Email ID <span className="text-[#972933]">*</span>
+                      Enter your College Email ID
                     </label>
                     <input
                       id="college-email"
@@ -463,8 +458,7 @@ export default function RegisterWizard() {
                       }`}
                     />
                     {formErrors.collegeEmail && (
-                      <p className="text-xs text-[#972933] flex items-center gap-1 font-medium mt-1">
-                        <AlertCircle className="w-3.5 h-3.5" />
+                      <p className="text-xs text-[#972933] font-medium mt-1">
                         {formErrors.collegeEmail}
                       </p>
                     )}
@@ -474,10 +468,9 @@ export default function RegisterWizard() {
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="w-full max-w-[480px] py-3.5 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded-none transition flex items-center justify-center gap-2 shadow-sm"
+                      className="w-full max-w-[480px] py-3.5 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded-none transition flex items-center justify-center shadow-sm"
                     >
                       <span>Continue</span>
-                      <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
                 </motion.div>
@@ -503,7 +496,7 @@ export default function RegisterWizard() {
                       htmlFor="startup-name"
                       className="block text-xs sm:text-sm font-semibold text-[#321F1F]"
                     >
-                      Startup / Idea Name <span className="text-[#972933]">*</span>
+                      Startup / Idea Name
                     </label>
                     <input
                       id="startup-name"
@@ -520,8 +513,7 @@ export default function RegisterWizard() {
                       }`}
                     />
                     {formErrors.startupName && (
-                      <p className="text-xs text-[#972933] flex items-center gap-1">
-                        <AlertCircle className="w-3.5 h-3.5" />
+                      <p className="text-xs text-[#972933]">
                         {formErrors.startupName}
                       </p>
                     )}
@@ -533,7 +525,7 @@ export default function RegisterWizard() {
                       htmlFor="sector"
                       className="block text-xs sm:text-sm font-semibold text-[#321F1F]"
                     >
-                      Sector / Domain <span className="text-[#972933]">*</span>
+                      Sector / Domain
                     </label>
                     <select
                       id="sector"
@@ -555,8 +547,7 @@ export default function RegisterWizard() {
                       ))}
                     </select>
                     {formErrors.sector && (
-                      <p className="text-xs text-[#972933] flex items-center gap-1">
-                        <AlertCircle className="w-3.5 h-3.5" />
+                      <p className="text-xs text-[#972933]">
                         {formErrors.sector}
                       </p>
                     )}
@@ -574,69 +565,54 @@ export default function RegisterWizard() {
                       <button
                         type="button"
                         onClick={() => setShowAccessGuideModal(true)}
-                        className="text-xs text-[#972933] font-bold hover:underline inline-flex items-center gap-1 cursor-pointer"
+                        className="text-xs text-[#972933] font-bold hover:underline cursor-pointer"
                       >
-                        <HelpCircle className="w-3.5 h-3.5" />
-                        <span>How to allow access?</span>
+                        How to allow access?
                       </button>
                     </div>
 
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#321F1F]/40">
-                        <Link2 className="w-4 h-4" />
-                      </div>
-                      <input
-                        id="pitch-deck-url"
-                        type="url"
-                        placeholder="https://drive.google.com/... or DocSend, Pitch, Canva link"
-                        value={formData.pitchDeckUrl}
-                        onChange={(e) => {
-                          setFormData((prev) => ({ ...prev, pitchDeckUrl: e.target.value }));
-                          if (formErrors.pitchDeckUrl) {
-                            setFormErrors((prev) => {
-                              const next = { ...prev };
-                              delete next.pitchDeckUrl;
-                              return next;
-                            });
-                          }
-                        }}
-                        className={`w-full pl-10 pr-4 py-2.5 bg-[#f7ecd0] rounded-none border text-base sm:text-sm text-[#321F1F] placeholder:text-[#321F1F]/40 focus:outline-none focus:ring-2 focus:ring-[#972933] ${
-                          formErrors.pitchDeckUrl
-                            ? "border-[#972933] bg-[#972933]/5"
-                            : "border-[#321F1F]/20"
-                        }`}
-                      />
-                    </div>
+                    <input
+                      id="pitch-deck-url"
+                      type="url"
+                      placeholder="https://drive.google.com/... or DocSend, Pitch, Canva link"
+                      value={formData.pitchDeckUrl}
+                      onChange={(e) => {
+                        setFormData((prev) => ({ ...prev, pitchDeckUrl: e.target.value }));
+                        if (formErrors.pitchDeckUrl) {
+                          setFormErrors((prev) => {
+                            const next = { ...prev };
+                            delete next.pitchDeckUrl;
+                            return next;
+                          });
+                        }
+                      }}
+                      className={`w-full px-4 py-2.5 bg-[#f7ecd0] rounded-none border text-base sm:text-sm text-[#321F1F] placeholder:text-[#321F1F]/40 focus:outline-none focus:ring-2 focus:ring-[#972933] ${
+                        formErrors.pitchDeckUrl
+                          ? "border-[#972933] bg-[#972933]/5"
+                          : "border-[#321F1F]/20"
+                      }`}
+                    />
                     {formErrors.pitchDeckUrl && (
-                      <p className="text-xs text-[#972933] flex items-center gap-1">
-                        <AlertCircle className="w-3.5 h-3.5" />
+                      <p className="text-xs text-[#972933]">
                         {formErrors.pitchDeckUrl}
                       </p>
                     )}
 
-                    {/* Prominent Access Permission Callout */}
-                    <div className="p-3.5 bg-[#fdf5e6] border border-[#972933]/30 rounded-none flex items-start gap-3 text-xs text-[#321F1F]">
-                      <div className="w-6 h-6 rounded-full bg-[#972933]/10 text-[#972933] flex items-center justify-center shrink-0 mt-0.5 font-bold">
-                        <Globe className="w-3.5 h-3.5" />
-                      </div>
-                      <div className="space-y-1.5 flex-1">
-                        <div className="flex flex-wrap items-center justify-between gap-1">
-                          <p className="font-bold text-[#972933] text-xs sm:text-[13px] tracking-wide">
-                            Access Notice: Set link to &ldquo;Anyone with the link can view&rdquo;
-                          </p>
-                        </div>
-                        <p className="text-[#321F1F]/80 text-[11px] sm:text-xs leading-relaxed">
-                          Please ensure your link does not require login or access request approval. If restricted to your organization/college domain or set to private, the jury & mentors will not be able to evaluate your venture.
-                        </p>
-                        <button
-                          type="button"
-                          onClick={() => setShowAccessGuideModal(true)}
-                          className="inline-flex items-center gap-1 text-[11px] font-bold text-[#972933] hover:text-[#74001c] underline cursor-pointer pt-0.5"
-                        >
-                          <span>Step-by-step guide to make your Google Drive / DocSend link public</span>
-                          <ExternalLink className="w-3 h-3" />
-                        </button>
-                      </div>
+                    {/* Access Permission Callout */}
+                    <div className="p-3.5 bg-[#fdf5e6] border border-[#972933]/30 rounded-none text-xs text-[#321F1F] space-y-1.5">
+                      <p className="font-bold text-[#972933] text-xs sm:text-[13px] tracking-wide">
+                        Access Notice: Set link to &ldquo;Anyone with the link can view&rdquo;
+                      </p>
+                      <p className="text-[#321F1F]/80 text-[11px] sm:text-xs leading-relaxed">
+                        Please ensure your link does not require login or access request approval. If restricted to your organization/college domain or set to private, the jury and mentors will not be able to evaluate your venture.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setShowAccessGuideModal(true)}
+                        className="text-[11px] font-bold text-[#972933] hover:text-[#74001c] underline cursor-pointer pt-0.5 block"
+                      >
+                        Step-by-step guide to make your Google Drive / DocSend link public
+                      </button>
                     </div>
                   </div>
 
@@ -644,18 +620,16 @@ export default function RegisterWizard() {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="px-5 py-2.5 border border-[#321F1F]/20 text-[#321F1F] font-semibold text-xs sm:text-sm rounded-none hover:bg-[#321F1F]/5 transition flex items-center gap-1.5"
+                      className="px-5 py-2.5 border border-[#321F1F]/20 text-[#321F1F] font-semibold text-xs sm:text-sm rounded-none hover:bg-[#321F1F]/5 transition flex items-center"
                     >
-                      <ChevronLeft className="w-4 h-4" />
                       <span>Back</span>
                     </button>
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="px-6 py-2.5 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm rounded-none transition flex items-center gap-1.5"
+                      className="px-6 py-2.5 bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm rounded-none transition flex items-center"
                     >
                       <span>Continue</span>
-                      <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
                 </motion.div>
@@ -681,7 +655,7 @@ export default function RegisterWizard() {
                       {/* Full Name */}
                       <div className="space-y-1">
                         <label className="block text-xs font-semibold text-[#321F1F]">
-                          Full Name <span className="text-[#972933]">*</span>
+                          Full Name
                         </label>
                         <input
                           type="text"
@@ -702,7 +676,7 @@ export default function RegisterWizard() {
                       {/* Founder Email */}
                       <div className="space-y-1">
                         <label className="block text-xs font-semibold text-[#321F1F]">
-                          Founder Email <span className="text-[#972933]">*</span>
+                          Founder Email
                         </label>
                         <input
                           type="email"
@@ -723,7 +697,7 @@ export default function RegisterWizard() {
                       {/* WhatsApp Phone */}
                       <div className="space-y-1">
                         <label className="block text-xs font-semibold text-[#321F1F]">
-                          Phone (WhatsApp) <span className="text-[#972933]">*</span>
+                          Phone (WhatsApp)
                         </label>
                         <input
                           type="tel"
@@ -843,9 +817,8 @@ export default function RegisterWizard() {
                         <button
                           type="button"
                           onClick={handleAddMember}
-                          className="inline-flex items-center gap-1 text-xs font-bold text-[#972933] hover:underline"
+                          className="text-xs font-bold text-[#972933] hover:underline"
                         >
-                          <Plus className="w-4 h-4" />
                           <span>Add Member</span>
                         </button>
                       )}
@@ -863,17 +836,17 @@ export default function RegisterWizard() {
                           <button
                             type="button"
                             onClick={() => handleRemoveMember(idx)}
-                            className="text-[#321F1F]/50 hover:text-[#972933] p-1 transition"
+                            className="text-xs text-[#972933] hover:underline transition font-semibold"
                             aria-label={`Remove Member ${idx + 1}`}
                           >
-                            <Trash2 className="w-4 h-4" />
+                            Remove
                           </button>
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           <div className="space-y-1">
                             <label className="text-xs font-semibold text-[#321F1F]">
-                              Name <span className="text-[#972933]">*</span>
+                              Name
                             </label>
                             <input
                               type="text"
@@ -892,7 +865,7 @@ export default function RegisterWizard() {
 
                           <div className="space-y-1">
                             <label className="text-xs font-semibold text-[#321F1F]">
-                              Email <span className="text-[#972933]">*</span>
+                              Email
                             </label>
                             <input
                               type="email"
@@ -946,18 +919,16 @@ export default function RegisterWizard() {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="px-4 sm:px-5 py-2.5 min-h-[44px] border border-[#321F1F]/20 text-[#321F1F] font-semibold text-xs sm:text-sm rounded hover:bg-[#321F1F]/5 transition flex items-center gap-1.5"
+                      className="px-4 sm:px-5 py-2.5 min-h-[44px] border border-[#321F1F]/20 text-[#321F1F] font-semibold text-xs sm:text-sm rounded hover:bg-[#321F1F]/5 transition flex items-center"
                     >
-                      <ChevronLeft className="w-4 h-4" />
                       <span>Back</span>
                     </button>
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="px-5 sm:px-6 py-2.5 min-h-[44px] bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm rounded transition flex items-center gap-1.5"
+                      className="px-5 sm:px-6 py-2.5 min-h-[44px] bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm rounded transition flex items-center"
                     >
                       <span>Continue to Review</span>
-                      <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
                 </motion.div>
@@ -1049,7 +1020,7 @@ export default function RegisterWizard() {
                         <div className="space-y-1.5">
                           {formData.teamMembers.map((m, i) => (
                             <p key={i} className="text-xs text-[#321F1F]/80">
-                              &bull; <strong>{m.name}</strong> ({m.email}) &mdash; {m.role || "Member"} {m.institute ? `at ${m.institute}` : ""}
+                              <strong>{m.name}</strong> ({m.email}){m.role ? ` | ${m.role}` : ""}{m.institute ? ` at ${m.institute}` : ""}
                             </p>
                           ))}
                         </div>
@@ -1088,10 +1059,7 @@ export default function RegisterWizard() {
                           <span>Submitting...</span>
                         </>
                       ) : (
-                        <>
-                          <Sparkles className="w-4 h-4" />
-                          <span>Confirm & Submit Registration</span>
-                        </>
+                        <span>Confirm & Submit Registration</span>
                       )}
                     </button>
                   </div>

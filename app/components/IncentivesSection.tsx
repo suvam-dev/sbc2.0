@@ -25,7 +25,7 @@ const INCENTIVES = [
     eyebrow: "Mentorship",
     title: "Guidance from Distinguished Alumni",
     description:
-      "Top teams gain exclusive mentorship from IIT Kharagpur's accomplished alumni — entrepreneurs, industry leaders, and domain experts who have built, scaled, and transformed ideas into impactful ventures. Personalised sessions on strategy, product, GTM, and venture building.",
+      "Top teams gain exclusive mentorship from IIT Kharagpur's accomplished alumni, including entrepreneurs, industry leaders, and domain experts who have built, scaled, and transformed ideas into impactful ventures. Personalised sessions on strategy, product, GTM, and venture building.",
   },
   {
     id: "ecosystem-support",
@@ -127,7 +127,7 @@ export default function IncentivesSection() {
             Our Incentives
           </h2>
           <p className="max-w-[560px] text-sm sm:text-lg text-[#321F1F]/75 leading-relaxed font-serif">
-            More than a competition — a launchpad for ideas that solve real problems and create real impact.
+            More than a competition: a launchpad for ideas that solve real problems and create real impact.
           </p>
         </div>
 
