@@ -161,7 +161,7 @@ export default function TheCase() {
                 Problem Statements & Case Guide Announcement
               </h3>
               <span className="text-[11px] font-mono text-[#972933] font-bold tracking-wider uppercase">
-                (Announcement Scheduled • Phase I Track)
+                (Announcement Scheduled • Track 1)
               </span>
             </div>
           </div>

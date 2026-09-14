@@ -33,11 +33,11 @@ const alfaSlabOne = Alfa_Slab_One({
 export const metadata: Metadata = {
   title: "Startup Bootcamp 9.0 — E-Cell IIT Kharagpur",
   description:
-    "Startup Boot Camp (SBC) is the Entrepreneurship Cell, IIT Kharagpur's mentorship programme for early-stage student ventures, now in its ninth edition. Selected startups are paired with founders, alumni, and investors for two rounds of one-on-one mentorship on business model, strategy, and pitch, and the strongest ten pitch live on campus to venture capitalists.",
+    "Startup Boot Camp (SBC) is the Entrepreneurship Cell, IIT Kharagpur's mentorship programme for early-stage student ventures, now in its ninth edition. Selected startups are paired with founders, alumni, and industry mentors for two rounds of one-on-one mentorship on business model, strategy, and pitch execution.",
   openGraph: {
     title: "Startup Bootcamp 9.0 — E-Cell IIT Kharagpur",
     description:
-      "Mentorship programme for early-stage student ventures by E-Cell IIT Kharagpur. Pitch live on campus to venture capitalists.",
+      "Mentorship programme for early-stage student ventures by E-Cell IIT Kharagpur.",
     siteName: "Startup Bootcamp 9.0 | E-Cell IIT Kharagpur",
     locale: "en_IN",
     type: "website",

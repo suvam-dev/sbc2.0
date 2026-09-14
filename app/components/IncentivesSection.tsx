@@ -1,28 +1,22 @@
 "use client";
 
 import React, { useRef } from "react";
-import { Trophy, GraduationCap, Briefcase } from "lucide-react";
+import { Trophy, GraduationCap, Users } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * §0.3 Flag: "Our Incentives" copy (₹20L prize pool, alumni mentorship, VC Cohort)
- * is pending final verification from the organizing committee before public launch.
- */
-export const incentivesCopyVerified = false;
-
 const INCENTIVES = [
   {
-    id: "cash-prizes",
+    id: "cash-rewards",
     icon: <Trophy className="w-6 h-6 text-[#a26028]" />,
     label: "01",
-    eyebrow: "Prize Pool",
-    title: "Cash Prizes Worth ₹20 Lakh",
+    eyebrow: "Rewards",
+    title: "Exciting Cash Rewards & Grants",
     description:
-      "The top-performing teams will share a cash prize pool of ₹20 lakh, awarded across both tracks. These rewards acknowledge your innovation, validate your efforts, and provide early support to help you take the next step in your entrepreneurial journey.",
+      "Top-performing teams will be awarded cash rewards and innovation grants to validate your venture, support early product development, and provide tangible backing for your entrepreneurial journey.",
   },
   {
     id: "alumni-guidance",
@@ -31,23 +25,22 @@ const INCENTIVES = [
     eyebrow: "Mentorship",
     title: "Guidance from Distinguished Alumni",
     description:
-      "Top teams gain exclusive mentorship from IIT Kharagpur's accomplished alumni — entrepreneurs, industry leaders, and domain experts who have built, scaled, and transformed ideas into impactful ventures. Personalised sessions on strategy, product, GTM, and fundraising.",
+      "Top teams gain exclusive mentorship from IIT Kharagpur's accomplished alumni — entrepreneurs, industry leaders, and domain experts who have built, scaled, and transformed ideas into impactful ventures. Personalised sessions on strategy, product, GTM, and venture building.",
   },
   {
-    id: "vcs-cohort",
-    icon: <Briefcase className="w-6 h-6 text-[#a26028]" />,
+    id: "ecosystem-support",
+    icon: <Users className="w-6 h-6 text-[#a26028]" />,
     label: "03",
-    eyebrow: "Investment",
-    title: "Chance to Join the VCs Cohort",
+    eyebrow: "Ecosystem",
+    title: "Pan-India Network & Incubation Support",
     description:
-      "Outstanding teams will be considered for the exclusive VCs Cohort — a curated community of high-potential ventures. This opens doors to leading venture capitalists, angel investors, and incubation partners for funding opportunities and strategic partnerships.",
+      "Selected student ventures gain direct access to E-Cell IIT Kharagpur's vibrant entrepreneurial ecosystem. Connect with peer founders across India, leverage incubation resources, and receive ongoing advisory support to propel your startup journey forward.",
   },
 ];
 
 export default function IncentivesSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const watermarkRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const card0 = useRef<HTMLDivElement>(null);
   const card1 = useRef<HTMLDivElement>(null);
@@ -67,21 +60,6 @@ export default function IncentivesSection() {
         opacity: 0,
         duration: 0.8,
         ease: "power3.out",
-      });
-    }
-
-    // Watermark dynamic parallax scroll & subtle tilt
-    if (watermarkRef.current) {
-      gsap.to(watermarkRef.current, {
-        y: 130,
-        rotate: 3,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.2,
-        },
       });
     }
 
@@ -127,19 +105,8 @@ export default function IncentivesSection() {
       id="incentives"
       ref={sectionRef}
       aria-label="Our Incentives"
-      className="relative bg-[#f7ecd0] py-14 sm:py-20 lg:py-28 px-3.5 sm:px-6 lg:px-8 border-b border-[#321F1F]/15 overflow-hidden"
+      className="relative bg-[#f7ecd0] py-14 sm:py-20 lg:py-24 px-3.5 sm:px-6 lg:px-8 border-b border-[#321F1F]/15 overflow-hidden"
     >
-      {/* Giant background watermark with dynamic scroll parallax */}
-      <div
-        ref={watermarkRef}
-        className="pointer-events-none select-none absolute -right-8 top-0 bottom-0 flex items-center z-0 will-change-transform opacity-80"
-        aria-hidden="true"
-      >
-        <span className="text-[240px] sm:text-[320px] lg:text-[420px] font-serif font-black text-[#972933]/[0.045] leading-none tracking-tighter drop-shadow-sm select-none">
-          ₹
-        </span>
-      </div>
-
       {/* Left vertical rule accent drawing down smoothly */}
       <div 
         ref={lineRef}
@@ -148,9 +115,8 @@ export default function IncentivesSection() {
       />
 
       <div className="relative z-10 max-w-[1100px] mx-auto">
-
         {/* Header */}
-        <div ref={headerRef} className="mb-8 sm:mb-16 lg:mb-20 lg:pl-12">
+        <div ref={headerRef} className="mb-8 sm:mb-14 lg:mb-16 lg:pl-12">
           <div className="inline-flex items-center gap-2 mb-2">
             <span className="w-2 h-2 rounded-full bg-[#972933] animate-pulse" />
             <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.28em] text-[#972933]">
@@ -163,12 +129,6 @@ export default function IncentivesSection() {
           <p className="max-w-[560px] text-sm sm:text-lg text-[#321F1F]/75 leading-relaxed font-serif">
             More than a competition — a launchpad for ideas that solve real problems and create real impact.
           </p>
-          {!incentivesCopyVerified && (
-            <span className="inline-flex items-center gap-1.5 mt-3 sm:mt-4 text-[10px] font-mono uppercase px-2.5 py-1 rounded-none bg-[#321F1F]/5 text-[#321F1F]/60 border border-[#321F1F]/10 tracking-wider hover:bg-[#321F1F]/10 transition-colors">
-              <span className="w-1.5 h-1.5 bg-[#a26028]" />
-              Figures subject to final confirmation
-            </span>
-          )}
         </div>
 
         {/* Cards — editorial horizontal layout with rich hover & shine */}
@@ -210,12 +170,6 @@ export default function IncentivesSection() {
                     <span className="text-[9.5px] sm:text-[10px] font-mono font-bold uppercase tracking-[0.22em] text-[#972933]">
                       {item.eyebrow}
                     </span>
-                    {item.id === "cash-prizes" && (
-                      <span className="relative flex h-2 w-2 ml-1">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#972933] opacity-75" />
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-[#972933]" />
-                      </span>
-                    )}
                   </div>
                   <h3 className="font-serif text-base min-[380px]:text-lg sm:text-2xl lg:text-[26px] font-bold text-[#111111] leading-snug mb-1.5 sm:mb-3 group-hover:text-[#972933] transition-colors duration-200">
                     {item.title}

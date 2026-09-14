@@ -134,11 +134,6 @@ export default function Footer() {
                   Our Incentives
                 </Link>
               </li>
-              <li>
-                <Link href="/partners" className="hover:text-[#972933] transition-colors inline-block py-0.5">
-                  Partners & Sponsors
-                </Link>
-              </li>
             </ul>
           </div>
 

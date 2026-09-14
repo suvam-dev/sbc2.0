@@ -53,11 +53,12 @@ export default function HeroSection() {
     });
   }, { scope: containerRef });
 
-  const phases = [
-    { no: "Phase I", name: "Registration", when: "Open now", noColor: "#9d0026", whenColor: "#838b61" },
-    { no: "Phase II", name: "Mentorship Round 1", when: "From 31 Aug", noColor: "#9d0026", whenColor: "#838b61" },
-    { no: "Phase III", name: "Mentorship Round 2", when: "Mid September", noColor: "#9d0026", whenColor: "#838b61" },
-    { no: "Phase IV", name: "Grand Finale", when: "Pitch Live to VCs", noColor: "#9d0026", whenColor: "#838b61" },
+  const marqueeItems = [
+    { label: "Edition 9.0", title: "Startup Bootcamp", tag: "E-Cell IIT Kharagpur" },
+    { label: "Registration", title: "Open For Student Teams", tag: "Apply Online" },
+    { label: "Mentorship", title: "Two One-on-One Rounds", tag: "Alumni & Leaders" },
+    { label: "Focus", title: "Strategy, Product & Scale", tag: "Idea to Prototype" },
+    { label: "Eligibility", title: "Pan-India Colleges", tag: "1-4 Members" },
   ];
 
   return (
@@ -97,17 +98,17 @@ export default function HeroSection() {
       </div>
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-        {/* Infinite Phase Dateline Marquee */}
+        {/* Infinite Header Highlights Marquee */}
         <div className="w-full overflow-hidden mb-5 sm:mb-8 py-1.5 border-y border-[#321F1F]/10 hero-anim-item">
           <div className="animate-phase-marquee flex items-center gap-6 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#321F1F]">
             {[0, 1, 2].map((setIdx) => (
               <div key={`set-${setIdx}`} className="flex items-center gap-4 sm:gap-6 shrink-0">
-                {phases.map((phase, idx) => (
-                  <React.Fragment key={`p-${setIdx}-${idx}`}>
+                {marqueeItems.map((item, idx) => (
+                  <React.Fragment key={`m-${setIdx}-${idx}`}>
                     <span className="inline-flex items-baseline gap-1.5 whitespace-nowrap">
-                      <span className="font-bold text-[#9d0026]">{phase.no}</span>
-                      <span className="text-[#321F1F]/80">{phase.name}</span>
-                      <span className="text-[#838b61] font-semibold">{phase.when}</span>
+                      <span className="font-bold text-[#9d0026]">{item.label}</span>
+                      <span className="text-[#321F1F]/80">{item.title}</span>
+                      <span className="text-[#838b61] font-semibold">{item.tag}</span>
                     </span>
                     <span className="w-1.5 h-1.5 rounded-full bg-[#50427b] shrink-0 inline-block" />
                   </React.Fragment>
@@ -135,9 +136,8 @@ export default function HeroSection() {
           <p>
             Startup Boot Camp (SBC) is the <strong>Entrepreneurship Cell, IIT Kharagpur&rsquo;s</strong> mentorship
             programme for early-stage student ventures, now in its ninth edition. Selected startups
-            are paired with founders, alumni, and investors for two rounds of one-on-one mentorship
-            on business model, strategy, and pitch, and the strongest ten pitch live on campus to
-            venture capitalists.
+            are paired with founders, alumni, and industry mentors for two rounds of one-on-one mentorship
+            on business model, strategy, and pitch execution.
           </p>
         </div>
 

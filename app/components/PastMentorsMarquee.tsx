@@ -54,27 +54,22 @@ function MentorCard({ mentor, "aria-hidden": ariaHidden }: { mentor: Mentor; "ar
       aria-hidden={ariaHidden}
     >
       <div>
-        {/* Avatar & Batch Pill */}
+        {/* Avatar & Info */}
         <div className="flex items-center gap-3 mb-2.5">
           <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-full overflow-hidden border-2 border-[#972933]/40 bg-[#f7ecd0] shrink-0 relative shadow-inner">
             <MentorAvatar name={mentor.name} imageUrl={mentor.imageUrl} />
           </div>
           <div className="space-y-0.5 min-w-0">
-            <span className="inline-block px-2 py-0.5 bg-[#972933]/10 text-[#972933] font-semibold text-[10px] rounded-none border border-[#972933]/20 truncate max-w-full">
-              {mentor.alumnusTag}
-            </span>
+            <h3 className="font-serif text-[15px] sm:text-base font-bold text-[#321F1F] leading-snug truncate">
+              {mentor.name}
+            </h3>
             {mentor.organization && (
-              <span className="block text-[10.5px] text-[#321F1F]/60 truncate">
+              <span className="block text-[11px] text-[#972933] font-semibold truncate">
                 {mentor.organization}
               </span>
             )}
           </div>
         </div>
-
-        {/* Name */}
-        <h3 className="font-serif text-[15px] sm:text-base font-bold text-[#321F1F] leading-snug">
-          {mentor.name}
-        </h3>
 
         {/* Role */}
         <p className="text-[11px] sm:text-xs text-[#321F1F]/80 mt-1 leading-relaxed line-clamp-2">
@@ -94,7 +89,6 @@ function MentorCard({ mentor, "aria-hidden": ariaHidden }: { mentor: Mentor; "ar
             <LinkedinIcon className="w-3 h-3" />
             <span>View Profile</span>
           </a>
-          <span className="text-[9.5px] text-[#321F1F]/40 font-mono">SBC Mentor</span>
         </div>
       )}
     </div>
@@ -125,6 +119,13 @@ export default function PastMentorsMarquee({
   // Split mentors into two balanced groups for two opposing marquees
   const row1Mentors = mentors.filter((_, idx) => idx % 2 === 0);
   const row2Mentors = mentors.filter((_, idx) => idx % 2 !== 0);
+
+  // Listen for external open-mentor-modal trigger (e.g. from updates feed)
+  React.useEffect(() => {
+    const handleOpenModal = () => setIsModalOpen(true);
+    window.addEventListener("open-mentor-modal", handleOpenModal);
+    return () => window.removeEventListener("open-mentor-modal", handleOpenModal);
+  }, []);
 
   useGSAP(() => {
     const mm = gsap.matchMedia();
@@ -221,7 +222,7 @@ export default function PastMentorsMarquee({
         <span>INDUSTRY</span>
         <span>LEADERS</span>
         <span>ALUMNI</span>
-        <span>VCS</span>
+        <span>FOUNDERS</span>
         <span className="w-5 h-[1.5px] bg-[#972933]/40 mt-1" />
       </div>
 
@@ -249,7 +250,7 @@ export default function PastMentorsMarquee({
               </h2>
             </div>
             <p className="text-xs sm:text-sm lg:text-[14px] text-[#321F1F]/80 font-serif leading-relaxed mt-2.5 max-w-[520px]">
-              Distinguished founders, operators, and venture investors from IIT Kharagpur and top industry ecosystems who guided previous bootcamp cohorts from napkin sketch to seed round.
+              Distinguished founders, operators, and industry leaders from IIT Kharagpur and top startup ecosystems who guided previous bootcamp cohorts from napkin sketch to scale.
             </p>
           </div>
 

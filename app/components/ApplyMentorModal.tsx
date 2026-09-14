@@ -30,7 +30,7 @@ const EXPERTISE_TAGS = [
   "AI & DeepTech",
   "SaaS & Enterprise",
   "FinTech",
-  "Fundraising & VCs",
+  "Fundraising & Strategy",
   "Go-To-Market",
   "Hardware / IoT",
   "Legal & Operations",
@@ -318,7 +318,7 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
                   </a>
                 </p>
                 <p>
-                  <strong>Mentorship Rounds:</strong> Phase II (from 31 Aug) & Phase III (Mid Sep)
+                  <strong>Mentorship Rounds:</strong> Round 1 & Round 2
                 </p>
               </div>
 

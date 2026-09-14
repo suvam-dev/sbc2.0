@@ -11,35 +11,23 @@ export interface UpdateItem {
 
 export const UPDATES_DATA: UpdateItem[] = [
   {
-    id: "update-1",
-    date: "15 AUGUST",
+    id: "registration-open",
+    date: "OPEN NOW",
     category: "new",
-    text: "Registration is open to students in every discipline. Form your team, then answer a few questions about who you are and how you think.",
+    text: "Registration is open to student founders and teams from colleges across India. Submit your venture details to participate in Startup Bootcamp 9.0.",
     cta: {
-      label: "Register Now",
+      label: "Register Your Team",
       href: "#register",
     },
   },
   {
-    id: "update-2",
-    date: "06 AUGUST",
+    id: "mentor-registration-open",
+    date: "OPEN NOW",
     category: "new",
-    text: "The Great Rewiring survey is live. Readers across India are stating all the problems they face every day, and their answers become the problems teams pick from.",
+    text: "Call for mentors is open. Distinguished alumni, founders, and industry leaders are invited to guide the next wave of student entrepreneurs.",
     cta: {
-      label: "Start with yours",
-      href: "#incentives",
+      label: "Register as a Mentor",
+      href: "#partners",
     },
-  },
-  {
-    id: "update-3",
-    date: "31 AUGUST",
-    category: "upcoming",
-    text: "Around 30 opportunities are published, drawn from the survey with the reader signals behind each. This is the list teams pick from.",
-  },
-  {
-    id: "update-4",
-    date: "31 AUGUST",
-    category: "upcoming",
-    text: "Solution assembly opens. Teams submit how their agent does the job for this problem they've identified.",
   },
 ];
