@@ -14,7 +14,7 @@ export const UPDATES_DATA: UpdateItem[] = [
     id: "registration-open",
     date: "OPEN NOW",
     category: "new",
-    text: "Registration is open to student founders and teams from colleges across India. Submit your venture details to participate in Startup Bootcamp 9.0.",
+    text: "Registration is open to student founders and teams from IIT Kharagpur. Submit your venture details to participate in Startup Bootcamp 9.0.",
     cta: {
       label: "Register Your Team",
       href: "#register",

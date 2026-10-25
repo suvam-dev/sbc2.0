@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo, Fraunces, Graduate, Alfa_Slab_One } from "next/font/google";
 import "./globals.css";
 
@@ -30,10 +30,28 @@ const alfaSlabOne = Alfa_Slab_One({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#f7ecd0",
+};
+
 export const metadata: Metadata = {
   title: "Startup Bootcamp 9.0 | E-Cell IIT Kharagpur",
   description:
     "Startup Boot Camp (SBC) is the Entrepreneurship Cell, IIT Kharagpur's mentorship programme for early-stage student ventures, now in its ninth edition. Selected startups are paired with founders, alumni, and industry mentors for two rounds of one-on-one mentorship on business model, strategy, and pitch execution.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     title: "Startup Bootcamp 9.0 | E-Cell IIT Kharagpur",
     description:

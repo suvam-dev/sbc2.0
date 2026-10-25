@@ -76,6 +76,11 @@ export default function RegisterWizard() {
   const [registrationId, setRegistrationId] = useState<string>("");
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [showAccessGuideModal, setShowAccessGuideModal] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const [formData, setFormData] = useState<FormData>({
     collegeEmail: "",
@@ -411,9 +416,11 @@ export default function RegisterWizard() {
               </div>
             </div>
           ) : (
-            <AnimatePresence mode="wait">
-              {/* STEP 1: GATE / COLLEGE EMAIL */}
-              {step === 1 && (
+            <div className="min-h-[300px]">
+              {isMounted && (
+                <AnimatePresence mode="wait">
+                  {/* STEP 1: GATE / COLLEGE EMAIL */}
+                  {step === 1 && (
                 <motion.div
                   key="step-1"
                   initial={{ opacity: 0, x: 15 }}
@@ -1064,7 +1071,9 @@ export default function RegisterWizard() {
                   </div>
                 </motion.div>
               )}
-            </AnimatePresence>
+                </AnimatePresence>
+              )}
+            </div>
           )}
         </div>
       </div>
