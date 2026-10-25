@@ -59,9 +59,10 @@ export const metadata: Metadata = {
     siteName: "Startup Bootcamp 9.0 | E-Cell IIT Kharagpur",
     locale: "en_IN",
     type: "website",
+    url: "https://sbc.ecell-iitkgp.in",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "https://sbc.ecell-iitkgp.in/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Startup Bootcamp 9.0",
