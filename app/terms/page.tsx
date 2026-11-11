@@ -1,5 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Link from "next/link";
+import { PROGRAMME } from "@/data/programme";
 
 export default function TermsPage() {
   return (
@@ -11,16 +13,19 @@ export default function TermsPage() {
         </h1>
         <div className="bg-[#fff8e8] p-5 sm:p-8 rounded-none shadow-sm border border-[#321F1F]/15 space-y-4 text-xs sm:text-base leading-relaxed text-[#321F1F]/80">
           <p>
-            By participating in Startup Bootcamp 9.0 organized by E-Cell IIT Kharagpur, all teams and members agree to comply with program guidelines, event schedules, and mentorship codes of conduct.
+            By participating in {PROGRAMME.name}, teams agree to comply with programme guidelines, event schedules and mentorship codes of conduct. Selection considers innovation, product readiness, customer need, the team and commercialisation potential.
           </p>
           <p>
             All submitted pitch decks and venture ideas remain the intellectual property of the respective teams. Judges, mentors, and organizers evaluate submissions under strict professional discretion.
           </p>
           <p>
+            There are no participation fees for student founders. Sponsorship does not influence venture selection. Curated introductions and commercialisation support do not guarantee investment, a pilot or a licensing agreement.
+          </p>
+          <p>
             For queries or disputes regarding these terms, please contact our organizers through the{" "}
-            <a href="/#contact" className="text-[#972933] font-medium underline">
+            <Link href="/#contact" className="text-[#972933] font-medium underline">
               Contact Desk
-            </a>.
+            </Link>.
           </p>
         </div>
       </main>

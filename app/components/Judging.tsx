@@ -5,6 +5,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FOUNDER_READINESS, PROGRAMME, SELECTION_CRITERIA } from "@/data/programme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,7 @@ export default function Judging() {
   const bgArtRef = useRef<HTMLImageElement>(null);
 
   useGSAP(() => {
-    let mm = gsap.matchMedia();
+    const mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
       // Parallax for Background Art
@@ -115,12 +116,12 @@ export default function Judging() {
         <span className="w-5 h-[1.5px] bg-[#972933]/40 mt-1" />
       </div>
 
-      {/* Giant Decorative 9.0 Watermark in Bottom Left */}
+      {/* Giant Decorative Year Watermark in Bottom Left */}
       <div
         className="pointer-events-none absolute -bottom-6 sm:bottom-2 left-4 sm:left-8 lg:left-10 text-[130px] sm:text-[170px] lg:text-[200px] font-serif font-light text-[#972933]/[0.08] select-none leading-none z-0 tracking-tighter"
         aria-hidden="true"
       >
-        9.0
+        2027
       </div>
 
       {/* Main Section Content Container */}
@@ -128,21 +129,19 @@ export default function Judging() {
         {/* Headline Header */}
         <div ref={headerRef} className="max-w-[580px] mb-6 sm:mb-8 lg:mb-9 pl-0 lg:pl-10">
           <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#972933] block mb-1.5">
-            Startup Bootcamp 9.0
+            {PROGRAMME.name}
           </span>
 
           <h2 className="font-display font-black text-3xl min-[380px]:text-4xl sm:text-5xl lg:text-[60px] text-[#111111] tracking-wide leading-none mb-3 uppercase">
-            Judging
+            Selection & Readiness
           </h2>
 
           <p className="text-sm sm:text-base lg:text-[17px] text-[#321F1F]/75 font-serif leading-relaxed">
-            A fair, rigorous and founder-friendly evaluation process designed with E-Cell IIT
-            Kharagpur&rsquo;s advisory board.
+            Selection looks at technical strength, customer need and the potential to turn
+            a venture or technology into a viable enterprise.
           </p>
         </div>
 
-        {/* Section 0.2: Content Pending Placeholder Block */}
-        {/* <!-- CONTENT PENDING --> */}
         {/* Elevated Process Card with Rich Texture & High Contrast */}
         <div
           ref={cardRef}
@@ -170,11 +169,11 @@ export default function Judging() {
           <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 sm:gap-4 border-b border-[#321F1F]/12 pb-3 mb-4 text-[10px] font-mono uppercase tracking-[0.2em] text-[#321F1F]/60">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-[#972933]" />
-              <span className="font-semibold text-[#321F1F]/70">DISPATCH REF // SBC-9.0-EVAL</span>
+              <span className="font-semibold text-[#321F1F]/70">DISPATCH REF // FORGE-2027-SELECT</span>
             </div>
             <span className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-none bg-[#972933]/10 text-[#972933] font-bold text-[9px] sm:text-[9.5px] tracking-widest border border-[#972933]/25">
               <span className="w-1.5 h-1.5 bg-[#972933] animate-pulse" />
-              STATUS: JURY FINALIZATION
+              SELECTION: DAYS 21–30
             </span>
           </div>
 
@@ -185,11 +184,11 @@ export default function Judging() {
                 Our Process
               </span>
               <h3 className="font-display font-black text-lg min-[380px]:text-xl sm:text-2xl text-[#1a1010] tracking-wide uppercase">
-                Evaluation Framework & Jury Panel
+                What we look for
               </h3>
               <p className="text-xs sm:text-[13.5px] text-[#321F1F]/80 mt-1.5 leading-relaxed font-serif">
-                The formal evaluation criteria and jury panel for Startup Bootcamp 9.0 are being
-                finalized with E-Cell IIT Kharagpur&rsquo;s advisory board.
+                The programme targets 75–100 applications, a shortlist of 30 ventures and
+                15 flagship pitches. Selection is based on five criteria:
               </p>
             </div>
 
@@ -205,43 +204,24 @@ export default function Judging() {
             </div>
           </div>
 
-          {/* Mentorship & Evaluation Round Sub-Cards */}
           <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5 my-4 sm:my-6">
-            {/* Mentorship Round 1 */}
-            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-none p-3.5 sm:p-5 flex items-start gap-3 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
-              <div className="w-8 h-8 rounded-none bg-[#972933] text-white font-serif font-bold text-sm flex items-center justify-center shrink-0 shadow-2xs">
-                1
+            {SELECTION_CRITERIA.map((criterion, index) => (
+              <div key={criterion.title} className="bg-[#F4EBD6]/75 rounded-none p-3.5 sm:p-5 flex items-start gap-3 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-colors shadow-inner">
+                <span className="w-8 h-8 bg-[#972933] text-white font-serif font-bold text-sm flex items-center justify-center shrink-0">{index + 1}</span>
+                <div className="space-y-1">
+                  <h4 className="font-serif font-bold text-sm sm:text-base text-[#1a1010]">{criterion.title}</h4>
+                  <p className="text-xs sm:text-[12.5px] text-[#321F1F]/80 leading-relaxed">{criterion.description}</p>
+                </div>
               </div>
-              <div className="space-y-1">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933] block">
-                  Round 1
-                </span>
-                <h4 className="font-serif font-bold text-sm sm:text-base text-[#1a1010] leading-snug">
-                  Mentorship 1
-                </h4>
-                <p className="text-xs sm:text-[12.5px] text-[#321F1F]/80 leading-relaxed">
-                  One-on-one sessions with industry mentors on problem-solution fit, business model validation, and initial traction.
-                </p>
-              </div>
-            </div>
+            ))}
+          </div>
 
-            {/* Mentorship Round 2 */}
-            <div className="bg-[#F4EBD6]/75 backdrop-blur-xs rounded-none p-3.5 sm:p-5 flex items-start gap-3 border border-[#321F1F]/15 hover:border-[#972933]/35 transition-all shadow-inner">
-              <div className="w-8 h-8 rounded-none bg-[#972933] text-white font-serif font-bold text-sm flex items-center justify-center shrink-0 shadow-2xs">
-                2
-              </div>
-              <div className="space-y-1">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933] block">
-                  Round 2
-                </span>
-                <h4 className="font-serif font-bold text-sm sm:text-base text-[#1a1010] leading-snug">
-                  Mentorship 2
-                </h4>
-                <p className="text-xs sm:text-[12.5px] text-[#321F1F]/80 leading-relaxed">
-                  Deep-dive strategy on unit economics, go-to-market scale, financial modeling, and pitch deck refinement.
-                </p>
-              </div>
-            </div>
+          <div className="relative z-10 border-t border-[#321F1F]/15 pt-5 mb-6">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#972933]">Before Demo Day</span>
+            <h4 className="font-serif font-bold text-xl text-[#1a1010] mt-1 mb-3">Your founder readiness checklist</h4>
+            <ul className="list-disc pl-5 space-y-2 text-xs sm:text-sm text-[#321F1F]/80 leading-relaxed">
+              {FOUNDER_READINESS.map((item) => <li key={item}>{item}</li>)}
+            </ul>
           </div>
 
           {/* Card Bottom Row: CTA Button + Divider + Motto */}
@@ -250,7 +230,7 @@ export default function Judging() {
               href="/#register"
               className="inline-flex items-center justify-center gap-2.5 bg-[#4E0C16] hover:bg-[#38080F] text-white text-xs sm:text-[13px] font-semibold px-5 py-3.5 min-h-[44px] rounded-none shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all w-full sm:w-auto uppercase tracking-wider"
             >
-              <span>Submit your team&rsquo;s pitch deck</span>
+              <span>Submit your venture or technology</span>
               <span className="text-sm font-light">→</span>
             </Link>
 

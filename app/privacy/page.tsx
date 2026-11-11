@@ -1,5 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Link from "next/link";
+import { PROGRAMME } from "@/data/programme";
 
 export default function PrivacyPage() {
   return (
@@ -11,16 +13,16 @@ export default function PrivacyPage() {
         </h1>
         <div className="bg-[#fff8e8] p-5 sm:p-8 rounded-none shadow-sm border border-[#321F1F]/15 space-y-4 text-xs sm:text-base leading-relaxed text-[#321F1F]/80">
           <p>
-            Startup Bootcamp 9.0 and Entrepreneurship Cell, IIT Kharagpur respect the privacy of all participating founders, team members, and visitors.
+            {PROGRAMME.name} and Entrepreneurship Cell, IIT Kharagpur respect the privacy of all participating founders, team members, and visitors.
           </p>
           <p>
-            Any information submitted through the registration portal (including personal contact details, startup overview, and pitch deck materials) will be utilized solely for the evaluation, mentorship pairing, and administrative operations of Startup Bootcamp 9.0.
+            Information submitted through the registration portal, including contact details, venture or technology information and pitch materials, is used for application review, mentor matching, programme coordination, investor or industry matchmaking and commercialisation follow-through.
           </p>
           <p>
             For questions regarding privacy practices, please reach out through our{" "}
-            <a href="/#contact" className="text-[#972933] font-medium underline">
+            <Link href="/#contact" className="text-[#972933] font-medium underline">
               Contact Desk
-            </a>.
+            </Link>.
           </p>
         </div>
       </main>

@@ -85,12 +85,19 @@ successful validation.
 
 ## Updating the Demo Day content
 
-Edit `data/demo-day.ts` to update the four milestones, descriptions, proposed
-venue and showcase targets. The supplied poster provides the December-to-March
-schedule, with December interpreted as December 2026 before Demo Day in March
-2027. The concept note is a proposal: the UI labels dates, venue and showcase
-numbers as planned. Replace those labels only when the organising team confirms
-the details.
+Edit `data/programme.ts` for the shared programme identity, venue, date window,
+venture tracks, eligibility, selection criteria, founder readiness, event agenda
+and support. `data/demo-day.ts` supplies the four interactive milestones and
+showcase targets; `data/updates.ts` supplies the bulletin copy.
+
+The 2027 concept note takes priority over the earlier poster: open call (Days
+1–20), selection (Days 21–30), acceleration (Days 31–100, 10–12 weeks), and Demo
+Day (Day 101, February–March 2027). Follow-through starts on Days 102–120 and
+continues for 90 days. Calendar dates remain to be announced. Figures for
+pitches, exhibits, applications and delegates are planning targets, not results.
+The organiser has specified the public venue wording as **IIT Research Park**.
+Pitch discipline is four minutes plus three minutes for Q&A. Past mentors are
+historical; external partners and the 2027 mentor lineup require confirmation.
 
 The component is `app/components/DemoDayTimeline.tsx`; all its styles are scoped
 under `forge-` classes in `app/components/DemoDayTimeline.css`. It reuses the

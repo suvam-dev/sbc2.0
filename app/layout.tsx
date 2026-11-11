@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Fraunces, Graduate, Alfa_Slab_One } from "next/font/google";
 import "./globals.css";
+import { PROGRAMME } from "@/data/programme";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -36,9 +37,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sbc.ecell-iitkgp.co.in"),
-  title: "Startup Bootcamp 9.0 | E-Cell IIT Kharagpur",
+  title: `${PROGRAMME.name} | E-Cell IIT Kharagpur`,
   description:
-    "Startup Boot Camp (SBC) is the Entrepreneurship Cell, IIT Kharagpur's mentorship programme for early-stage student ventures, now in its ninth edition. Selected startups are paired with founders, alumni, and industry mentors for two rounds of one-on-one mentorship on business model, strategy, and pitch execution.",
+    "Engineering ideas. Building enterprises. KGP Forge Demo Day 2027 brings IIT Kharagpur ventures and technologies to investors and industry through a 10–12-week accelerator, a showcase at IIT Research Park and 90-day commercialisation follow-through.",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -54,21 +55,13 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Startup Bootcamp 9.0 | E-Cell IIT Kharagpur",
+    title: `${PROGRAMME.name} | E-Cell IIT Kharagpur`,
     description:
-      "Mentorship programme for early-stage student ventures by E-Cell IIT Kharagpur.",
-    siteName: "Startup Bootcamp 9.0 | E-Cell IIT Kharagpur",
+      `${PROGRAMME.proposition} Venture pitches, working demos and curated investor or industry meetings at ${PROGRAMME.venue}. ${PROGRAMME.dateWindow}.`,
+    siteName: PROGRAMME.name,
     locale: "en_IN",
     type: "website",
     url: "https://sbc.ecell-iitkgp.co.in",
-    images: [
-      {
-        url: "https://sbc.ecell-iitkgp.co.in/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Startup Bootcamp 9.0",
-      },
-    ],
   },
 };
 

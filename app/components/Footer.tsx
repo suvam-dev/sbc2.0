@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Globe, ArrowUpRight } from "lucide-react";
+import { PROGRAMME } from "@/data/programme";
 import { GENERAL_CONTACT } from "@/data/contacts";
 
 function LinkedinIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -43,12 +44,12 @@ export default function Footer() {
             <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 text-center md:text-left">
               <img
                 src="/images/sbc-logo.png"
-                alt="Startup Bootcamp 9.0"
+                alt="Startup Boot Camp"
                 className="w-14 h-14 sm:w-16 sm:h-16 object-contain mix-blend-multiply shrink-0"
               />
               <div>
                 <h3 className="font-display font-black text-xl sm:text-2xl text-[#321F1F] tracking-wide uppercase">
-                  Startup Bootcamp 9.0
+                  {PROGRAMME.name}
                 </h3>
                 <p className="text-[11px] sm:text-xs font-mono text-[#972933] font-bold uppercase tracking-wider">
                   E-Cell • IIT Kharagpur
@@ -57,7 +58,7 @@ export default function Footer() {
             </div>
 
             <p className="text-xs sm:text-sm text-[#321F1F]/80 leading-relaxed font-serif max-w-sm mx-auto md:mx-0">
-              The premier pan-India pre-accelerator initiative by Entrepreneurship Cell, IIT Kharagpur. Nurturing student innovation from prototype to pitch with world-class mentorship.
+              IIT Kharagpur’s annual venture and technology showcase. Bringing students, researchers, faculty, alumni and incubation units together with investors and industry to turn engineering into enterprise.
             </p>
 
             {/* Social Icons */}
@@ -116,7 +117,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/case" className="hover:text-[#972933] transition-colors inline-block py-0.5">
-                  The Case Problem
+                  Programme Overview
                 </Link>
               </li>
               <li>
@@ -126,12 +127,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/judging" className="hover:text-[#972933] transition-colors inline-block py-0.5">
-                  Judging Framework
+                  Selection Criteria
                 </Link>
               </li>
               <li>
                 <Link href="/incentives" className="hover:text-[#972933] transition-colors inline-block py-0.5">
-                  Our Incentives
+                  Programme Support
                 </Link>
               </li>
             </ul>
@@ -158,19 +159,19 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="/#partners" className="hover:text-[#972933] transition-colors inline-block py-0.5">
-                  Past Mentors Carousel
-                </a>
+                <Link href="/#partners" className="hover:text-[#972933] transition-colors inline-block py-0.5">
+                  Past Mentors
+                </Link>
               </li>
               <li>
-                <a href="/#bulletin" className="hover:text-[#972933] transition-colors inline-block py-0.5">
+                <Link href="/#bulletin" className="hover:text-[#972933] transition-colors inline-block py-0.5">
                   Updates & Bulletins
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#contact" className="hover:text-[#972933] transition-colors inline-block py-0.5">
+                <Link href="/#contact" className="hover:text-[#972933] transition-colors inline-block py-0.5">
                   Contact Team
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -225,7 +226,7 @@ export default function Footer() {
             <Link href="/privacy" className="underline hover:text-[#972933]">Privacy Policy</Link>{" "}
             and{" "}
             <Link href="/terms" className="underline hover:text-[#972933]">Terms and Conditions</Link>{" "}
-            of Startup Bootcamp 9.0.
+            of {PROGRAMME.name}.
           </p>
 
           <div className="flex items-center gap-3 text-xs">
@@ -237,9 +238,9 @@ export default function Footer() {
               Terms
             </Link>
             <span>•</span>
-            <a href="/#contact" className="hover:text-[#972933] transition py-1">
+            <Link href="/#contact" className="hover:text-[#972933] transition py-1">
               Contact
-            </a>
+            </Link>
           </div>
         </div>
       </div>

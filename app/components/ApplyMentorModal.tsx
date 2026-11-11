@@ -27,17 +27,19 @@ interface ApplyMentorModalProps {
 const EXPERTISE_TAGS = [
   "Product Strategy",
   "AI & DeepTech",
-  "SaaS & Enterprise",
-  "FinTech",
+  "HealthTech & MedTech",
+  "Climate & Energy",
   "Fundraising & Strategy",
   "Go-To-Market",
   "Hardware / IoT",
-  "Legal & Operations",
+  "IP, Licensing & Regulatory",
+  "Digital, Education & Social Innovation",
+  "Manufacturing & Scale-up",
 ];
 
 const MENTORSHIP_MODES = [
   { id: "online", label: "Online / Virtual" },
-  { id: "offline", label: "Offline on Campus (IIT KGP)" },
+  { id: "offline", label: "In Person (IIT Kharagpur Ecosystem)" },
   { id: "both", label: "Both (Flexible)" },
 ];
 
@@ -216,7 +218,7 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
           {/* Top Brand Tag & Heading */}
           <div className="relative z-10">
             <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#972933] font-bold block mb-3">
-              STARTUP BOOTCAMP 9.0 <br />
+              KGP FORGE DEMO DAY 2027 <br />
               <span className="text-[#321F1F]/60">E-CELL IIT KHARAGPUR</span>
             </span>
 
@@ -305,7 +307,7 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
                 Thank You for Stepping Up
               </h3>
               <p className="text-xs sm:text-sm text-[#321F1F]/80 max-w-md font-serif leading-relaxed mb-6">
-                Your interest in mentoring Startup Bootcamp 9.0 founders means the world to us.
+                Your interest in mentoring KGP Forge Demo Day 2027 founders means the world to us.
                 The E-Cell IIT Kharagpur team will review your profile and connect with you via email shortly.
               </p>
 
@@ -317,7 +319,7 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
                   </a>
                 </p>
                 <p>
-                  <strong>Mentorship Rounds:</strong> Round 1 & Round 2
+                  <strong>Accelerator:</strong> 10–12 weeks of venture readiness and commercialisation support
                 </p>
               </div>
 
@@ -334,7 +336,7 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
               {/* Mobile-only Title */}
               <div className="md:hidden mb-4 pr-10">
                 <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#972933] font-bold block">
-                  STARTUP BOOTCAMP 9.0
+                  KGP FORGE DEMO DAY 2027
                 </span>
                 <h2 className="font-serif text-xl font-black text-[#111111] leading-tight">
                   Apply as a <span className="italic text-[#972933]">Mentor</span>
@@ -713,7 +715,7 @@ export default function ApplyMentorModal({ isOpen, onClose }: ApplyMentorModalPr
                         Review your application
                       </h3>
                       <p className="text-xs text-[#321F1F]/70 mt-1">
-                        Please confirm your details before submitting to SBC 9.0.
+                        Please confirm your details before submitting to KGP Forge 2027.
                       </p>
                     </div>
 

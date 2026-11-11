@@ -19,7 +19,7 @@ import {
   Eye,
   Check,
 } from "lucide-react";
-import { supabase } from "@/lib/supabase";
+import { PROGRAMME, VENTURE_TRACKS } from "@/data/programme";
 import { motion, AnimatePresence } from "framer-motion";
 
 export interface TeamMemberInput {
@@ -45,18 +45,7 @@ export interface FormData {
   teamMembers: TeamMemberInput[];
 }
 
-const SECTORS = [
-  "AI & Agentic Systems",
-  "FinTech & Payments",
-  "Logistics & Supply Chain",
-  "HealthTech & BioTech",
-  "AgriTech & ClimateTech",
-  "SaaS & Enterprise Tools",
-  "Consumer Tech & Social",
-  "EdTech & Future of Work",
-  "DeepTech & Hardware",
-  "Other",
-];
+const SECTORS = [...VENTURE_TRACKS.map((track) => track.name), "Technology-to-Market Gallery"];
 
 const YEARS_OF_STUDY = [
   "1st Year (Undergraduate)",
@@ -66,7 +55,9 @@ const YEARS_OF_STUDY = [
   "5th Year / Dual Degree",
   "Postgraduate / Masters",
   "PhD Scholar",
-  "Recent Alum (within 1 yr)",
+  "Alumni",
+  "Faculty / Researcher",
+  "Incubation-unit venture",
 ];
 
 export default function RegisterWizard() {
@@ -104,7 +95,7 @@ export default function RegisterWizard() {
   const validateStep1 = (): boolean => {
     const errors: Record<string, string> = {};
     if (!formData.collegeEmail || !emailRegex.test(formData.collegeEmail.trim())) {
-      errors.collegeEmail = "Please enter a valid college email address.";
+      errors.collegeEmail = "Please enter a valid contact email address.";
     }
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -113,10 +104,10 @@ export default function RegisterWizard() {
   const validateStep2 = (): boolean => {
     const errors: Record<string, string> = {};
     if (!formData.startupName || formData.startupName.trim().length < 2) {
-      errors.startupName = "Startup or idea name is required (min 2 characters).";
+      errors.startupName = "Venture or technology name is required (min 2 characters).";
     }
     if (!formData.sector) {
-      errors.sector = "Please select a sector for your venture.";
+      errors.sector = "Please select a venture track or the technology gallery.";
     }
     if (formData.pitchDeckUrl && formData.pitchDeckUrl.trim().length > 0) {
       if (!/^https?:\/\//i.test(formData.pitchDeckUrl.trim())) {
@@ -181,7 +172,6 @@ export default function RegisterWizard() {
 
   // Team member repeatable row handlers
   const handleAddMember = () => {
-    if (formData.teamMembers.length >= 4) return;
     setFormData((prev) => ({
       ...prev,
       teamMembers: [
@@ -303,14 +293,14 @@ export default function RegisterWizard() {
         {/* Form Header matching PDF Page 4 */}
         <div className="text-center mb-6 sm:mb-10 space-y-2">
           <h2 className="font-display font-black text-2xl min-[380px]:text-3xl sm:text-4xl lg:text-[42px] text-[#972933] tracking-wide uppercase">
-            Startup Bootcamp 9.0
+            {PROGRAMME.name}
           </h2>
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#321F1F]/70">
             E-Cell IIT Kharagpur
           </p>
           <p className="text-xs sm:text-base text-[#321F1F]/80 max-w-[560px] mx-auto pt-1 font-serif italic">
-            Register your startup for two rounds of one-on-one mentorship and a live pitch before
-            investors on campus.
+            Apply for venture acceleration, the technology gallery and curated investor or industry
+            conversations. No participation fees for student founders.
           </p>
         </div>
 
@@ -322,7 +312,7 @@ export default function RegisterWizard() {
               <div className="grid grid-cols-4 gap-1 sm:gap-2 text-center">
                 {[
                   { num: 1, label: "Registration", short: "Register" },
-                  { num: 2, label: "About Startup", short: "Startup" },
+                  { num: 2, label: "Venture / Technology", short: "Venture" },
                   { num: 3, label: "Team Details", short: "Team" },
                   { num: 4, label: "Review & Submit", short: "Review" },
                 ].map((s) => {
@@ -376,8 +366,8 @@ export default function RegisterWizard() {
                 Application Submitted Successfully!
               </h3>
               <p className="text-sm sm:text-base text-[#321F1F]/80 max-w-[500px] mx-auto">
-                Thank you for registering for Startup Bootcamp 9.0. Your team application has been
-                recorded.
+                Thank you for registering for {PROGRAMME.name}. Your application has been
+                received for review.
               </p>
               <div className="bg-[#f7ecd0] p-4 rounded-none border border-[#321F1F]/10 max-w-[400px] mx-auto space-y-1">
                 <span className="text-xs uppercase tracking-wider text-[#321F1F]/60 font-semibold block">
@@ -431,7 +421,7 @@ export default function RegisterWizard() {
                 >
                   <div className="text-center space-y-2">
                     <p className="text-xs sm:text-sm text-[#321F1F]/75">
-                      Startup Bootcamp 9.0 is exclusively open to student ventures, researchers, and campus startups of IIT Kharagpur.
+                      Open to student ventures, research spinouts, alumni ventures and technologies from the IIT Kharagpur ecosystem. Faculty technologies without an incorporated startup can apply for the gallery.
                     </p>
                   </div>
 
@@ -440,12 +430,12 @@ export default function RegisterWizard() {
                       htmlFor="college-email"
                       className="block text-xs sm:text-sm font-semibold text-[#321F1F]"
                     >
-                      Enter your IIT Kharagpur Email ID
+                      Contact email
                     </label>
                     <input
                       id="college-email"
                       type="email"
-                      placeholder="e.g. rollnumber@kgp.ac.in or student@iitkgp.ac.in"
+                      placeholder="founder@example.com"
                       value={formData.collegeEmail}
                       onChange={(e) => {
                         setFormData((prev) => ({ ...prev, collegeEmail: e.target.value }));
@@ -493,7 +483,7 @@ export default function RegisterWizard() {
                   className="space-y-5"
                 >
                   <h3 className="font-serif font-bold text-lg sm:text-xl text-[#321F1F] border-b border-[#321F1F]/10 pb-2">
-                    Startup Details
+                    Venture / Technology Details
                   </h3>
 
                   {/* Startup Name */}
@@ -502,7 +492,7 @@ export default function RegisterWizard() {
                       htmlFor="startup-name"
                       className="block text-xs sm:text-sm font-semibold text-[#321F1F]"
                     >
-                      Startup / Idea Name
+                      Venture / Technology Name
                     </label>
                     <input
                       id="startup-name"
@@ -531,7 +521,7 @@ export default function RegisterWizard() {
                       htmlFor="sector"
                       className="block text-xs sm:text-sm font-semibold text-[#321F1F]"
                     >
-                      Sector / Domain
+                      Venture Track / Gallery
                     </label>
                     <select
                       id="sector"
@@ -545,7 +535,7 @@ export default function RegisterWizard() {
                           : "border-[#321F1F]/20"
                       }`}
                     >
-                      <option value="">Select Sector</option>
+                      <option value="">Select a track or gallery</option>
                       {SECTORS.map((sec) => (
                         <option key={sec} value={sec}>
                           {sec}
@@ -559,14 +549,19 @@ export default function RegisterWizard() {
                     )}
                   </div>
 
+                  <p className="text-xs sm:text-sm text-[#321F1F]/80 leading-relaxed border-l-2 border-[#972933]/50 pl-3">
+                    Before Demo Day, selected ventures prepare a two-page investor brief and a 90-second demo video.
+                    You can share an investor brief or pitch deck with this application.
+                  </p>
+
                   {/* Pitch Deck Link */}
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                       <label
                         htmlFor="pitch-deck-url"
                         className="block text-xs sm:text-sm font-semibold text-[#321F1F]"
                       >
-                        Pitch Deck Link <span className="text-[#321F1F]/60 font-normal">(Optional / Highly Recommended)</span>
+                        Investor Brief / Pitch Deck Link <span className="text-[#321F1F]/60 font-normal">(Optional / Highly Recommended)</span>
                       </label>
                       <button
                         type="button"
@@ -610,7 +605,7 @@ export default function RegisterWizard() {
                         Access Notice: Set link to &ldquo;Anyone with the link can view&rdquo;
                       </p>
                       <p className="text-[#321F1F]/80 text-[11px] sm:text-xs leading-relaxed">
-                        Please ensure your link does not require login or access request approval. If restricted to your organization/college domain or set to private, the jury and mentors will not be able to evaluate your venture.
+                        Please ensure your link does not require login or access request approval. If restricted to your organization/college domain or set to private, the reviewers and mentors will not be able to evaluate your venture.
                       </p>
                       <button
                         type="button"
@@ -651,19 +646,20 @@ export default function RegisterWizard() {
                   transition={{ duration: 0.25 }}
                   className="space-y-6"
                 >
-                  {/* Founder Details Block */}
+                  {/* Lead Applicant Details Block */}
                   <div className="space-y-4">
                     <h3 className="font-serif font-bold text-lg sm:text-xl text-[#321F1F] border-b border-[#321F1F]/10 pb-2">
-                      Founder Details
+                      Lead Applicant Details
                     </h3>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* Full Name */}
                       <div className="space-y-1">
-                        <label className="block text-xs font-semibold text-[#321F1F]">
+                        <label htmlFor="applicant-fullname" className="block text-xs font-semibold text-[#321F1F]">
                           Full Name
                         </label>
                         <input
+                          id="applicant-fullname"
                           type="text"
                           value={formData.founderFullName}
                           onChange={(e) =>
@@ -681,10 +677,11 @@ export default function RegisterWizard() {
 
                       {/* Founder Email */}
                       <div className="space-y-1">
-                        <label className="block text-xs font-semibold text-[#321F1F]">
-                          Founder Email
+                        <label htmlFor="applicant-email" className="block text-xs font-semibold text-[#321F1F]">
+                          Applicant Email
                         </label>
                         <input
+                          id="applicant-email"
                           type="email"
                           value={formData.founderEmail}
                           onChange={(e) =>
@@ -702,10 +699,11 @@ export default function RegisterWizard() {
 
                       {/* WhatsApp Phone */}
                       <div className="space-y-1">
-                        <label className="block text-xs font-semibold text-[#321F1F]">
+                        <label htmlFor="applicant-whatsapp" className="block text-xs font-semibold text-[#321F1F]">
                           Phone (WhatsApp)
                         </label>
                         <input
+                          id="applicant-whatsapp"
                           type="tel"
                           placeholder="e.g. 9876543210"
                           value={formData.founderWhatsapp}
@@ -726,10 +724,11 @@ export default function RegisterWizard() {
 
                       {/* Department */}
                       <div className="space-y-1">
-                        <label className="block text-xs font-semibold text-[#321F1F]">
+                        <label htmlFor="applicant-department" className="block text-xs font-semibold text-[#321F1F]">
                           Department / Major
                         </label>
                         <input
+                          id="applicant-department"
                           type="text"
                           placeholder="e.g. Computer Science, Mechanical"
                           value={formData.founderDepartment}
@@ -745,10 +744,11 @@ export default function RegisterWizard() {
 
                       {/* Roll Number */}
                       <div className="space-y-1">
-                        <label className="block text-xs font-semibold text-[#321F1F]">
-                          Roll / Student Number
+                        <label htmlFor="applicant-rollnumber" className="block text-xs font-semibold text-[#321F1F]">
+                          Roll Number (if applicable)
                         </label>
                         <input
+                          id="applicant-rollnumber"
                           type="text"
                           placeholder="e.g. 21CS10045"
                           value={formData.founderRollNumber}
@@ -762,12 +762,13 @@ export default function RegisterWizard() {
                         />
                       </div>
 
-                      {/* Year of Study */}
+                      {/* Academic Stage / Affiliation */}
                       <div className="space-y-1">
-                        <label className="block text-xs font-semibold text-[#321F1F]">
-                          Year of Study
+                        <label htmlFor="applicant-yearofstudy" className="block text-xs font-semibold text-[#321F1F]">
+                          Academic Stage / Affiliation
                         </label>
                         <select
+                          id="applicant-yearofstudy"
                           value={formData.founderYearOfStudy}
                           onChange={(e) =>
                             setFormData((prev) => ({
@@ -777,7 +778,7 @@ export default function RegisterWizard() {
                           }
                           className="w-full px-3 py-2.5 sm:py-2 bg-[#f7ecd0] rounded border border-[#321F1F]/20 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#972933]"
                         >
-                          <option value="">Select Year</option>
+                          <option value="">Select affiliation</option>
                           {YEARS_OF_STUDY.map((y) => (
                             <option key={y} value={y}>
                               {y}
@@ -789,10 +790,11 @@ export default function RegisterWizard() {
 
                     {/* LinkedIn Profile */}
                     <div className="space-y-1">
-                      <label className="block text-xs font-semibold text-[#321F1F]">
+                      <label htmlFor="applicant-linkedinurl" className="block text-xs font-semibold text-[#321F1F]">
                         LinkedIn Profile URL
                       </label>
                       <input
+                          id="applicant-linkedinurl"
                         type="url"
                         placeholder="https://linkedin.com/in/username"
                         value={formData.founderLinkedinUrl}
@@ -809,25 +811,23 @@ export default function RegisterWizard() {
 
                   {/* Team Members Repeatable Rows */}
                   <div className="space-y-4 pt-4 border-t border-[#321F1F]/10">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                       <div>
                         <h4 className="font-serif font-bold text-base sm:text-lg text-[#321F1F]">
                           Team Members (Co-founders / Key Members)
                         </h4>
                         <p className="text-xs text-[#321F1F]/70">
-                          Add co-founders and team members collaborating on this venture (optional, max 4).
+                          Add co-founders and key team members collaborating on this venture or technology (optional).
                         </p>
                       </div>
 
-                      {formData.teamMembers.length < 4 && (
-                        <button
-                          type="button"
-                          onClick={handleAddMember}
-                          className="text-xs font-bold text-[#972933] hover:underline"
-                        >
-                          <span>Add Member</span>
-                        </button>
-                      )}
+                      <button
+                        type="button"
+                        onClick={handleAddMember}
+                        className="self-start sm:self-center shrink-0 min-h-[44px] text-xs font-bold text-[#972933] hover:underline"
+                      >
+                        <span>Add Member</span>
+                      </button>
                     </div>
 
                     {formData.teamMembers.map((member, idx) => (
@@ -851,10 +851,11 @@ export default function RegisterWizard() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           <div className="space-y-1">
-                            <label className="text-xs font-semibold text-[#321F1F]">
+                            <label htmlFor={`team-${idx}-name`} className="text-xs font-semibold text-[#321F1F]">
                               Name
                             </label>
                             <input
+                              id={`team-${idx}-name`}
                               type="text"
                               value={member.name}
                               onChange={(e) =>
@@ -870,10 +871,11 @@ export default function RegisterWizard() {
                           </div>
 
                           <div className="space-y-1">
-                            <label className="text-xs font-semibold text-[#321F1F]">
+                            <label htmlFor={`team-${idx}-email`} className="text-xs font-semibold text-[#321F1F]">
                               Email
                             </label>
                             <input
+                              id={`team-${idx}-email`}
                               type="email"
                               value={member.email}
                               onChange={(e) =>
@@ -889,10 +891,11 @@ export default function RegisterWizard() {
                           </div>
 
                           <div className="space-y-1">
-                            <label className="text-xs font-semibold text-[#321F1F]">
+                            <label htmlFor={`team-${idx}-institute`} className="text-xs font-semibold text-[#321F1F]">
                               Institute / College
                             </label>
                             <input
+                              id={`team-${idx}-institute`}
                               type="text"
                               value={member.institute}
                               onChange={(e) =>
@@ -903,10 +906,11 @@ export default function RegisterWizard() {
                           </div>
 
                           <div className="space-y-1">
-                            <label className="text-xs font-semibold text-[#321F1F]">
+                            <label htmlFor={`team-${idx}-role`} className="text-xs font-semibold text-[#321F1F]">
                               Role in the team
                             </label>
                             <input
+                              id={`team-${idx}-role`}
                               type="text"
                               placeholder="e.g. CTO, Product Lead"
                               value={member.role}
@@ -964,7 +968,7 @@ export default function RegisterWizard() {
                     {/* Startup Summary */}
                     <div>
                       <h4 className="font-bold text-[#972933] text-xs uppercase tracking-wider mb-2">
-                        Startup Overview
+                        Venture / Technology Overview
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#321F1F]/85">
                         <div>
@@ -972,7 +976,7 @@ export default function RegisterWizard() {
                           <span className="font-semibold break-words">{formData.startupName}</span>
                         </div>
                         <div>
-                          <span className="text-[#321F1F]/60 block text-[11px]">Sector:</span>
+                          <span className="text-[#321F1F]/60 block text-[11px]">Track / Gallery:</span>
                           <span className="font-semibold break-words">{formData.sector}</span>
                         </div>
                         <div className="sm:col-span-2">
@@ -1012,7 +1016,7 @@ export default function RegisterWizard() {
                           <span className="font-semibold">{formData.founderWhatsapp}</span>
                         </div>
                         <div>
-                          <span className="text-[#321F1F]/60 block text-[11px]">Year of Study:</span>
+                          <span className="text-[#321F1F]/60 block text-[11px]">Academic Stage / Affiliation:</span>
                           <span className="font-semibold">{formData.founderYearOfStudy || "N/A"}</span>
                         </div>
                       </div>

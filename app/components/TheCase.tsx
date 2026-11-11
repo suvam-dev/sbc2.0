@@ -6,6 +6,7 @@ import { Clock } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { PROGRAMME, VENTURE_TRACKS } from "@/data/programme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +17,7 @@ export default function TheCase() {
   const bgArtRef = useRef<HTMLImageElement>(null);
 
   useGSAP(() => {
-    let mm = gsap.matchMedia();
+    const mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
       // Parallax for Background Art
@@ -107,13 +108,13 @@ export default function TheCase() {
       <div className="relative z-10 max-w-[1220px] mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={headerRef} className="max-w-[580px] mb-8 sm:mb-12 pl-0 lg:pl-10">
           <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.25em] text-[#972933] block mb-1.5">
-            Startup Bootcamp 9.0
+            {PROGRAMME.name}
           </span>
           <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-[56px] text-[#111111] tracking-wide leading-none mb-4 uppercase">
-            The Case
+            Programme Overview
           </h2>
           <p className="text-sm sm:text-base lg:text-[17px] text-[#321F1F]/75 font-serif leading-relaxed">
-            Case Studies, Tracks & Problem Spaces
+            Engineering Ideas. Building Enterprises. Transforming Lives.
           </p>
         </div>
 
@@ -141,14 +142,14 @@ export default function TheCase() {
           <div className="pointer-events-none absolute bottom-3.5 right-3.5 w-2.5 h-2.5 border-b-2 border-r-2 border-[#972933]/60" aria-hidden="true" />
 
           {/* Archival Dispatch Header Strip */}
-          <div className="relative z-10 flex items-center justify-between gap-4 border-b border-[#321F1F]/12 pb-3.5 mb-5 text-[10px] font-mono uppercase tracking-[0.2em] text-[#321F1F]/60">
+          <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 border-b border-[#321F1F]/12 pb-3.5 mb-5 text-[10px] font-mono uppercase tracking-[0.2em] text-[#321F1F]/60">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-[#972933]" />
-              <span className="font-semibold text-[#321F1F]/70">DISPATCH REF // SBC-9.0-CASE</span>
+              <span className="font-semibold text-[#321F1F]/70">DISPATCH REF // FORGE-2027-OVERVIEW</span>
             </div>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-none bg-[#972933]/10 text-[#972933] font-bold text-[9.5px] tracking-widest border border-[#972933]/25">
               <span className="w-1.5 h-1.5 bg-[#972933] animate-pulse" />
-              STATUS: CASE FORMULATION
+              VENTURE TO MARKET
             </span>
           </div>
 
@@ -158,23 +159,25 @@ export default function TheCase() {
             </div>
             <div>
               <h3 className="font-serif font-black text-xl sm:text-2xl text-[#1a1010] tracking-tight leading-snug">
-                Problem Statements & Case Guide Announcement
+                Where engineering becomes enterprise.
               </h3>
               <span className="text-[11px] font-mono text-[#972933] font-bold tracking-wider uppercase">
-                (Announcement Scheduled • Track 1)
+                10–12-week accelerator · Demo Day · 90-day follow-through
               </span>
             </div>
           </div>
 
           <p className="relative z-10 text-sm sm:text-[15px] leading-relaxed text-[#321F1F]/85 mb-5 font-serif">
-            Detailed case problems, tracks (Product Strategy & Technical Builder), and industry problem statements for <strong className="font-semibold text-[#1a1010]">Startup Bootcamp 9.0</strong> are currently being finalized with partner companies and mentors.
+            <strong className="font-semibold text-[#1a1010]">{PROGRAMME.name}</strong> brings investment-ready ventures and technologies from IIT Kharagpur’s students, researchers, faculty, alumni and incubation units to investors and industry. The focus is commercialisation: capital, customers, licensing and manufacturing partnerships.
           </p>
 
           <div className="relative z-10 p-5 rounded-none bg-[#F4EBD6]/70 backdrop-blur-xs border border-[#321F1F]/15 text-xs sm:text-[13px] text-[#321F1F]/80 space-y-2.5 mb-7 shadow-inner">
-            <p className="font-bold text-[#1a1010] font-serif text-sm">What to expect:</p>
-            <p>&bull; 20+ verified problem statements crowdsourced from real industry and consumer pain points.</p>
-            <p>&bull; Dedicated tracks for no-code product strategists and hands-on technical builders.</p>
-            <p>&bull; Direct access to API rails and sandboxes from partner companies.</p>
+            <p className="font-bold text-[#1a1010] font-serif text-sm">Four venture tracks:</p>
+            {VENTURE_TRACKS.map((track) => (
+              <p key={track.name}><strong>{track.name}:</strong> {track.focus}</p>
+            ))}
+            <p className="pt-2 border-t border-[#321F1F]/15">The Technology-to-Market Gallery also welcomes faculty IP, prototypes and MSME-ready technologies, including faculty technologies without an incorporated startup.</p>
+            <p><strong>Venue:</strong> {PROGRAMME.venue} · {PROGRAMME.dateWindow}. Exact date to be announced.</p>
           </div>
 
           <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
@@ -182,7 +185,7 @@ export default function TheCase() {
               href="/#register"
               className="inline-flex items-center justify-center gap-2.5 bg-[#4E0C16] hover:bg-[#38080F] text-white text-xs sm:text-[13px] font-semibold px-6 py-3.5 rounded-none shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all w-full sm:w-auto uppercase tracking-wider"
             >
-              <span>Register Ahead of Case Release</span>
+              <span>Submit your venture or technology</span>
               <span className="text-sm font-light">→</span>
             </Link>
 

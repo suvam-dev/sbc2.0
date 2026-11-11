@@ -18,7 +18,7 @@ interface PartnersGridProps {
 
 export default function PartnersGrid({
   partners = PARTNERS_DATA,
-  title = "The Partners",
+  title = "Programme Ecosystem",
   showRegisterCta = true,
 }: PartnersGridProps) {
   const containerRef = useRef<HTMLElement>(null);
@@ -27,7 +27,7 @@ export default function PartnersGrid({
   const ctaRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    let mm = gsap.matchMedia();
+    const mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
       // Fade up header
@@ -94,7 +94,7 @@ export default function PartnersGrid({
             {title}
           </h2>
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#321F1F]/70 mt-2 sm:mt-0">
-            Infrastructure &bull; Tooling &bull; Mentorship
+            Mentorship &bull; Incubation &bull; Commercialisation
           </p>
         </div>
 
@@ -104,7 +104,7 @@ export default function PartnersGrid({
             <div key={partner.id} className="partner-col pt-6 sm:pt-0 space-y-3 flex flex-col justify-between">
               <div>
                 <span className="text-[11px] font-mono text-[#972933] font-bold block mb-1">
-                  // {partner.category}
+                  <span aria-hidden="true">{"// "}</span>{partner.category}
                 </span>
                 <h3 className="font-serif font-bold text-xl sm:text-2xl text-[#321F1F]">
                   {partner.name}
