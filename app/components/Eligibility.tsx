@@ -6,7 +6,6 @@ import { Clock, CheckCircle2 } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ELIGIBILITY as PARTICIPANT_GROUPS, PROGRAMME } from "@/data/programme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,7 +16,7 @@ export default function Eligibility() {
   const bgArtRef = useRef<HTMLImageElement>(null);
 
   useGSAP(() => {
-    const mm = gsap.matchMedia();
+    let mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
       // Parallax for Background Art
@@ -117,7 +116,7 @@ export default function Eligibility() {
             Eligibility
           </h2>
           <p className="text-sm sm:text-base lg:text-[17px] text-[#321F1F]/75 font-serif leading-relaxed">
-            Student ventures, research spinouts, faculty technologies and alumni ventures.
+            Criteria for Participating Ventures & Student Teams
           </p>
         </div>
 
@@ -152,12 +151,12 @@ export default function Eligibility() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-none bg-[#972933]" />
               <span className="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-[#321F1F]/70 font-semibold">
-                Dispatch Ref // FORGE-2027-CRIT
+                Dispatch Ref // SBC-9.0-CRIT
               </span>
             </div>
             <span className="inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 rounded-none bg-[#972933]/10 text-[#972933] font-bold text-[9px] sm:text-[9.5px] tracking-widest border border-[#972933]/25">
               <span className="w-1.5 h-1.5 rounded-none bg-[#972933] animate-pulse" />
-              IIT KHARAGPUR ECOSYSTEM
+              ELIGIBILITY // IIT KGP ONLY
             </span>
           </div>
 
@@ -168,34 +167,46 @@ export default function Eligibility() {
             </div>
             <div>
               <h3 className="font-display font-black text-lg min-[380px]:text-xl sm:text-2xl text-[#111111] tracking-wide uppercase leading-tight">
-                Who Can Take Part
+                Official Eligibility Criteria
               </h3>
               <span className="text-[10px] sm:text-[11px] font-mono text-[#972933] font-bold tracking-wider uppercase">
-                Ventures, research spinouts &amp; technologies
+                Exclusively for IIT Kharagpur Startups &amp; Students
               </span>
             </div>
           </div>
 
           <p className="relative z-10 text-xs sm:text-sm md:text-[15px] leading-relaxed text-[#321F1F]/85 mb-4 sm:mb-5 font-serif">
-            {PROGRAMME.name} welcomes commercially promising ventures and technologies emerging from the <strong className="font-semibold text-[#1a1010]">IIT Kharagpur ecosystem</strong>. Faculty technologies without an incorporated startup can participate in the technology-to-market gallery and receive commercialisation support.
+            Startup Bootcamp 9.0 is organized by <strong className="font-semibold text-[#1a1010]">E-Cell IIT Kharagpur</strong> exclusively for early-stage student ventures, researchers, and campus startups from IIT Kharagpur. Key eligibility parameters:
           </p>
 
-          {/* Participation routes from the programme brief. */}
+          {/* Inner Checklist Container with Rich Warm Parchment & High Contrast */}
           <div className="relative z-10 p-3.5 sm:p-5 rounded-none bg-[#F4EBD6]/70 backdrop-blur-xs border border-[#321F1F]/15 space-y-3 sm:space-y-3.5 mb-5 sm:mb-7 shadow-inner">
-            {PARTICIPANT_GROUPS.map((group, index) => (
-              <React.Fragment key={group.title}>
-                {index > 0 && <div className="h-px w-full bg-[#321F1F]/10" aria-hidden="true" />}
-                <div className="flex items-start gap-2.5 sm:gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-[#972933] shrink-0 mt-0.5" aria-hidden="true" />
-                  <span className="text-xs sm:text-[13.5px] text-[#221616] font-medium leading-relaxed">
-                    <strong>{group.title}:</strong> {group.description}
-                  </span>
-                </div>
-              </React.Fragment>
-            ))}
-            <p className="text-xs sm:text-[13.5px] text-[#972933] font-semibold pt-2">
-              No participation fees for student founders.
-            </p>
+            <div className="flex items-start gap-2.5 sm:gap-3">
+              <div className="w-4 h-4 rounded-full bg-[#972933] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                <CheckCircle2 className="w-3.5 h-3.5 text-white stroke-[2.5]" />
+              </div>
+              <span className="text-xs sm:text-[13.5px] text-[#221616] font-medium leading-relaxed">
+                <strong>IIT Kharagpur Exclusive:</strong> Open exclusively to student founders, researchers, and early-stage ventures from IIT Kharagpur.
+              </span>
+            </div>
+            <div className="h-px w-full bg-[#321F1F]/10" aria-hidden="true" />
+            <div className="flex items-start gap-2.5 sm:gap-3">
+              <div className="w-4 h-4 rounded-full bg-[#972933] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                <CheckCircle2 className="w-3.5 h-3.5 text-white stroke-[2.5]" />
+              </div>
+              <span className="text-xs sm:text-[13.5px] text-[#221616] font-medium leading-relaxed">
+                <strong>Team Composition:</strong> Teams may consist of 1 to 4 members. Interdisciplinary collaboration across IIT KGP departments is encouraged.
+              </span>
+            </div>
+            <div className="h-px w-full bg-[#321F1F]/10" aria-hidden="true" />
+            <div className="flex items-start gap-2.5 sm:gap-3">
+              <div className="w-4 h-4 rounded-full bg-[#972933] text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                <CheckCircle2 className="w-3.5 h-3.5 text-white stroke-[2.5]" />
+              </div>
+              <span className="text-xs sm:text-[13.5px] text-[#221616] font-medium leading-relaxed">
+                <strong>Venture Stage:</strong> Both idea-stage concepts and operational prototypes with traction are eligible.
+              </span>
+            </div>
           </div>
 
           {/* Card Footer Actions */}
@@ -204,7 +215,7 @@ export default function Eligibility() {
               href="/#register"
               className="inline-flex items-center justify-center gap-2.5 bg-[#4E0C16] hover:bg-[#38080F] text-white text-xs sm:text-[13px] font-semibold px-5 py-3.5 min-h-[44px] rounded-none shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all w-full sm:w-auto uppercase tracking-wider"
             >
-              <span>Submit your venture or technology</span>
+              <span>Verify your team</span>
               <span className="text-sm font-light">→</span>
             </Link>
             

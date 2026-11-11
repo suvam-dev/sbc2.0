@@ -6,7 +6,7 @@ export default function IncentivesPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#f7ecd0] text-[#321F1F]">
       <Header />
-      <main className="flex-1 pt-24 sm:pt-28">
+      <main className="flex-1">
         <IncentivesSection />
       </main>
       <Footer />

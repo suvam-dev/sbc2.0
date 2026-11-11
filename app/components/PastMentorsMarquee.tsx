@@ -250,7 +250,7 @@ export default function PastMentorsMarquee({
               </h2>
             </div>
             <p className="text-xs sm:text-sm lg:text-[14px] text-[#321F1F]/80 font-serif leading-relaxed mt-2.5 max-w-[520px]">
-              Founders, operators and industry leaders who guided previous SBC cohorts. These are past mentors; the 2027 mentor lineup will be announced separately.
+              Distinguished founders, operators, and industry leaders from IIT Kharagpur and top startup ecosystems who guided previous bootcamp cohorts from napkin sketch to scale.
             </p>
           </div>
 
@@ -304,10 +304,10 @@ export default function PastMentorsMarquee({
                   </span>
                 </div>
                 <h4 className="font-serif font-bold text-sm text-[#1a1010] mb-1">
-                  Guide KGP Forge 2027
+                  Guide Startup Bootcamp 9.0
                 </h4>
                 <p className="text-[11.5px] text-[#321F1F]/70 font-serif leading-snug mb-3">
-                  Support venture readiness and commercialisation at IIT Kharagpur.
+                  Mentor early-stage ventures from IIT Kharagpur.
                 </p>
                 {renderCtaButton("w-full")}
               </div>
@@ -348,14 +348,14 @@ export default function PastMentorsMarquee({
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#972933]" />
                 </span>
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#972933]">
-                  CALL FOR MENTORS • KGP FORGE 2027
+                  CALL FOR MENTORS • SBC 9.0
                 </span>
               </div>
               <h4 className="font-serif font-bold text-base text-[#1a1010] leading-snug mb-1">
                 Guide the Next Wave of Founders
               </h4>
               <p className="text-xs text-[#321F1F]/75 font-serif leading-relaxed mb-3.5">
-                Help IIT Kharagpur ventures with customer discovery, prototype validation, IP, business models and pitch readiness.
+                Share your operational experience and mentor ambitious early-stage startups from IIT Kharagpur.
               </p>
               {renderCtaButton("w-full shadow-md")}
             </div>

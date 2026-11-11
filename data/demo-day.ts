@@ -1,5 +1,3 @@
-import { PROGRAMME } from "./programme";
-
 export interface DemoDayMilestone {
   id: string;
   number: string;
@@ -13,77 +11,82 @@ export interface DemoDayMilestone {
   link: { label: string; href: string };
 }
 
+// The poster supplies the four milestones; the concept note supplies the
+// proposed Demo Day format. December is the lead-in to the March 2027 event.
+// Keep unconfirmed dates, venues and targets visibly labelled as planned.
 export const DEMO_DAY_MILESTONES: DemoDayMilestone[] = [
   {
     id: "registration",
     number: "01",
-    title: "Open call & scouting",
-    date: "Days 1–20",
-    eyebrow: "Bring your venture forward",
-    headline: "Engineering ideas. Enterprise ambition.",
+    title: "Registration opens",
+    date: "Opening date TBA",
+    eyebrow: "The first step",
+    headline: "Big ambitions. Start here.",
     description:
-      "Submit your venture or technology for consideration. Departmental nominations, alumni outreach, E-Cell scouting, faculty IP and incubator referrals help surface promising ideas from the IIT Kharagpur ecosystem.",
+      "Tell us the problem, your solution and the team behind it. Share your venture details and pitch deck through the SBC registration form to begin your startup journey.",
     takeaways: [
-      { title: "Venture applications", detail: "Student ventures, research spinouts and alumni teams." },
-      { title: "Technology nominations", detail: "Faculty IP, prototypes and incubation-unit referrals." },
-      { title: "A clear starting point", detail: "Explain your problem, solution, evidence and team." },
+      { title: "Your idea", detail: "A real problem and a clear solution." },
+      { title: "Your team", detail: "The people building the venture." },
+      { title: "Your pitch", detail: "What you are building and why it matters." },
     ],
-    link: { label: "Submit your venture", href: "#register" },
+    link: { label: "View registration form", href: "#register" },
   },
   {
-    id: "selection",
+    id: "mentorship-starts",
     number: "02",
-    title: "Selection",
-    date: "Days 21–30",
-    eyebrow: "Build the flagship cohort",
-    headline: "The idea. The evidence. The team.",
+    title: "Mentorship starts",
+    date: "1 December 2026",
+    dateTime: "2026-12-01",
+    eyebrow: "Build with guidance",
+    headline: "Find your edge. Forge ahead.",
     description:
-      "Applications are reviewed for innovation, product readiness, customer need, team capability and commercialisation potential. The programme targets 75–100 applications, a shortlist of 30 and 15 flagship ventures.",
+      "Work with experienced founders, alumni and domain experts to sharpen your product, business model and go-to-market plan. Turn mentor feedback into practical next steps.",
     takeaways: [
-      { title: "Innovation & readiness", detail: "A differentiated solution with credible technical proof." },
-      { title: "Customer & commercial potential", detail: "Market need, willingness to pay and a viable route to market." },
-      { title: "Execution team", detail: "The capability and commitment to build an enterprise." },
+      { title: "Expert mentorship", detail: "Focused advice for your venture." },
+      { title: "Customer discovery", detail: "Test the problem and market demand." },
+      { title: "Networking", detail: "Explore collaborators and pilot opportunities." },
     ],
-    link: { label: "Explore selection criteria", href: "#judging" },
+    link: { label: "Meet past mentors", href: "#partners" },
   },
   {
-    id: "acceleration",
+    id: "mentorship-ends",
     number: "03",
-    title: "Venture acceleration",
-    date: "Days 31–100 · 10–12 weeks",
-    eyebrow: "Turn progress into readiness",
-    headline: "Validate the venture. Prepare the pitch.",
+    title: "Mentorship ends",
+    date: "First week of March 2027",
+    eyebrow: "Ready for the room",
+    headline: "Sharpen the story. Show the proof.",
     description:
-      "Work through customer discovery, prototype validation, unit economics and IP or regulatory questions. Expert mentoring, pitch training and investor matchmaking prepare each venture for a focused, evidence-backed showcase.",
+      "Refine your pitch, demonstrate your prototype and back your story with customer evidence. Finish with a clear ask for investors and industry partners.",
     takeaways: [
-      { title: "Customer & product validation", detail: "Test demand, technical readiness and business assumptions." },
-      { title: "Investor brief & demo", detail: "A two-page brief and a 90-second product video." },
-      { title: "A specific partnership ask", detail: "Investment, a customer pilot, licensing or manufacturing." },
+      { title: "Pitch practice", detail: "A focused story with confident Q&A." },
+      { title: "Investor brief", detail: "Two pages on product, traction and market." },
+      { title: "Demo video", detail: "Your product in action, in 90 seconds." },
     ],
-    link: { label: "Explore programme support", href: "#incentives" },
+    link: { label: "Talk to the SBC team", href: "#contact" },
   },
   {
     id: "demo-day",
     number: "04",
     title: "Demo Day",
-    date: "Day 101 · February–March 2027",
-    eyebrow: PROGRAMME.name,
-    headline: PROGRAMME.proposition,
+    date: "March 2027",
+    dateTime: "2027-03",
+    eyebrow: "KGP Forge Demo Day 2027",
+    headline: "Where engineering becomes enterprise.",
     description:
-      "Present your venture at IIT Research Park through live pitches, working demonstrations and the technology-to-market gallery. Meet investors, customers and industry partners to explore investment, pilots, licensing and manufacturing partnerships.",
+      "Pitch your venture, show a working product and connect with investors and industry. Open conversations around investment, customer pilots, licensing and manufacturing partnerships.",
     takeaways: [
-      { title: "Live pitches", detail: `${PROGRAMME.pitchMinutes} minutes to pitch. ${PROGRAMME.questionsMinutes} minutes for Q&A.` },
-      { title: "Technology-to-market gallery", detail: "Faculty IP, prototypes and MSME-ready technologies." },
-      { title: "Pre-matched meetings", detail: "Focused conversations with investors and corporate pilot partners." },
+      { title: "Live pitches", detail: "4 minutes to pitch. 3 minutes for Q&A." },
+      { title: "Technology gallery", detail: "Faculty IP, prototypes and MSME-ready technologies." },
+      { title: "Curated meetings", detail: "Pre-matched investor and corporate pilot meetings." },
     ],
     link: { label: "Enquire about Demo Day", href: "#contact" },
   },
 ];
 
 export const DEMO_DAY_PLAN = {
-  venue: PROGRAMME.venue,
+  venue: "IIT Research Park",
   targets: [
-    { value: "15", label: "flagship venture pitches" },
+    { value: "15", label: "venture pitches" },
     { value: "30", label: "technology exhibits" },
     { value: "100+", label: "investor & industry delegates" },
   ],

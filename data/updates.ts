@@ -12,9 +12,9 @@ export interface UpdateItem {
 export const UPDATES_DATA: UpdateItem[] = [
   {
     id: "demo-day-2027",
-    date: "FEB–MAR 2027",
+    date: "MARCH 2027",
     category: "upcoming",
-    text: "KGP Forge Demo Day 2027 at IIT Research Park brings together venture pitches, a technology-to-market gallery and curated investor and industry meetings. Exact event date to be announced.",
+    text: "The road to KGP Forge Demo Day: mentorship, venture pitches and investor connections. Explore the proposed programme and four key milestones.",
     cta: {
       label: "Explore the Timeline",
       href: "#timeline",
@@ -22,19 +22,19 @@ export const UPDATES_DATA: UpdateItem[] = [
   },
   {
     id: "registration-open",
-    date: "VENTURE CALL",
+    date: "OPEN NOW",
     category: "new",
-    text: "Student ventures, research spinouts, alumni ventures and faculty technologies from the IIT Kharagpur ecosystem can submit their details for consideration. Student founders pay no participation fee.",
+    text: "Registration is open to student founders and teams from IIT Kharagpur. Submit your venture details to participate in Startup Bootcamp 9.0.",
     cta: {
-      label: "Submit Your Venture",
+      label: "Register Your Team",
       href: "#register",
     },
   },
   {
     id: "mentor-registration-open",
-    date: "MENTOR CALL",
+    date: "OPEN NOW",
     category: "new",
-    text: "Founders, alumni and domain experts are invited to support customer discovery, product validation, commercialisation and pitch readiness during the 10–12-week accelerator.",
+    text: "Call for mentors is open. Distinguished alumni, founders, and industry leaders are invited to guide the next wave of student entrepreneurs.",
     cta: {
       label: "Register as a Mentor",
       href: "#partners",

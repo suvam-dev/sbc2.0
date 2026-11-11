@@ -47,7 +47,7 @@ export default function ContactSection() {
           </h2>
 
           <p className="max-w-[620px] mx-auto text-xs sm:text-base lg:text-lg text-[#321F1F]/80 leading-relaxed font-serif italic">
-            Have questions or need more information about KGP Forge Demo Day 2027? Reach out to our
+            Have questions or need more information about Startup Bootcamp 9.0? Reach out to our
             team, we would love to hear from you!
           </p>
         </div>

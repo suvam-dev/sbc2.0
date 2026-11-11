@@ -1,20 +1,42 @@
 "use client";
 
 import React, { useRef } from "react";
-import { Handshake, GraduationCap, Users } from "lucide-react";
+import { Trophy, GraduationCap, Users } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { PROGRAMME, PROGRAMME_SUPPORT } from "@/data/programme";
-
 gsap.registerPlugin(ScrollTrigger);
 
-const supportIcons = [GraduationCap, Handshake, Users];
-const INCENTIVES = PROGRAMME_SUPPORT.map((item, index) => {
-  const Icon = supportIcons[index];
-  return { ...item, label: `0${index + 1}`, icon: <Icon className="w-6 h-6 text-[#a26028]" /> };
-});
+const INCENTIVES = [
+  {
+    id: "cash-rewards",
+    icon: <Trophy className="w-6 h-6 text-[#a26028]" />,
+    label: "01",
+    eyebrow: "Rewards",
+    title: "Exciting Cash Rewards & Grants",
+    description:
+      "Top-performing teams will be awarded cash rewards and innovation grants to validate your venture, support early product development, and provide tangible backing for your entrepreneurial journey.",
+  },
+  {
+    id: "alumni-guidance",
+    icon: <GraduationCap className="w-6 h-6 text-[#a26028]" />,
+    label: "02",
+    eyebrow: "Mentorship",
+    title: "Guidance from Distinguished Alumni",
+    description:
+      "Top teams gain exclusive mentorship from IIT Kharagpur's accomplished alumni, including entrepreneurs, industry leaders, and domain experts who have built, scaled, and transformed ideas into impactful ventures. Personalised sessions on strategy, product, GTM, and venture building.",
+  },
+  {
+    id: "ecosystem-support",
+    icon: <Users className="w-6 h-6 text-[#a26028]" />,
+    label: "03",
+    eyebrow: "Ecosystem",
+    title: "Pan-India Network & Incubation Support",
+    description:
+      "Selected student ventures gain direct access to E-Cell IIT Kharagpur's vibrant entrepreneurial ecosystem. Connect with peer founders across India, leverage incubation resources, and receive ongoing advisory support to propel your startup journey forward.",
+  },
+];
 
 export default function IncentivesSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -82,7 +104,7 @@ export default function IncentivesSection() {
     <section
       id="incentives"
       ref={sectionRef}
-      aria-label="Programme Support"
+      aria-label="Our Incentives"
       className="relative bg-[#f7ecd0] py-14 sm:py-20 lg:py-24 px-3.5 sm:px-6 lg:px-8 border-b border-[#321F1F]/15 overflow-hidden"
     >
       {/* Left vertical rule accent drawing down smoothly */}
@@ -98,14 +120,14 @@ export default function IncentivesSection() {
           <div className="inline-flex items-center gap-2 mb-2">
             <span className="w-2 h-2 rounded-full bg-[#972933] animate-pulse" />
             <span className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-[0.28em] text-[#972933]">
-              {PROGRAMME.name}
+              Startup Bootcamp 9.0
             </span>
           </div>
           <h2 className="font-display font-black text-3xl min-[380px]:text-4xl sm:text-5xl lg:text-[64px] text-[#111111] tracking-wide leading-[1.05] sm:leading-none mb-3 sm:mb-4 uppercase">
-            Programme Support
+            Our Incentives
           </h2>
           <p className="max-w-[560px] text-sm sm:text-lg text-[#321F1F]/75 leading-relaxed font-serif">
-            Build a venture that is ready for customers, capital and commercial partnerships, with support before and after Demo Day.
+            More than a competition: a launchpad for ideas that solve real problems and create real impact.
           </p>
         </div>
 

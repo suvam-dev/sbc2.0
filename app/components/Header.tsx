@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, ArrowRight, ShieldCheck } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export interface NavTab {
@@ -14,12 +14,12 @@ export interface NavTab {
 }
 
 export const NAV_TABS: NavTab[] = [
-  { label: "Overview", href: "/#case", sectionId: "case", aliases: ["case"] },
+  { label: "The Case", href: "/#case", sectionId: "case", aliases: ["case"] },
   { label: "Timeline", href: "/#timeline", sectionId: "timeline", aliases: ["timeline"] },
-  { label: "Mentors", href: "/#partners", sectionId: "partners", aliases: ["partners", "mentors", "sponsors"] },
+  { label: "Past Mentors", href: "/#partners", sectionId: "partners", aliases: ["partners", "mentors", "sponsors"] },
   { label: "Eligibility", href: "/#eligibility", sectionId: "eligibility", aliases: ["eligibility"] },
-  { label: "Selection", href: "/#judging", sectionId: "judging", aliases: ["judging", "evaluation-criteria"] },
-  { label: "Support", href: "/#incentives", sectionId: "incentives", aliases: ["incentives", "survey"] },
+  { label: "Judging", href: "/#judging", sectionId: "judging", aliases: ["judging", "evaluation-criteria"] },
+  { label: "Incentives", href: "/#incentives", sectionId: "incentives", aliases: ["incentives", "survey"] },
 ];
 
 export default function Header() {
@@ -135,7 +135,7 @@ export default function Header() {
           <Link
             href="/"
             className="flex items-center gap-2 sm:gap-2.5 group shrink-0 min-w-0"
-            aria-label="KGP Forge Demo Day 2027 - E-Cell IIT Kharagpur"
+            aria-label="Startup Bootcamp 9.0 - E-Cell IIT Kharagpur"
           >
             {/* IIT KGP / E-Cell Emblem */}
             <div className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 overflow-hidden flex items-center justify-center group-hover:scale-105 transition-all duration-300">
@@ -143,8 +143,8 @@ export default function Header() {
             </div>
             <div className="flex flex-col justify-center min-w-0">
               <span className="font-bold tracking-tight text-[#111111] font-serif leading-tight text-[12px] sm:text-[14px] truncate">
-                <span className="sm:hidden">SBC × Forge</span>
-                <span className="hidden sm:inline">KGP FORGE 2027</span>
+                <span className="sm:hidden">SBC 9.0</span>
+                <span className="hidden sm:inline">STARTUP BOOTCAMP 9.0</span>
               </span>
               <span className="text-[#321F1F]/60 tracking-tight font-medium text-[9px] sm:text-[11px] mt-[1px]">
                 E-Cell, IIT Kharagpur
@@ -199,7 +199,7 @@ export default function Header() {
               onClick={handleScrollToRegister}
               className="hidden md:inline-flex font-medium text-[#7a6458] hover:text-[#4E0C16] text-[12.5px] sm:text-[13px] transition-colors px-2 py-1"
             >
-              Application
+              Sign In
             </Link>
 
             <Link
@@ -256,7 +256,7 @@ export default function Header() {
                     <img src="/images/sbc-logo.png" alt="" className="w-7 h-7 object-contain mix-blend-multiply" />
                     <div>
                       <span className="font-bold font-serif text-[13px] text-[#111111] block leading-none">
-                        KGP FORGE 2027
+                        STARTUP BOOTCAMP 9.0
                       </span>
                       <span className="text-[10px] text-[#321F1F]/60 block mt-0.5">
                         Navigation Menu
@@ -277,7 +277,7 @@ export default function Header() {
                 <div className="px-5 pt-4 pb-2">
                   <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-[#972933] font-bold">
                     <span className="w-2 h-2 rounded-full bg-[#972933] animate-pulse" />
-                    <span>SBC × Forge // DIRECTORY</span>
+                    <span>SBC 9.0 // DIRECTORY</span>
                   </div>
                 </div>
 
@@ -321,7 +321,7 @@ export default function Header() {
                     onClick={handleScrollToRegister}
                     className="font-medium hover:text-[#972933] underline underline-offset-2 py-1"
                   >
-                    Venture Application
+                    Founder Sign In
                   </Link>
                   <span className="text-[10px] font-mono text-[#321F1F]/50">
                     E-Cell IIT Kharagpur

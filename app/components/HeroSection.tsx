@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useRef } from "react";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { PROGRAMME } from "@/data/programme";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +15,7 @@ export default function HeroSection() {
   const rightCollageRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const mm = gsap.matchMedia();
+    let mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
       // Entrance staggered animation
@@ -54,15 +54,15 @@ export default function HeroSection() {
   }, { scope: containerRef });
 
   const marqueeItems = [
-    { label: "2027", title: "KGP Forge Demo Day", tag: "IIT Kharagpur" },
-    { label: "Acceleration", title: PROGRAMME.acceleratorDuration, tag: "Expert & Alumni Mentors" },
-    { label: "Showcase", title: "Pitches & Working Demos", tag: "Investor & Industry Meetings" },
-    { label: "Venture Tracks", title: "DeepTech, Health, Climate & Digital", tag: "Technology-to-Market Gallery" },
-    { label: "Beyond Demo Day", title: PROGRAMME.followThroughDuration, tag: "Commercialisation Support" },
+    { label: "Edition 9.0", title: "Startup Bootcamp", tag: "E-Cell IIT Kharagpur" },
+    { label: "Registration", title: "Open For Student Teams", tag: "Apply Online" },
+    { label: "Mentorship", title: "Two One-on-One Rounds", tag: "Alumni & Leaders" },
+    { label: "Focus", title: "Strategy, Product & Scale", tag: "Idea to Prototype" },
+    { label: "Eligibility", title: "IIT Kharagpur Only", tag: "1-4 Members" },
   ];
 
   return (
-    <section id="case" ref={containerRef} aria-labelledby="programme-title" className="relative overflow-hidden bg-[#f7ecd0] pt-26 pb-10 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-16">
+    <section ref={containerRef} className="relative overflow-hidden bg-[#f7ecd0] pt-26 pb-10 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-16">
       {/* Left Side Retro Poster Collage Banner - Prominently Visible with Edge Fades */}
       <div
         ref={leftCollageRef}
@@ -118,32 +118,28 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Programme identity in the site's existing editorial typefaces. */}
+        {/* 3D Arched Hero Title Art */}
         <div className="mb-4 sm:mb-6 flex flex-col items-center select-none hero-anim-item">
-          <p className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#972933] mb-4">{PROGRAMME.brand}</p>
-          <h1 id="programme-title" className="font-display font-black uppercase leading-[1.12] tracking-wide text-[#111111]">
-            <span className="block text-[40px] min-[380px]:text-5xl sm:text-[80px] lg:text-[96px] text-[#972933]">KGP Forge</span>
-            <span className="block text-[28px] min-[380px]:text-[34px] sm:text-[56px] lg:text-[72px]">Demo Day 2027</span>
-          </h1>
+          <img
+            src="/images/hero-startup-bootcamp-title.png"
+            alt="What is Startup Bootcamp?"
+            className="w-[260px] min-[380px]:w-[300px] sm:w-[520px] lg:w-[680px] max-w-[90vw] h-auto object-contain mx-auto drop-shadow-md hover:scale-[1.02] transition-transform duration-300"
+          />
+          <h1 className="sr-only">What is Startup Bootcamp?</h1>
           <p className="mt-2.5 sm:mt-3 text-[11px] min-[380px]:text-xs sm:text-sm font-semibold uppercase tracking-wider sm:tracking-widest text-[#321F1F]/75 font-serif max-w-sm sm:max-w-none">
-            {PROGRAMME.tagline}
+            Entrepreneurship Cell, IIT Kharagpur &bull; 9th Edition
           </p>
         </div>
 
         {/* Primary Mission Statement */}
         <div className="max-w-[820px] mx-auto text-[13.5px] min-[380px]:text-[14.5px] sm:text-lg lg:text-xl font-serif leading-relaxed text-[#321F1F] mb-6 sm:mb-8 hero-anim-item px-3.5 sm:px-6">
           <p>
-            <strong>IIT Kharagpur&rsquo;s flagship venture and technology showcase</strong> brings together student ventures,
-            research spinouts, faculty technologies and alumni startups. An accelerator lasting {PROGRAMME.acceleratorDuration} leads
-            into live pitches, working demonstrations and curated investor and industry meetings, followed by 90 days of commercialisation support.
+            Startup Boot Camp (SBC) is the <strong>Entrepreneurship Cell, IIT Kharagpur&rsquo;s</strong> mentorship
+            programme for early-stage student ventures, now in its ninth edition. Selected startups
+            are paired with founders, alumni, and industry mentors for two rounds of one-on-one mentorship
+            on business model, strategy, and pitch execution.
           </p>
         </div>
-
-        <div className="hero-anim-item flex flex-wrap justify-center gap-x-6 gap-y-2 border-y border-[#321F1F]/15 px-4 py-3 text-xs sm:text-sm text-[#321F1F]/80">
-          <span><strong className="text-[#972933]">Venue:</strong> {PROGRAMME.venue}</span>
-          <span><strong className="text-[#972933]">Event window:</strong> {PROGRAMME.dateWindow}</span>
-        </div>
-        <p className="hero-anim-item mt-2 text-[10px] sm:text-xs text-[#321F1F]/70">Exact event date to be announced.</p>
 
         {/* Register CTA Button */}
         <div className="mt-4 mb-6 hero-anim-item">
@@ -151,7 +147,7 @@ export default function HeroSection() {
             href="#register"
             className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 min-h-[48px] bg-[#972933] hover:bg-[#74001c] text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded-none transition-all duration-200 shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-95"
           >
-            <span>Submit Your Venture</span>
+            <span>Register Your Team</span>
             <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
